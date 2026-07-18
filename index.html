@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex — Backend Dev · Security · AI</title>
+  <meta name="description" content="Backend developer in Barcelona. .NET, cybersecurity, local AI. Self-hosted everything.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-alt: #111118;
+      --fg: #e4e4e7;
+      --muted: #a1a1aa;
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --green: #22c55e;
+      --border: #27272a;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ————— noise overlay ————— */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .035;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* ————— hero grid bg ————— */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background:
+        linear-gradient(rgba(124,58,237,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(124,58,237,.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+    }
+
+    .tag-line {
+      font-family: var(--mono);
+      font-size: .85rem;
+      color: var(--muted);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp .8s .2s forwards;
+    }
+    .tag-line .dot { color: var(--accent); }
+
+    h1.name {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp .8s .4s forwards;
+    }
+    h1.name .grad {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      opacity: 0;
+      animation: fadeUp .8s .6s forwards;
+    }
+    .subtitle strong { color: var(--fg); font-weight: 600; }
+
+    .typing {
+      font-family: var(--mono);
+      font-size: .95rem;
+      color: var(--accent2);
+      min-height: 1.5em;
+      opacity: 0;
+      animation: fadeUp .8s .8s forwards;
+    }
+    .typing::after {
+      content: '▋';
+      animation: blink 1s step-end infinite;
+      color: var(--accent);
+    }
+
+    .badges {
+      display: flex;
+      gap: .6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeUp .8s 1s forwards;
+    }
+    .badge {
+      font-family: var(--mono);
+      font-size: .75rem;
+      padding: .35rem .75rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,.02);
+      transition: all .3s;
+    }
+    .badge:hover { border-color: var(--accent); color: var(--fg); transform: translateY(-2px); }
+    .badge.google { border-color: #4285F4; }
+    .badge.ms { border-color: #00A4EF; }
+    .badge.comptia { border-color: #E53238; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .2em;
+      opacity: 0;
+      animation: fadeUp .8s 1.4s forwards;
+    }
+    .scroll-hint::after {
+      content: '↓';
+      display: block;
+      text-align: center;
+      margin-top: .5rem;
+      animation: bounce 2s infinite;
+    }
+
+    /* ————— sections ————— */
+    section {
+      padding: 6rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: .8rem;
+      color: var(--accent);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      margin-bottom: 2rem;
+    }
+
+    .about p { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.25rem; }
+    .about strong { color: var(--fg); font-weight: 600; }
+    .about .hl { color: var(--accent2); }
+
+    /* ————— stack ————— */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .stack-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all .3s;
+    }
+    .stack-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px -12px rgba(124,58,237,.25);
+    }
+    .stack-card h3 {
+      font-family: var(--mono);
+      font-size: .8rem;
+      color: var(--accent2);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .stack-card ul { list-style: none; }
+    .stack-card li {
+      font-family: var(--mono);
+      font-size: .9rem;
+      color: var(--muted);
+      padding: .25rem 0;
+    }
+    .stack-card li::before { content: '▸ '; color: var(--accent); }
+
+    /* ————— currently ————— */
+    .now-list { display: flex; flex-direction: column; gap: 1rem; }
+    .now-item {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+      padding: 1rem 1.25rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: all .3s;
+    }
+    .now-item:hover { border-color: var(--accent2); }
+    .now-item .icon { font-size: 1.2rem; }
+    .now-item .what { font-weight: 600; }
+    .now-item .desc { color: var(--muted); font-size: .95rem; }
+
+    /* ————— footer ————— */
+    footer {
+      text-align: center;
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .links { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem; }
+    .links a {
+      font-family: var(--mono);
+      font-size: .9rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    .links a:hover { color: var(--accent); }
+    .copy { font-family: var(--mono); font-size: .75rem; color: var(--border); }
+
+    /* ————— animations ————— */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(6px); }
+      60% { transform: translateY(3px); }
+    }
+
+    /* ————— reveal on scroll ————— */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 4rem 1.25rem; }
+      .stack-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ————— HERO ————— -->
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="tag-line">backend dev <span class="dot">·</span> security-minded <span class="dot">·</span> foss enjoyer</p>
+      <h1 class="name">Hey, I'm <span class="grad">Alex</span></h1>
+      <p class="subtitle">
+        I build <strong>APIs and systems</strong> with .NET, and spend my spare time in
+        <strong>cybersecurity</strong> and <strong>local AI</strong>. If it can run on my own hardware,
+        that's where it lives.
+      </p>
+      <div class="typing" id="typing"></div>
+      <div class="badges">
+        <span class="badge google">Google Cybersecurity</span>
+        <span class="badge ms">SC-900</span>
+        <span class="badge comptia">Security+ (in progress)</span>
+      </div>
+    </div>
+    <div class="scroll-hint">scroll</div>
+  </header>
+
+  <!-- ————— ABOUT ————— -->
+  <section class="about reveal">
+    <p class="section-label">// about</p>
+    <h2>What I do</h2>
+    <p>
+      I'm a <strong>32-year-old backend developer</strong> based in <span class="hl">Barcelona</span>.
+      Years of building APIs and systems with <strong>.NET</strong> have taught me that good software
+      is boring software — predictable, testable, and secure by default.
+    </p>
+    <p>
+      Lately I've been going deep on <strong>cybersecurity</strong> and <strong>AI</strong>. Security-first
+      isn't a buzzword for me: Google Cybersecurity cert and SC-900 are done, Security+ is next.
+      On the AI side I'm all about <strong>self-hosted models</strong>, local LLMs with Ollama, and
+      building agents that actually do something useful.
+    </p>
+    <p>
+      Big believer in <strong>FOSS</strong> and self-hosting. My data lives on my hardware, my services
+      run in my homelab, and my tools don't phone home.
+    </p>
+  </section>
+
+  <!-- ————— STACK ————— -->
+  <section class="stack reveal">
+    <p class="section-label">// stack</p>
+    <h2>Tools I reach for</h2>
+    <div class="stack-grid">
+      <div class="stack-card">
+        <h3>Languages</h3>
+        <ul>
+          <li>C# / .NET</li>
+          <li>Python</li>
+          <li>TypeScript</li>
+          <li>Rust (learning)</li>
+        </ul>
+      </div>
+      <div class="stack-card">
+        <h3>Backend & APIs</h3>
+        <ul>
+          <li>ASP.NET Core</li>
+          <li>Minimal APIs</li>
+          <li>FastAPI</li>
+        </ul>
+      </div>
+      <div class="stack-card">
+        <h3>AI / LLMs</h3>
+        <ul>
+          <li>Ollama</li>
+          <li>MCP</li>
+          <li>RAG</li>
+          <li>Local agents</li>
+        </ul>
+      </div>
+      <div class="stack-card">
+        <h3>Infra</h3>
+        <ul>
+          <li>Docker</li>
+          <li>Azure</li>
+          <li>Cloudflare Tunnels</li>
+          <li>Self-hosted</li>
+        </ul>
+      </div>
+      <div class="stack-card">
+        <h3>Databases</h3>
+        <ul>
+          <li>SQL Server</li>
+          <li>PostgreSQL</li>
+          <li>SQLite</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ————— NOW ————— -->
+  <section class="now reveal">
+    <p class="section-label">// currently</p>
+    <h2>What I'm working on</h2>
+    <div class="now-list">
+      <div class="now-item">
+        <span class="icon">🦀</span>
+        <div>
+          <div class="what">Rust</div>
+          <div class="desc">Slowly, painfully, worth it.</div>
+        </div>
+      </div>
+      <div class="now-item">
+        <span class="icon">🔐</span>
+        <div>
+          <div class="what">Security+</div>
+          <div class="desc">Turning curiosity into a cert.</div>
+        </div>
+      </div>
+      <div class="now-item">
+        <span class="icon">🤖</span>
+        <div>
+          <div class="what">AI Agents</div>
+          <div class="desc">Local models, RAG, automation that doesn't phone home.</div>
+        </div>
+      </div>
+      <div class="now-item">
+        <span class="icon">📦</span>
+        <div>
+          <div class="what">Self-hosting</div>
+          <div class="desc">Because I like owning my data.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ————— FOOTER ————— -->
+  <footer class="reveal">
+    <div class="links">
+      <a href="https://alpefe.me" target="_blank" rel="noopener">alpefe.me</a>
+      <a href="https://github.com/AlPeFe" target="_blank" rel="noopener">github.com/AlPeFe</a>
+    </div>
+    <p class="copy">© 2025 · built with plain HTML/CSS/JS · no trackers, no cookies</p>
+  </footer>
+
+  <script>
+    // ————— typewriter —————
+    const phrases = [
+      'dotnet run',
+      'ollama serve',
+      'docker compose up -d',
+      'cargo build --release',
+      'nmap -sV 192.168.1.0/24',
+    ];
+    const el = document.getElementById('typing');
+    let pi = 0, ci = 0, deleting = false;
+
+    function tick() {
+      const p = phrases[pi];
+      if (!deleting) {
+        el.textContent = '$ ' + p.slice(0, ++ci);
+        if (ci === p.length) { deleting = true; setTimeout(tick, 1800); return; }
+      } else {
+        el.textContent = '$ ' + p.slice(0, --ci);
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+      }
+      setTimeout(tick, deleting ? 40 : 90);
+    }
+    setTimeout(tick, 1200);
+
+    // ————— scroll reveal —————
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(s => io.observe(s));
+  </script>
+</body>
+</html>
