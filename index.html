@@ -1,322 +1,251 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex — Backend Dev · Security · AI</title>
-  <meta name="description" content="Backend developer in Barcelona. .NET, cybersecurity, local AI. Self-hosted everything.">
+  <title>alex — backend dev · security · foss</title>
+  <meta name="description" content="Backend developer in Barcelona. .NET, cybersecurity, local AI. Self-hosted everything. Made with ♥ and too much coffee.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0f;
-      --bg-alt: #111118;
+      --bg: #0b0b10;
+      --bg-alt: #14141c;
       --fg: #e4e4e7;
-      --muted: #a1a1aa;
+      --muted: #9a9aa5;
       --accent: #7c3aed;
-      --accent2: #06b6d4;
-      --green: #22c55e;
-      --border: #27272a;
+      --accent2: #22d3ee;
+      --green: #4ade80;
+      --border: #2a2a34;
       --mono: 'JetBrains Mono', monospace;
       --sans: 'Inter', sans-serif;
+      --pixel: 'VT323', monospace;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       background: var(--bg);
       color: var(--fg);
       font-family: var(--sans);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
     }
 
-    /* ————— noise overlay ————— */
+    /* ————— crt scanlines ————— */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      opacity: .035;
+      background: repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 3px);
       pointer-events: none;
       z-index: 999;
     }
 
-    /* ————— hero grid bg ————— */
-    .hero {
-      min-height: 100vh;
+    /* ————— layout ————— */
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ————— marquee ————— */
+    .marquee {
+      margin: 2rem 0;
+      padding: .7rem 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-alt);
+      overflow: hidden;
+    }
+    .marquee-track {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      background:
-        linear-gradient(rgba(124,58,237,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(124,58,237,.03) 1px, transparent 1px);
-      background-size: 64px 64px;
+      gap: 10px;
+      width: max-content;
+      animation: scroll 35s linear infinite;
     }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(124,58,237,.12), transparent 70%);
-      pointer-events: none;
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track img {
+      width: 88px;
+      height: 31px;
+      image-rendering: pixelated;
+      flex-shrink: 0;
     }
-
-    .hero-inner {
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      z-index: 1;
-      max-width: 820px;
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
 
-    .tag-line {
+    /* ————— header ————— */
+    header { text-align: center; padding: 4.5rem 0 2rem; }
+    .status-line {
       font-family: var(--mono);
-      font-size: .85rem;
+      font-size: .8rem;
       color: var(--muted);
-      letter-spacing: .15em;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp .8s .2s forwards;
+      margin-bottom: 1.25rem;
     }
-    .tag-line .dot { color: var(--accent); }
-
+    .status-line .dot { color: var(--green); }
     h1.name {
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      font-weight: 800;
-      letter-spacing: -.04em;
+      font-family: var(--pixel);
+      font-size: clamp(3.2rem, 10vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: .02em;
       line-height: 1;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp .8s .4s forwards;
+      margin-bottom: .75rem;
+      color: var(--fg);
     }
-    h1.name .grad {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
+    h1.name .at { color: var(--accent); }
     .subtitle {
-      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
       color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
-      opacity: 0;
-      animation: fadeUp .8s .6s forwards;
+      max-width: 560px;
+      margin: 0 auto;
     }
     .subtitle strong { color: var(--fg); font-weight: 600; }
+    .subtitle .hl { color: var(--accent2); }
 
-    .typing {
-      font-family: var(--mono);
-      font-size: .95rem;
-      color: var(--accent2);
-      min-height: 1.5em;
-      opacity: 0;
-      animation: fadeUp .8s .8s forwards;
-    }
-    .typing::after {
-      content: '▋';
-      animation: blink 1s step-end infinite;
-      color: var(--accent);
-    }
-
-    .badges {
+    .nav-links {
       display: flex;
-      gap: .6rem;
+      gap: .5rem;
       justify-content: center;
       flex-wrap: wrap;
       margin-top: 2rem;
-      opacity: 0;
-      animation: fadeUp .8s 1s forwards;
     }
-    .badge {
+    .nav-links a {
       font-family: var(--mono);
-      font-size: .75rem;
-      padding: .35rem .75rem;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: .35rem .9rem;
       border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--muted);
-      background: rgba(255,255,255,.02);
-      transition: all .3s;
+      background: var(--bg-alt);
+      transition: all .2s;
     }
-    .badge:hover { border-color: var(--accent); color: var(--fg); transform: translateY(-2px); }
-    .badge.google { border-color: #4285F4; }
-    .badge.ms { border-color: #00A4EF; }
-    .badge.comptia { border-color: #E53238; }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--muted);
-      font-family: var(--mono);
-      font-size: .75rem;
-      letter-spacing: .2em;
-      opacity: 0;
-      animation: fadeUp .8s 1.4s forwards;
-    }
-    .scroll-hint::after {
-      content: '↓';
-      display: block;
-      text-align: center;
-      margin-top: .5rem;
-      animation: bounce 2s infinite;
+    .nav-links a:hover {
+      color: var(--fg);
+      border-color: var(--accent);
+      box-shadow: 3px 3px 0 var(--accent);
+      transform: translate(-1px, -1px);
     }
 
     /* ————— sections ————— */
-    section {
-      padding: 6rem 2rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    section { padding: 3.5rem 0; }
     section + section { border-top: 1px solid var(--border); }
-
     .section-label {
-      font-family: var(--mono);
-      font-size: .8rem;
+      font-family: var(--pixel);
+      font-size: 1.15rem;
       color: var(--accent);
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      margin-bottom: .75rem;
+      margin-bottom: .5rem;
     }
     h2 {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 700;
-      letter-spacing: -.03em;
-      margin-bottom: 2rem;
+      font-family: var(--pixel);
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: .01em;
+      margin-bottom: 1.5rem;
     }
-
-    .about p { color: var(--muted); font-size: 1.05rem; margin-bottom: 1.25rem; }
+    .about p { color: var(--muted); font-size: 1.02rem; margin-bottom: 1.1rem; }
     .about strong { color: var(--fg); font-weight: 600; }
     .about .hl { color: var(--accent2); }
 
     /* ————— stack ————— */
     .stack-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: .8rem;
     }
     .stack-card {
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: all .3s;
+      padding: 1.1rem 1.2rem;
+      transition: all .2s;
     }
-    .stack-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px -12px rgba(124,58,237,.25);
-    }
+    .stack-card:hover { border-color: var(--accent); box-shadow: 4px 4px 0 rgba(124,58,237,.25); }
     .stack-card h3 {
       font-family: var(--mono);
-      font-size: .8rem;
+      font-size: .75rem;
       color: var(--accent2);
-      letter-spacing: .1em;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      margin-bottom: .75rem;
+      margin-bottom: .6rem;
     }
     .stack-card ul { list-style: none; }
     .stack-card li {
       font-family: var(--mono);
-      font-size: .9rem;
+      font-size: .88rem;
       color: var(--muted);
-      padding: .25rem 0;
+      padding: .18rem 0;
     }
-    .stack-card li::before { content: '▸ '; color: var(--accent); }
+    .stack-card li::before { content: '> '; color: var(--green); }
 
     /* ————— currently ————— */
-    .now-list { display: flex; flex-direction: column; gap: 1rem; }
+    .now-list { display: flex; flex-direction: column; gap: .7rem; }
     .now-item {
       display: flex;
-      gap: 1rem;
+      gap: .9rem;
       align-items: baseline;
-      padding: 1rem 1.25rem;
+      padding: .8rem 1rem;
       background: var(--bg-alt);
       border: 1px solid var(--border);
-      border-radius: 10px;
-      transition: all .3s;
+      transition: all .2s;
     }
     .now-item:hover { border-color: var(--accent2); }
-    .now-item .icon { font-size: 1.2rem; }
+    .now-item .icon { font-size: 1.1rem; }
     .now-item .what { font-weight: 600; }
-    .now-item .desc { color: var(--muted); font-size: .95rem; }
+    .now-item .desc { color: var(--muted); font-size: .93rem; }
 
     /* ————— footer ————— */
-    footer {
-      text-align: center;
-      padding: 4rem 2rem;
-      border-top: 1px solid var(--border);
+    footer { text-align: center; padding: 3rem 0 4rem; border-top: 1px solid var(--border); }
+    .webring { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .webring img {
+      width: 88px; height: 31px;
+      image-rendering: pixelated;
+      border: 1px solid var(--border);
     }
-    .links { display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 1.5rem; }
-    .links a {
-      font-family: var(--mono);
-      font-size: .9rem;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .3s;
-    }
-    .links a:hover { color: var(--accent); }
-    .copy { font-family: var(--mono); font-size: .75rem; color: var(--border); }
-
-    /* ————— animations ————— */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes blink { 50% { opacity: 0; } }
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(6px); }
-      60% { transform: translateY(3px); }
-    }
-
-    /* ————— reveal on scroll ————— */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .copy { font-family: var(--mono); font-size: .75rem; color: var(--border); line-height: 2; }
+    .copy .heart { color: var(--accent); }
+    .copy a { color: var(--muted); text-decoration: none; }
+    .copy a:hover { color: var(--accent2); }
 
     @media (max-width: 640px) {
-      section { padding: 4rem 1.25rem; }
-      .stack-grid { grid-template-columns: 1fr; }
+      header { padding: 3rem 0 1.5rem; }
+      section { padding: 2.5rem 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ————— HERO ————— -->
-  <header class="hero">
-    <div class="hero-inner">
-      <p class="tag-line">backend dev <span class="dot">·</span> security-minded <span class="dot">·</span> foss enjoyer</p>
-      <h1 class="name">Hey, I'm <span class="grad">Alex</span></h1>
-      <p class="subtitle">
-        I build <strong>APIs and systems</strong> with .NET, and spend my spare time in
-        <strong>cybersecurity</strong> and <strong>local AI</strong>. If it can run on my own hardware,
-        that's where it lives.
-      </p>
-      <div class="typing" id="typing"></div>
-      <div class="badges">
-        <span class="badge google">Google Cybersecurity</span>
-        <span class="badge ms">SC-900</span>
-        <span class="badge comptia">Security+ (in progress)</span>
-      </div>
+  <!-- ————— MARQUEE (top) ————— -->
+  <div class="marquee">
+    <div class="marquee-track" id="m1"></div>
+  </div>
+
+  <!-- ————— HEADER ————— -->
+  <header class="wrap">
+    <p class="status-line">backend dev <span class="dot">·</span> security-minded <span class="dot">·</span> foss enjoyer</p>
+    <h1 class="name">alex<span class="at">@</span>alpefe</h1>
+    <p class="subtitle">
+      I build <strong>APIs and systems</strong> with .NET, and spend my spare time in
+      <strong>cybersecurity</strong> and <strong>local AI</strong>. If it can run on my own hardware,
+      that's where it lives.
+    </p>
+    <div class="nav-links">
+      <a href="https://github.com/AlPeFe" target="_blank" rel="noopener">[ github ]</a>
+      <a href="https://alpefe.me" target="_blank" rel="noopener">[ alpefe.me ]</a>
+      <a href="https://alpefe.me/tools" target="_blank" rel="noopener">[ tools ]</a>
     </div>
-    <div class="scroll-hint">scroll</div>
   </header>
 
+  <!-- ————— MARQUEE (mid) ————— -->
+  <div class="marquee">
+    <div class="marquee-track" id="m2"></div>
+  </div>
+
   <!-- ————— ABOUT ————— -->
-  <section class="about reveal">
+  <section class="about wrap">
     <p class="section-label">// about</p>
-    <h2>What I do</h2>
+    <h2>what i do</h2>
     <p>
       I'm a <strong>32-year-old backend developer</strong> based in <span class="hl">Barcelona</span>.
       Years of building APIs and systems with <strong>.NET</strong> have taught me that good software
@@ -335,9 +264,9 @@
   </section>
 
   <!-- ————— STACK ————— -->
-  <section class="stack reveal">
+  <section class="stack wrap">
     <p class="section-label">// stack</p>
-    <h2>Tools I reach for</h2>
+    <h2>tools i reach for</h2>
     <div class="stack-grid">
       <div class="stack-card">
         <h3>Languages</h3>
@@ -385,10 +314,10 @@
     </div>
   </section>
 
-  <!-- ————— NOW ————— -->
-  <section class="now reveal">
+  <!-- ————— CURRENTLY ————— -->
+  <section class="now wrap">
     <p class="section-label">// currently</p>
-    <h2>What I'm working on</h2>
+    <h2>what i'm working on</h2>
     <div class="now-list">
       <div class="now-item">
         <span class="icon">🦀</span>
@@ -422,44 +351,39 @@
   </section>
 
   <!-- ————— FOOTER ————— -->
-  <footer class="reveal">
-    <div class="links">
-      <a href="https://alpefe.me" target="_blank" rel="noopener">alpefe.me</a>
-      <a href="https://github.com/AlPeFe" target="_blank" rel="noopener">github.com/AlPeFe</a>
+  <footer>
+    <div class="wrap">
+      <div class="webring" id="ring"></div>
+      <p class="copy">
+        © 2026 · <span class="heart">♥</span> built with plain HTML/CSS/JS · no trackers, no cookies<br>
+        <a href="https://github.com/AlPeFe/AlPeFe.github.io" target="_blank" rel="noopener">source</a> ·
+        <a href="https://minima.namishh.com/" target="_blank" rel="noopener">inspired by minima</a> ·
+        best viewed in netscape 4.0
+      </p>
     </div>
-    <p class="copy">© 2025 · built with plain HTML/CSS/JS · no trackers, no cookies</p>
   </footer>
 
   <script>
-    // ————— typewriter —————
-    const phrases = [
-      'dotnet run',
-      'ollama serve',
-      'docker compose up -d',
-      'cargo build --release',
-      'nmap -sV 192.168.1.0/24',
+    // ————— 88x31 button marquee —————
+    const btns = [
+      ['button_alpefe.png', 'https://alpefe.me', 'alpefe'],
+      ['button_github.png', 'https://github.com/AlPeFe', 'github'],
+      ['button_dotnet.png', 'https://dotnet.microsoft.com', '.NET'],
+      ['button_rust.png', 'https://www.rust-lang.org', 'rust'],
+      ['button_python.png', 'https://www.python.org', 'python'],
+      ['button_foss.png', 'https://en.wikipedia.org/wiki/Free_and_open-source_software', 'foss'],
+      ['button_selfhosted.png', 'https://github.com/AlPeFe', 'self-hosted'],
+      ['button_ollama.png', 'https://ollama.com', 'ollama'],
+      ['button_security.png', 'https://www.comptia.org/certifications/security', 'security+'],
+      ['button_barcelona.png', 'https://en.wikipedia.org/wiki/Barcelona', 'barcelona'],
     ];
-    const el = document.getElementById('typing');
-    let pi = 0, ci = 0, deleting = false;
-
-    function tick() {
-      const p = phrases[pi];
-      if (!deleting) {
-        el.textContent = '$ ' + p.slice(0, ++ci);
-        if (ci === p.length) { deleting = true; setTimeout(tick, 1800); return; }
-      } else {
-        el.textContent = '$ ' + p.slice(0, --ci);
-        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-      }
-      setTimeout(tick, deleting ? 40 : 90);
-    }
-    setTimeout(tick, 1200);
-
-    // ————— scroll reveal —————
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: .15 });
-    document.querySelectorAll('.reveal').forEach(s => io.observe(s));
+    const render = (img, href, title) =>
+      `<a href="${href}" target="_blank" rel="noopener" title="${title}"><img src="assets/${img}" alt="${title}"></a>`;
+    const strip = btns.map(b => render(...b)).join('');
+    document.getElementById('m1').innerHTML = strip + strip;   // duplicate for seamless loop
+    document.getElementById('m2').innerHTML = strip + strip;
+    // footer webring: single copy, reversed for variety
+    document.getElementById('ring').innerHTML = btns.slice().reverse().map(b => render(...b)).join('');
   </script>
 </body>
 </html>
