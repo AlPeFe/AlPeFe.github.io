@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>alex — backend dev · security · foss</title>
-  <meta name="description" content="Backend developer in Barcelona. .NET, cybersecurity, local AI. Self-hosted everything. Made with ♥ and too much coffee.">
+  <meta name="description" content=".NET engineer in Barcelona. Building patient transport & healthcare software end to end. Cybersecurity, local AI, FOSS.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -41,27 +41,28 @@
       z-index: 999;
     }
 
-    /* ————— layout ————— */
+    /* ————— single column layout ————— */
     .wrap {
-      max-width: 760px;
+      max-width: 640px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1.25rem;
     }
 
-    /* ————— marquee ————— */
+    /* ————— marquee (small strip) ————— */
     .marquee {
-      margin: 2rem 0;
-      padding: .7rem 0;
+      margin: 1.25rem auto 0;
+      padding: .5rem 0;
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       background: var(--bg-alt);
       overflow: hidden;
+      max-width: 640px;
     }
     .marquee-track {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       width: max-content;
-      animation: scroll 35s linear infinite;
+      animation: scroll 30s linear infinite;
     }
     .marquee:hover .marquee-track { animation-play-state: paused; }
     .marquee-track img {
@@ -69,6 +70,7 @@
       height: 31px;
       image-rendering: pixelated;
       flex-shrink: 0;
+      border: 1px solid #000;
     }
     @keyframes scroll {
       from { transform: translateX(0); }
@@ -76,19 +78,19 @@
     }
 
     /* ————— header ————— */
-    header { text-align: center; padding: 4.5rem 0 2rem; }
+    header { text-align: center; padding: 3.5rem 0 1.5rem; }
     .status-line {
       font-family: var(--mono);
-      font-size: .8rem;
+      font-size: .78rem;
       color: var(--muted);
       letter-spacing: .18em;
       text-transform: uppercase;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.1rem;
     }
     .status-line .dot { color: var(--green); }
     h1.name {
       font-family: var(--pixel);
-      font-size: clamp(3.2rem, 10vw, 5.5rem);
+      font-size: clamp(3.2rem, 10vw, 5rem);
       font-weight: 400;
       letter-spacing: .02em;
       line-height: 1;
@@ -97,9 +99,9 @@
     }
     h1.name .at { color: var(--accent); }
     .subtitle {
-      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      font-size: clamp(1.02rem, 2.5vw, 1.22rem);
       color: var(--muted);
-      max-width: 560px;
+      max-width: 520px;
       margin: 0 auto;
     }
     .subtitle strong { color: var(--fg); font-weight: 600; }
@@ -110,7 +112,7 @@
       gap: .5rem;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 2rem;
+      margin-top: 1.75rem;
     }
     .nav-links a {
       font-family: var(--mono);
@@ -130,54 +132,46 @@
     }
 
     /* ————— sections ————— */
-    section { padding: 3.5rem 0; }
+    section { padding: 2.75rem 0; }
     section + section { border-top: 1px solid var(--border); }
     .section-label {
       font-family: var(--pixel);
       font-size: 1.15rem;
       color: var(--accent);
-      margin-bottom: .5rem;
+      margin-bottom: .4rem;
     }
     h2 {
       font-family: var(--pixel);
-      font-size: 2rem;
+      font-size: 1.9rem;
       font-weight: 400;
       letter-spacing: .01em;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.4rem;
     }
     .about p { color: var(--muted); font-size: 1.02rem; margin-bottom: 1.1rem; }
     .about strong { color: var(--fg); font-weight: 600; }
     .about .hl { color: var(--accent2); }
+    .about .hl2 { color: var(--green); }
 
-    /* ————— stack ————— */
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: .8rem;
+    /* ————— stack: single column, inline items ————— */
+    .stack-block {
+      margin-bottom: 1.25rem;
     }
-    .stack-card {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      padding: 1.1rem 1.2rem;
-      transition: all .2s;
-    }
-    .stack-card:hover { border-color: var(--accent); box-shadow: 4px 4px 0 rgba(124,58,237,.25); }
-    .stack-card h3 {
+    .stack-block h3 {
       font-family: var(--mono);
       font-size: .75rem;
       color: var(--accent2);
       letter-spacing: .12em;
       text-transform: uppercase;
-      margin-bottom: .6rem;
+      margin-bottom: .45rem;
     }
-    .stack-card ul { list-style: none; }
-    .stack-card li {
+    .stack-block h3::before { content: '> '; color: var(--green); }
+    .stack-block p {
       font-family: var(--mono);
-      font-size: .88rem;
+      font-size: .92rem;
       color: var(--muted);
-      padding: .18rem 0;
+      line-height: 1.9;
     }
-    .stack-card li::before { content: '> '; color: var(--green); }
+    .stack-block p span { color: var(--border); padding: 0 .35rem; }
 
     /* ————— currently ————— */
     .now-list { display: flex; flex-direction: column; gap: .7rem; }
@@ -196,8 +190,8 @@
     .now-item .desc { color: var(--muted); font-size: .93rem; }
 
     /* ————— footer ————— */
-    footer { text-align: center; padding: 3rem 0 4rem; border-top: 1px solid var(--border); }
-    .webring { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    footer { text-align: center; padding: 2.5rem 0 3.5rem; border-top: 1px solid var(--border); }
+    .webring { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.75rem; }
     .webring img {
       width: 88px; height: 31px;
       image-rendering: pixelated;
@@ -209,26 +203,21 @@
     .copy a:hover { color: var(--accent2); }
 
     @media (max-width: 640px) {
-      header { padding: 3rem 0 1.5rem; }
-      section { padding: 2.5rem 0; }
+      header { padding: 2.5rem 0 1.25rem; }
+      section { padding: 2.25rem 0; }
     }
   </style>
 </head>
 <body>
-
-  <!-- ————— MARQUEE (top) ————— -->
-  <div class="marquee">
-    <div class="marquee-track" id="m1"></div>
-  </div>
 
   <!-- ————— HEADER ————— -->
   <header class="wrap">
     <p class="status-line">backend dev <span class="dot">·</span> security-minded <span class="dot">·</span> foss enjoyer</p>
     <h1 class="name">alex<span class="at">@</span>alpefe</h1>
     <p class="subtitle">
-      I build <strong>APIs and systems</strong> with .NET, and spend my spare time in
-      <strong>cybersecurity</strong> and <strong>local AI</strong>. If it can run on my own hardware,
-      that's where it lives.
+      <strong>.NET engineer</strong> building software for <span class="hl">healthcare &amp; patient transport</span> —
+      I ship the product <strong>end to end</strong>, from the API to the system that keeps it running.
+      Learning <span class="hl2">cybersecurity</span>, into <strong>local AI</strong>.
     </p>
     <div class="nav-links">
       <a href="https://github.com/AlPeFe" target="_blank" rel="noopener">[ github ]</a>
@@ -237,9 +226,9 @@
     </div>
   </header>
 
-  <!-- ————— MARQUEE (mid) ————— -->
-  <div class="marquee">
-    <div class="marquee-track" id="m2"></div>
+  <!-- ————— MARQUEE (single small strip) ————— -->
+  <div class="marquee wrap">
+    <div class="marquee-track" id="m1"></div>
   </div>
 
   <!-- ————— ABOUT ————— -->
@@ -247,19 +236,23 @@
     <p class="section-label">// about</p>
     <h2>what i do</h2>
     <p>
-      I'm a <strong>32-year-old backend developer</strong> based in <span class="hl">Barcelona</span>.
-      Years of building APIs and systems with <strong>.NET</strong> have taught me that good software
-      is boring software — predictable, testable, and secure by default.
+      I'm a <strong>32-year-old backend developer</strong> based in <span class="hl">Barcelona</span>, working at
+      <strong>OriginalSoft</strong> — the people behind <span class="hl2">GAM</span>, a platform for patient transport
+      and emergency healthcare. I build the product <strong>end to end</strong>: the mobile app the crew carries
+      (GamDroid), the APIs behind it, and the integrations that glue everything together.
     </p>
     <p>
-      Lately I've been going deep on <strong>cybersecurity</strong> and <strong>AI</strong>. Security-first
-      isn't a buzzword for me: Google Cybersecurity cert and SC-900 are done, Security+ is next.
-      On the AI side I'm all about <strong>self-hosted models</strong>, local LLMs with Ollama, and
-      building agents that actually do something useful.
+      The interesting part is the <strong>integration layer</strong>. I connect <span class="hl">public services</span> —
+      SEM, SESCAM, SOS Navarra, Sergas, Osakidetza — with <span class="hl2">private players</span> like mutuas,
+      insurers and telemedicine providers (Ibermutua, Sanitas, ASISA, Teladoc...), plus telemetry and fleet systems.
+      Different protocols, different formats, one system that makes them talk to each other.
     </p>
     <p>
-      Big believer in <strong>FOSS</strong> and self-hosting. My data lives on my hardware, my services
-      run in my homelab, and my tools don't phone home.
+      Years of building APIs and systems with <strong>.NET</strong> have taught me that good software is boring
+      software — predictable, testable, and secure by default. On the side I'm working through
+      <strong>cybersecurity</strong> (Google Cybersecurity cert and SC-900 done, Security+ next) and
+      <strong>local AI</strong>: self-hosted models, Ollama, agents that actually do something useful.
+      Big believer in <strong>FOSS</strong> — my data lives on my hardware and my tools don't phone home.
     </p>
   </section>
 
@@ -267,50 +260,25 @@
   <section class="stack wrap">
     <p class="section-label">// stack</p>
     <h2>tools i reach for</h2>
-    <div class="stack-grid">
-      <div class="stack-card">
-        <h3>Languages</h3>
-        <ul>
-          <li>C# / .NET</li>
-          <li>Python</li>
-          <li>TypeScript</li>
-          <li>Rust (learning)</li>
-        </ul>
-      </div>
-      <div class="stack-card">
-        <h3>Backend & APIs</h3>
-        <ul>
-          <li>ASP.NET Core</li>
-          <li>Minimal APIs</li>
-          <li>FastAPI</li>
-        </ul>
-      </div>
-      <div class="stack-card">
-        <h3>AI / LLMs</h3>
-        <ul>
-          <li>Ollama</li>
-          <li>MCP</li>
-          <li>RAG</li>
-          <li>Local agents</li>
-        </ul>
-      </div>
-      <div class="stack-card">
-        <h3>Infra</h3>
-        <ul>
-          <li>Docker</li>
-          <li>Azure</li>
-          <li>Cloudflare Tunnels</li>
-          <li>Self-hosted</li>
-        </ul>
-      </div>
-      <div class="stack-card">
-        <h3>Databases</h3>
-        <ul>
-          <li>SQL Server</li>
-          <li>PostgreSQL</li>
-          <li>SQLite</li>
-        </ul>
-      </div>
+    <div class="stack-block">
+      <h3>Languages</h3>
+      <p>C# / .NET <span>·</span> Python <span>·</span> TypeScript <span>·</span> Rust (learning)</p>
+    </div>
+    <div class="stack-block">
+      <h3>Backend & APIs</h3>
+      <p>ASP.NET Core <span>·</span> Minimal APIs <span>·</span> FastAPI</p>
+    </div>
+    <div class="stack-block">
+      <h3>AI / LLMs</h3>
+      <p>Ollama <span>·</span> MCP <span>·</span> RAG <span>·</span> Local agents</p>
+    </div>
+    <div class="stack-block">
+      <h3>Infra</h3>
+      <p>Docker <span>·</span> Azure <span>·</span> Cloudflare Tunnels <span>·</span> Self-hosted</p>
+    </div>
+    <div class="stack-block">
+      <h3>Databases</h3>
+      <p>SQL Server <span>·</span> PostgreSQL <span>·</span> SQLite</p>
     </div>
   </section>
 
@@ -364,26 +332,26 @@
   </footer>
 
   <script>
-    // ————— 88x31 button marquee —————
+    // ————— 88x31 buttons from cyber.dabamos.de (anime + linux) —————
     const btns = [
-      ['button_alpefe.png', 'https://alpefe.me', 'alpefe'],
-      ['button_github.png', 'https://github.com/AlPeFe', 'github'],
-      ['button_dotnet.png', 'https://dotnet.microsoft.com', '.NET'],
-      ['button_rust.png', 'https://www.rust-lang.org', 'rust'],
-      ['button_python.png', 'https://www.python.org', 'python'],
-      ['button_foss.png', 'https://en.wikipedia.org/wiki/Free_and_open-source_software', 'foss'],
-      ['button_selfhosted.png', 'https://github.com/AlPeFe', 'self-hosted'],
-      ['button_ollama.png', 'https://ollama.com', 'ollama'],
-      ['button_security.png', 'https://www.comptia.org/certifications/security', 'security+'],
-      ['button_barcelona.png', 'https://en.wikipedia.org/wiki/Barcelona', 'barcelona'],
+      ['dab_pikachu.gif', 'https://www.pokemon.com/', 'pikachu'],
+      ['dab_konata.gif', 'https://en.wikipedia.org/wiki/Lucky_Star_(manga)', 'konata'],
+      ['dab_mikumiku.gif', 'https://en.wikipedia.org/wiki/Hatsune_Miku', 'miku'],
+      ['dab_neko.gif', 'https://en.wikipedia.org/wiki/Nekomimi', 'neko'],
+      ['dab_evangelion.gif', 'https://en.wikipedia.org/wiki/Neon_Genesis_Evangelion', 'evangelion'],
+      ['dab_genokirby.gif', 'https://en.wikipedia.org/wiki/Kirby_(character)', 'genokirby'],
+      ['dab_otaku.gif', 'https://en.wikipedia.org/wiki/Otaku', 'otaku'],
+      ['dab_archlinux.gif', 'https://archlinux.org/', 'arch linux'],
+      ['dab_debian.gif', 'https://www.debian.org/', 'debian'],
+      ['dab_gnulinux.gif', 'https://www.gnu.org/', 'gnu/linux'],
+      ['dab_vim.gif', 'https://www.vim.org/', 'vim'],
+      ['dab_emacs.gif', 'https://www.gnu.org/software/emacs/', 'emacs'],
     ];
-    const render = (img, href, title) =>
+    const render = ([img, href, title]) =>
       `<a href="${href}" target="_blank" rel="noopener" title="${title}"><img src="assets/${img}" alt="${title}"></a>`;
-    const strip = btns.map(b => render(...b)).join('');
-    document.getElementById('m1').innerHTML = strip + strip;   // duplicate for seamless loop
-    document.getElementById('m2').innerHTML = strip + strip;
-    // footer webring: single copy, reversed for variety
-    document.getElementById('ring').innerHTML = btns.slice().reverse().map(b => render(...b)).join('');
+    const strip = btns.map(render).join('');
+    document.getElementById('m1').innerHTML = strip + strip;   // duplicated for seamless loop
+    document.getElementById('ring').innerHTML = btns.map(render).join('');
   </script>
 </body>
 </html>
