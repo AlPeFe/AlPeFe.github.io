@@ -33,12 +33,17 @@
       overflow-x: hidden;
     }
 
+    ::selection {
+      background: var(--accent);
+      color: #fff;
+    }
+
     /* ————— crt scanlines ————— */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 3px);
+      background: repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);
       pointer-events: none;
       z-index: 999;
     }
@@ -100,6 +105,19 @@
       color: var(--fg);
     }
     h1.name .at { color: var(--accent); }
+
+    /* blinking block cursor after the handle */
+    .cursor {
+      display: inline-block;
+      width: .55ch;
+      height: 1em;
+      margin-left: .1em;
+      vertical-align: -.12em;
+      background: var(--green);
+      animation: blink 1.1s steps(2, start) infinite;
+    }
+    @keyframes blink { to { visibility: hidden; } }
+
     .subtitle {
       font-size: clamp(1.02rem, 2.5vw, 1.22rem);
       color: var(--muted);
@@ -131,6 +149,11 @@
       border-color: var(--accent);
       box-shadow: 3px 3px 0 var(--accent);
       transform: translate(-1px, -1px);
+    }
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--accent2);
+      outline-offset: 2px;
+      color: var(--fg);
     }
 
     /* ————— sections ————— */
@@ -203,10 +226,18 @@
     .copy .heart { color: var(--accent); }
     .copy a { color: var(--muted); text-decoration: none; }
     .copy a:hover { color: var(--accent2); }
+    .copy a:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
 
     @media (max-width: 640px) {
       header { padding: 2.5rem 0 1.25rem; }
       section { padding: 2.25rem 0; }
+    }
+
+    /* ————— reduced motion: stop marquee + cursor blink ————— */
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track, .cursor { animation: none !important; }
+      .cursor { visibility: hidden; }
+      .marquee-track { transform: translateX(0); }
     }
   </style>
 </head>
@@ -215,7 +246,7 @@
   <!-- ————— HEADER ————— -->
   <header class="wrap">
     <p class="status-line">backend dev <span class="dot">·</span> security-minded <span class="dot">·</span> foss enjoyer</p>
-    <h1 class="name">alex<span class="at">@</span>alpefe</h1>
+    <h1 class="name">alex<span class="at">@</span>alpefe<span class="cursor" aria-hidden="true"></span></h1>
     <p class="subtitle">
       <strong>.NET engineer</strong> building software for <span class="hl">healthcare &amp; patient transport</span> —
       I ship the product <strong>end to end</strong>, from the API to the system that keeps it running.
@@ -223,8 +254,8 @@
     </p>
     <div class="nav-links">
       <a href="https://github.com/AlPeFe" target="_blank" rel="noopener">[ github ]</a>
-      <a href="https://alpefe.me" target="_blank" rel="noopener">[ alpefe.me ]</a>
-      <a href="https://alpefe.me/tools" target="_blank" rel="noopener">[ tools ]</a>
+      <a href="https://www.alpefe.me" target="_blank" rel="noopener">[ alpefe.me ]</a>
+      <a href="https://www.alpefe.me/tools" target="_blank" rel="noopener">[ tools ]</a>
     </div>
   </header>
 
