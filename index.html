@@ -29,7 +29,7 @@
       background: var(--bg);
       color: var(--fg);
       font-family: var(--sans);
-      line-height: 1.6;
+      line-height: 1.5;
       overflow-x: hidden;
     }
 
@@ -45,453 +45,405 @@
       z-index: 999;
     }
 
-    /* ————— single column layout ————— */
-    .wrap { max-width: 620px; margin: 0 auto; padding: 0 1.25rem; }
+    /* ————— stage: the badge hangs centered ————— */
+    .stage {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2.5rem 1.25rem 3rem;
+    }
 
-    /* ————— header ————— */
-    header { text-align: center; padding: 2.5rem 0 1.5rem; }
-    .status-line {
+    /* ————— lanyard (conference strap) ————— */
+    .lanyard {
+      position: relative;
+      width: 64px;
+      height: 150px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      /* retro diagonal stripes */
+      background-image: repeating-linear-gradient(
+        45deg,
+        var(--bg-alt) 0 10px,
+        #191925 10px 20px
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lanyard-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
       font-family: var(--mono);
-      font-size: .75rem;
+      font-size: .6rem;
+      letter-spacing: .3em;
       color: var(--muted);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .lanyard-text b { color: var(--accent2); font-weight: 500; }
+
+    /* clip that holds the card */
+    .clip {
+      width: 52px;
+      height: 22px;
+      margin: 0 auto 0;
+      background: linear-gradient(180deg, #2a2a34, #1a1a22);
+      border: 1px solid #3a3a46;
+      border-radius: 4px;
+      position: relative;
+      box-shadow: 0 3px 0 rgba(0,0,0,.4);
+    }
+    .clip::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -4px;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #3a3a46;
+      border: 1px solid #4a4a58;
+    }
+
+    /* ————— flip card ————— */
+    .flip-wrap { perspective: 1200px; margin-top: -2px; }
+    .card {
+      position: relative;
+      width: 340px;
+      height: 480px;
+      transform-style: preserve-3d;
+      transition: transform .8s cubic-bezier(0.4, 0.1, 0.2, 1);
+      cursor: pointer;
+    }
+    .card.flipped { transform: rotateY(180deg); }
+    .face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 50px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.04);
+      display: flex;
+      flex-direction: column;
+    }
+    .face.back {
+      transform: rotateY(180deg);
+    }
+
+    /* ————— FRONT ————— */
+    .front-top {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: .62rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .front-top .conf { color: var(--accent2); }
+    .front-top .num { color: var(--border); }
+
+    .front-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      gap: .9rem;
+      text-align: center;
+    }
+    .avatar {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      padding: 4px;
+      background: conic-gradient(var(--accent), var(--accent2), var(--green), var(--accent));
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      display: block;
+      border: 3px solid var(--bg-alt);
+      image-rendering: auto;
+    }
+    .badge-name {
+      font-family: var(--pixel);
+      font-size: 2.1rem;
+      line-height: 1;
+      color: var(--fg);
+    }
+    .badge-name .at { color: var(--accent); }
+    .badge-role {
+      font-family: var(--mono);
+      font-size: .72rem;
       letter-spacing: .16em;
       text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .status-line .dot { color: var(--green); }
-    h1.name {
-      font-family: var(--pixel);
-      font-size: clamp(2.8rem, 9vw, 4.2rem);
-      font-weight: 400;
-      letter-spacing: .02em;
-      line-height: 1;
-      margin-bottom: .6rem;
-      color: var(--fg);
-    }
-    h1.name .at { color: var(--accent); }
-
-    /* blinking block cursor after the handle */
-    .cursor {
-      display: inline-block;
-      width: .5ch;
-      height: .95em;
-      margin-left: .1em;
-      vertical-align: -.1em;
-      background: var(--green);
-      animation: blink 1.1s steps(2, start) infinite;
-    }
-    @keyframes blink { to { visibility: hidden; } }
-
-    .subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.18rem);
       color: var(--muted);
-      max-width: 520px;
-      margin: 0 auto;
     }
-    .subtitle strong { color: var(--fg); font-weight: 600; }
-    .subtitle .hl { color: var(--accent2); }
-
-    .nav-links {
-      display: flex;
-      gap: .5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-    .nav-links a {
+    .badge-role b { color: var(--accent2); font-weight: 500; }
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
       font-family: var(--mono);
-      font-size: .8rem;
+      font-size: .66rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
       color: var(--muted);
-      text-decoration: none;
-      padding: .35rem .9rem;
+      padding: .3rem .7rem;
       border: 1px solid var(--border);
-      background: var(--bg-alt);
-      transition: all .2s;
+      border-radius: 999px;
+      margin-top: .2rem;
     }
-    .nav-links a:hover {
-      color: var(--fg);
-      border-color: var(--accent);
-      box-shadow: 3px 3px 0 var(--accent);
-      transform: translate(-1px, -1px);
+    .badge-tag .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
     }
-    .nav-links a:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; color: var(--fg); }
 
-    /* ————— tux 3d mascot ————— */
-    .tux {
-      text-align: center;
-      padding: 1.5rem 0 2rem;
-    }
-    #tux-stage {
-      width: 220px;
-      height: 220px;
-      margin: 0 auto;
-    }
-    .tux-joke {
+    .front-foot {
+      padding: .8rem 1.25rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       font-family: var(--mono);
-      font-size: .82rem;
-      color: var(--muted);
-      line-height: 1.9;
-      margin-top: .75rem;
+      font-size: .62rem;
+      color: var(--border);
+      letter-spacing: .1em;
     }
-    .tux-joke .prompt { color: var(--green); }
-    .tux-joke .cmd { color: var(--accent2); }
-    .tux-joke .out { color: var(--muted); }
+    .front-foot .user { color: var(--muted); }
+    /* retro barcode */
+    .barcode { display: flex; gap: 2px; height: 18px; align-items: stretch; }
+    .barcode span { background: var(--muted); display: block; }
+    .flip-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      color: var(--border);
+      font-family: var(--mono);
+      font-size: .58rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .flip-hint svg { width: 11px; height: 11px; }
 
-    /* ————— sections ————— */
-    section { padding: 2rem 0; }
-    section + section { border-top: 1px solid var(--border); }
-    .section-label {
+    /* ————— BACK (the detail) ————— */
+    .back-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.6rem 1.5rem;
+    }
+    .back-label {
       font-family: var(--pixel);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--accent);
       margin-bottom: .3rem;
     }
-    h2 {
+    .back-title {
       font-family: var(--pixel);
-      font-size: 1.8rem;
-      font-weight: 400;
-      letter-spacing: .01em;
-      margin-bottom: 1.1rem;
+      font-size: 1.7rem;
+      color: var(--fg);
+      margin-bottom: 1.2rem;
     }
-    .about p { color: var(--muted); font-size: 1rem; margin-bottom: 1rem; }
-    .about p:last-child { margin-bottom: 0; }
-    .about strong { color: var(--fg); font-weight: 600; }
-    .about .hl { color: var(--accent2); }
-    .about .hl2 { color: var(--green); }
-
-    /* ————— stack: single column, inline items ————— */
-    .stack-block { margin-bottom: 1.1rem; }
-    .stack-block:last-child { margin-bottom: 0; }
-    .stack-block h3 {
-      font-family: var(--mono);
-      font-size: .72rem;
-      color: var(--accent2);
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      margin-bottom: .35rem;
-    }
-    .stack-block h3::before { content: '> '; color: var(--green); }
-    .stack-block p {
-      font-family: var(--mono);
-      font-size: .9rem;
-      color: var(--muted);
-      line-height: 1.85;
-    }
-    .stack-block p span { color: var(--border); padding: 0 .3rem; }
-
-    /* ————— currently ————— */
-    .now-list { display: flex; flex-direction: column; gap: .55rem; }
-    .now-item {
+    .chip-row {
       display: flex;
-      gap: .9rem;
-      align-items: baseline;
-      padding: .65rem 1rem;
-      background: var(--bg-alt);
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-bottom: 1.4rem;
+    }
+    .chip {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--muted);
+      padding: .32rem .6rem;
       border: 1px solid var(--border);
+      border-radius: 6px;
+      background: #11111a;
+    }
+    .chip.c1 { border-color: rgba(124,58,237,.5); color: #c4b5fd; }
+    .chip.c2 { border-color: rgba(34,211,238,.45); color: #7dd3fc; }
+    .chip.c3 { border-color: rgba(74,222,128,.4); color: #86efac; }
+
+    .back-links {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-top: auto;
+    }
+    .back-links a {
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: .45rem .8rem;
+      border: 1px solid var(--border);
+      background: #11111a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       transition: all .2s;
     }
-    .now-item:hover { border-color: var(--accent2); }
-    .now-item .icon { font-size: 1.05rem; }
-    .now-item .what { font-weight: 600; }
-    .now-item .desc { color: var(--muted); font-size: .92rem; }
+    .back-links a:hover {
+      color: var(--fg);
+      border-color: var(--accent);
+      box-shadow: 3px 3px 0 var(--accent);
+      transform: translate(-1px,-1px);
+    }
+    .back-links a:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+    .back-links .go { color: var(--border); }
+    .back-note {
+      margin-top: 1.2rem;
+      font-family: var(--mono);
+      font-size: .66rem;
+      color: var(--border);
+      line-height: 1.8;
+    }
+    .back-note b { color: var(--green); font-weight: 500; }
+
+    /* ————— flip button (explicit) ————— */
+    .flip-btn {
+      margin-top: 1.6rem;
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: .5rem 1.2rem;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .flip-btn:hover {
+      color: var(--fg);
+      border-color: var(--accent);
+      box-shadow: 3px 3px 0 var(--accent);
+      transform: translate(-1px,-1px);
+    }
+    .flip-btn:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
 
     /* ————— footer ————— */
-    footer { text-align: center; padding: 2rem 0 3rem; border-top: 1px solid var(--border); }
-    .webring { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.4rem; }
-    .webring img {
-      width: 88px; height: 31px;
-      image-rendering: pixelated;
-      border: 1px solid var(--border);
-    }
-    .copy { font-family: var(--mono); font-size: .74rem; color: var(--border); line-height: 2; }
+    footer { padding: 2.5rem 1.25rem 3rem; text-align: center; }
+    .copy { font-family: var(--mono); font-size: .72rem; color: var(--border); line-height: 2; }
     .copy .heart { color: var(--accent); }
     .copy a { color: var(--muted); text-decoration: none; }
     .copy a:hover { color: var(--accent2); }
-    .copy a:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
 
-    @media (max-width: 640px) {
-      header { padding: 2rem 0 1.25rem; }
-      #tux-stage { width: 180px; height: 180px; }
-      section { padding: 1.75rem 0; }
+    @media (max-width: 420px) {
+      .card { width: 300px; height: 460px; }
     }
 
     /* ————— reduced motion ————— */
     @media (prefers-reduced-motion: reduce) {
-      .cursor { animation: none !important; visibility: hidden; }
+      .card { transition: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ————— HEADER ————— -->
-  <header class="wrap">
-    <p class="status-line">backend dev <span class="dot">·</span> security-minded <span class="dot">·</span> foss enjoyer</p>
-    <h1 class="name">alex<span class="at">@</span>alpefe<span class="cursor" aria-hidden="true"></span></h1>
-    <p class="subtitle">
-      <strong>.NET engineer</strong> building software for <span class="hl">healthcare &amp; patient transport</span> -
-      I ship the product <strong>end to end</strong>, from the API to the system that keeps it running.
-      Learning <span class="hl2">cybersecurity</span>, into <strong>local AI</strong>.
-    </p>
-    <div class="nav-links">
-      <a href="https://github.com/AlPeFe" target="_blank" rel="noopener">[ github ]</a>
-      <a href="https://www.alpefe.me" target="_blank" rel="noopener">[ alpefe.me ]</a>
-      <a href="https://www.alpefe.me/tools" target="_blank" rel="noopener">[ tools ]</a>
+  <main class="stage">
+    <!-- lanyard -->
+    <div class="lanyard" aria-hidden="true">
+      <span class="lanyard-text"><b>alpefe</b> · barcelona · devconf 2026 · <b>foss</b> ·</span>
     </div>
-  </header>
+    <div class="clip" aria-hidden="true"></div>
 
-  <!-- ————— TUX 3D (funny linux reference) ————— -->
-  <section class="tux wrap">
-    <div id="tux-stage"></div>
-    <p class="tux-joke">
-      <span class="prompt">tux@alpefe</span>:<span class="cmd">~$</span> ./spinning_penguin.sh<br>
-      <span class="out">this terminal is powered by 100% open-source penguin.</span><br>
-      <span class="out">the only windows around here are browser tabs.</span>
-    </p>
-  </section>
-
-  <!-- ————— ABOUT ————— -->
-  <section class="about wrap">
-    <p class="section-label">// about</p>
-    <h2>what i do</h2>
-    <p>
-      I'm a <strong>32-year-old backend developer</strong> based in <span class="hl">Barcelona</span>, working at
-      <strong>OriginalSoft</strong> - the people behind <span class="hl2">GAM</span>, a platform for patient transport
-      and emergency healthcare. I build the product <strong>end to end</strong>: the mobile app the crew carries
-      (GamDroid), the APIs behind it, and the integrations that glue everything together.
-    </p>
-    <p>
-      The interesting part is the <strong>integration layer</strong>. I connect <span class="hl">public services</span> -
-      SEM, SESCAM, SOS Navarra, Sergas, Osakidetza - with <span class="hl2">private players</span> like mutuas,
-      insurers and telemedicine providers (Ibermutua, Sanitas, ASISA, Teladoc...), plus telemetry and fleet systems.
-      Different protocols, different formats, one system that makes them talk to each other.
-    </p>
-    <p>
-      Years of building APIs and systems with <strong>.NET</strong> have taught me that good software is boring
-      software - predictable, testable, and secure by default. On the side I'm working through
-      <strong>cybersecurity</strong> (Google Cybersecurity cert and SC-900 done, Security+ next) and
-      <strong>local AI</strong>: self-hosted models, Ollama, agents that actually do something useful.
-      Big believer in <strong>FOSS</strong> - my data lives on my hardware and my tools don't phone home.
-    </p>
-  </section>
-
-  <!-- ————— STACK ————— -->
-  <section class="stack wrap">
-    <p class="section-label">// stack</p>
-    <h2>tools i reach for</h2>
-    <div class="stack-block">
-      <h3>Languages</h3>
-      <p>C# / .NET <span>·</span> Rust (learning)</p>
-    </div>
-    <div class="stack-block">
-      <h3>Backend & APIs</h3>
-      <p>ASP.NET Core <span>·</span> Minimal APIs <span>·</span> FastAPI</p>
-    </div>
-    <div class="stack-block">
-      <h3>AI / LLMs</h3>
-      <p>Ollama <span>·</span> MCP <span>·</span> RAG <span>·</span> Local agents</p>
-    </div>
-    <div class="stack-block">
-      <h3>Infra</h3>
-      <p>Docker <span>·</span> Azure <span>·</span> Cloudflare Tunnels <span>·</span> Self-hosted</p>
-    </div>
-    <div class="stack-block">
-      <h3>Databases</h3>
-      <p>SQL Server <span>·</span> PostgreSQL <span>·</span> SQLite</p>
-    </div>
-  </section>
-
-  <!-- ————— CURRENTLY ————— -->
-  <section class="now wrap">
-    <p class="section-label">// currently</p>
-    <h2>what i'm working on</h2>
-    <div class="now-list">
-      <div class="now-item">
-        <span class="icon">🦀</span>
-        <div>
-          <div class="what">Rust</div>
-          <div class="desc">Slowly, painfully, worth it.</div>
+    <!-- id badge (click to flip) -->
+    <div class="flip-wrap">
+      <div class="card" id="card" role="button" tabindex="0" aria-label="Presentación. Pulsa para girar la tarjeta">
+        <!-- FRONT -->
+        <div class="face front">
+          <div class="front-top">
+            <span class="conf">alpefe / devconf</span>
+            <span class="num">BCN · 2026</span>
+          </div>
+          <div class="front-body">
+            <div class="avatar"><img src="assets/avatar.png" alt="Alex" width="104" height="104"></div>
+            <div class="badge-name">alex<span class="at">@</span>alpefe</div>
+            <div class="badge-role"><b>backend</b> dev · security · foss</div>
+            <div class="badge-tag"><span class="dot"></span> attendee · nº 001</div>
+          </div>
+          <div class="front-foot">
+            <span class="user">alex</span>
+            <div class="barcode" aria-hidden="true">
+              <span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:4px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:4px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:2px"></span>
+            </div>
+            <span class="flip-hint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.5 15a9 9 0 1 0 2-9.5L1 10"/></svg>
+              flip
+            </span>
+          </div>
         </div>
-      </div>
-      <div class="now-item">
-        <span class="icon">🔐</span>
-        <div>
-          <div class="what">Security+</div>
-          <div class="desc">Turning curiosity into a cert.</div>
-        </div>
-      </div>
-      <div class="now-item">
-        <span class="icon">🤖</span>
-        <div>
-          <div class="what">AI Agents</div>
-          <div class="desc">Local models, RAG, automation that doesn't phone home.</div>
-        </div>
-      </div>
-      <div class="now-item">
-        <span class="icon">📦</span>
-        <div>
-          <div class="what">Self-hosting</div>
-          <div class="desc">Because I like owning my data.</div>
+
+        <!-- BACK (the detail) -->
+        <div class="face back">
+          <div class="back-body">
+            <p class="back-label">// the detail</p>
+            <h1 class="back-title">what's behind the badge</h1>
+
+            <div class="chip-row">
+              <span class="chip c1">C# / .NET</span>
+              <span class="chip c1">ASP.NET Core</span>
+              <span class="chip c1">Minimal APIs</span>
+              <span class="chip c1">Rust (learning)</span>
+              <span class="chip c2">Docker</span>
+              <span class="chip c2">SQL Server</span>
+              <span class="chip c2">PostgreSQL</span>
+              <span class="chip c3">Ollama</span>
+              <span class="chip c3">MCP</span>
+              <span class="chip c3">Self-hosted</span>
+            </div>
+
+            <div class="back-links">
+              <a href="https://github.com/AlPeFe" target="_blank" rel="noopener">github <span class="go">↗</span></a>
+              <a href="https://www.alpefe.me" target="_blank" rel="noopener">alpefe.me <span class="go">↗</span></a>
+              <a href="https://www.alpefe.me/tools" target="_blank" rel="noopener">tools <span class="go">↗</span></a>
+            </div>
+
+            <p class="back-note">
+              building <b>healthcare</b> software end to end.<br>
+              <b>boring</b> code, secure by default,<br>
+              data that lives on my own hardware.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ————— FOOTER ————— -->
-  <footer>
-    <div class="wrap">
-      <div class="webring" id="ring"></div>
+    <button class="flip-btn" id="flipBtn" type="button">[ flip the badge ]</button>
+
+    <footer>
       <p class="copy">
-        © 2026 · <span class="heart">♥</span> built with plain HTML/CSS/JS · no trackers, no cookies<br>
+        © 2026 · <span class="heart">♥</span> a conference badge, made of plain HTML/CSS/JS · no trackers, no cookies<br>
         <a href="https://github.com/AlPeFe/AlPeFe.github.io" target="_blank" rel="noopener">source</a> ·
-        <a href="https://minima.namishh.com/" target="_blank" rel="noopener">inspired by minima</a> ·
         best viewed in netscape 4.0
       </p>
-    </div>
-  </footer>
+    </footer>
+  </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
   <script>
-    // ————— 88x31 webring buttons (cyber.dabamos.de) —————
-    const btns = [
-      ['dab_pikachu.gif', 'https://www.pokemon.com/', 'pikachu'],
-      ['dab_konata.gif', 'https://en.wikipedia.org/wiki/Lucky_Star_(manga)', 'konata'],
-      ['dab_mikumiku.gif', 'https://en.wikipedia.org/wiki/Hatsune_Miku', 'miku'],
-      ['dab_neko.gif', 'https://en.wikipedia.org/wiki/Nekomimi', 'neko'],
-      ['dab_evangelion.gif', 'https://en.wikipedia.org/wiki/Neon_Genesis_Evangelion', 'evangelion'],
-      ['dab_genokirby.gif', 'https://en.wikipedia.org/wiki/Kirby_(character)', 'genokirby'],
-      ['dab_otaku.gif', 'https://en.wikipedia.org/wiki/Otaku', 'otaku'],
-      ['dab_archlinux.gif', 'https://archlinux.org/', 'arch linux'],
-      ['dab_debian.gif', 'https://www.debian.org/', 'debian'],
-      ['dab_gnulinux.gif', 'https://www.gnu.org/', 'gnu/linux'],
-      ['dab_vim.gif', 'https://www.vim.org/', 'vim'],
-      ['dab_emacs.gif', 'https://www.gnu.org/software/emacs/', 'emacs'],
-    ];
-    const render = ([img, href, title]) =>
-      `<a href="${href}" target="_blank" rel="noopener" title="${title}"><img src="assets/${img}" alt="${title}"></a>`;
-    document.getElementById('ring').innerHTML = btns.map(render).join('');
-
-    // ————— spinning Tux (low-poly) —————
-    (function () {
-      const container = document.getElementById('tux-stage');
-
-      // graceful fallback if Three.js / WebGL unavailable: ascii tux
-      if (typeof THREE === 'undefined') {
-        container.style.height = 'auto';
-        container.innerHTML = '<pre style="font-family:var(--mono);color:var(--muted);line-height:1.05;font-size:.72rem;user-select:none;display:inline-block;text-align:left">' +
-          '   .--.   <br>  |o_o |  <br>  |:_/ |  <br> //   \\ \\ <br>(|     | )<br>/\'\\_   _/`\\<br>\\___)=(___/<br></pre>';
-        return;
-      }
-
-      const W = container.clientWidth || 220;
-      const H = container.clientHeight || 220;
-
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(35, W / H, 0.1, 100);
-      camera.position.set(0, 0.7, 4.4);
-      camera.lookAt(0, 0.1, 0);
-
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-      renderer.setSize(W, H);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      container.appendChild(renderer.domElement);
-
-      const key = new THREE.DirectionalLight(0xffffff, 1.6);
-      key.position.set(3, 5, 4);
-      const fill = new THREE.DirectionalLight(0xffffff, 0.45);
-      fill.position.set(-4, 2, -2);
-      const amb = new THREE.AmbientLight(0xffffff, 0.5);
-      scene.add(key, fill, amb);
-
-      const black  = new THREE.MeshStandardMaterial({ color: 0x16161d, roughness: 0.5,  metalness: 0.05 });
-      const white  = new THREE.MeshStandardMaterial({ color: 0xf4f4f5, roughness: 0.7,  metalness: 0 });
-      const orange = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.5,  metalness: 0 });
-      const red    = new THREE.MeshStandardMaterial({ color: 0xef4444, roughness: 0.6,  metalness: 0 });
-
-      const tux = new THREE.Group();
-
-      // body
-      const body = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 32), black);
-      body.scale.set(1, 1.12, 0.85);
-      tux.add(body);
-
-      // belly
-      const belly = new THREE.Mesh(new THREE.SphereGeometry(0.6, 32, 32), white);
-      belly.position.set(0, -0.02, 0.72);
-      belly.scale.set(1, 1.05, 0.68);
-      tux.add(belly);
-
-      // head
-      const head = new THREE.Mesh(new THREE.SphereGeometry(0.6, 32, 32), black);
-      head.position.set(0, 1.16, 0.02);
-      tux.add(head);
-
-      // face patch
-      const face = new THREE.Mesh(new THREE.SphereGeometry(0.4, 32, 32), white);
-      face.position.set(0, 1.2, 0.44);
-      face.scale.set(1, 0.85, 0.6);
-      tux.add(face);
-
-      // eyes
-      const eyeGeo = new THREE.SphereGeometry(0.05, 16, 16);
-      const eyeL = new THREE.Mesh(eyeGeo, black); eyeL.position.set(-0.16, 1.3, 0.66); tux.add(eyeL);
-      const eyeR = new THREE.Mesh(eyeGeo, black); eyeR.position.set(0.16, 1.3, 0.66); tux.add(eyeR);
-
-      // beak
-      const beak = new THREE.Mesh(new THREE.ConeGeometry(0.13, 0.22, 4), orange);
-      beak.rotation.x = -Math.PI / 2;
-      beak.rotation.z = Math.PI / 4;
-      beak.position.set(0, 1.16, 0.72);
-      tux.add(beak);
-
-      // wings
-      const wingGeo = new THREE.SphereGeometry(0.42, 32, 32);
-      const wingL = new THREE.Mesh(wingGeo, black);
-      wingL.scale.set(0.34, 1, 0.9); wingL.position.set(-0.94, 0.1, 0); wingL.rotation.z = 0.28;
-      tux.add(wingL);
-      const wingR = new THREE.Mesh(wingGeo, black);
-      wingR.scale.set(0.34, 1, 0.9); wingR.position.set(0.94, 0.1, 0); wingR.rotation.z = -0.28;
-      tux.add(wingR);
-
-      // feet
-      const footGeo = new THREE.SphereGeometry(0.2, 16, 16);
-      const footL = new THREE.Mesh(footGeo, orange);
-      footL.scale.set(1, 0.5, 1.6); footL.position.set(-0.32, -1.1, 0.28);
-      tux.add(footL);
-      const footR = new THREE.Mesh(footGeo, orange);
-      footR.scale.set(1, 0.5, 1.6); footR.position.set(0.32, -1.1, 0.28);
-      tux.add(footR);
-
-      // scarf
-      const scarf = new THREE.Mesh(new THREE.TorusGeometry(0.42, 0.09, 16, 40), red);
-      scarf.position.set(0, 0.85, 0.14);
-      scarf.rotation.x = Math.PI / 2;
-      tux.add(scarf);
-
-      scene.add(tux);
-
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const clock = new THREE.Clock();
-
-      function animate() {
-        const t = clock.getElapsedTime();
-        if (reduce) {
-          tux.rotation.y = 0.5;
-        } else {
-          tux.rotation.y = t * 0.8;
-          tux.position.y = Math.sin(t * 2) * 0.05;
-        }
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
-      }
-      animate();
-
-      window.addEventListener('resize', function () {
-        const w = container.clientWidth, h = container.clientHeight;
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-        renderer.setSize(w, h);
-      });
-    })();
+    const card = document.getElementById('card');
+    const btn = document.getElementById('flipBtn');
+    function flip() { card.classList.toggle('flipped'); }
+    card.addEventListener('click', flip);
+    btn.addEventListener('click', function (e) { e.stopPropagation(); flip(); });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
+    });
   </script>
 </body>
 </html>
