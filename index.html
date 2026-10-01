@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>alex — backend dev · security · foss</title>
+  <title>alex — .net engineer · internet person</title>
   <meta name="description" content=".NET engineer in Barcelona. Building patient transport & healthcare software end to end. Cybersecurity, local AI, FOSS.">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -55,35 +55,16 @@
       padding: 2.5rem 1.25rem 3rem;
     }
 
-    /* ————— lanyard (conference strap) ————— */
-    .lanyard {
-      position: relative;
-      width: 64px;
-      height: 150px;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      /* retro diagonal stripes */
-      background-image: repeating-linear-gradient(
-        45deg,
-        var(--bg-alt) 0 10px,
-        #191925 10px 20px
-      );
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .lanyard-text {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-family: var(--mono);
-      font-size: .6rem;
-      letter-spacing: .3em;
-      color: var(--muted);
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-    .lanyard-text b { color: var(--accent2); font-weight: 500; }
+    /* ————— lanyard (thin cord) ————— */
+        .lanyard {
+          position: relative;
+          width: 10px;
+          height: 150px;
+          background: linear-gradient(180deg, #23232e, #17171f 60%, #23232e);
+          border: 1px solid var(--border);
+          border-radius: 999px;
+          box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+        }
 
     /* clip that holds the card */
     .clip {
@@ -151,7 +132,13 @@
       color: var(--muted);
     }
     .front-top .conf { color: var(--accent2); }
-    .front-top .num { color: var(--border); }
+        .front-top .loc {
+          display: inline-flex;
+          align-items: center;
+          gap: .35rem;
+          color: var(--muted);
+        }
+        .front-top .loc svg { width: 11px; height: 11px; }
 
     .front-body {
       flex: 1;
@@ -357,9 +344,7 @@
 
   <main class="stage">
     <!-- lanyard -->
-    <div class="lanyard" aria-hidden="true">
-      <span class="lanyard-text"><b>alpefe</b> · barcelona · devconf 2026 · <b>foss</b> ·</span>
-    </div>
+    <div class="lanyard" aria-hidden="true"></div>
     <div class="clip" aria-hidden="true"></div>
 
     <!-- id badge (click to flip) -->
@@ -368,13 +353,16 @@
         <!-- FRONT -->
         <div class="face front">
           <div class="front-top">
-            <span class="conf">alpefe / devconf</span>
-            <span class="num">BCN · 2026</span>
+            <span class="conf">alpefe</span>
+            <span class="loc">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Barcelona
+            </span>
           </div>
           <div class="front-body">
             <div class="avatar"><img src="assets/avatar.png" alt="Alex" width="104" height="104"></div>
             <div class="badge-name">alex<span class="at">@</span>alpefe</div>
-            <div class="badge-role"><b>backend</b> dev · security · foss</div>
+            <div class="badge-role">Internet Person</div>
             <div class="badge-tag"><span class="dot"></span> attendee · nº 001</div>
           </div>
           <div class="front-foot">
@@ -396,21 +384,15 @@
             <h1 class="back-title">what's behind the badge</h1>
 
             <div class="chip-row">
-              <span class="chip c1">C# / .NET</span>
-              <span class="chip c1">ASP.NET Core</span>
-              <span class="chip c1">Minimal APIs</span>
-              <span class="chip c1">Rust (learning)</span>
-              <span class="chip c2">Docker</span>
-              <span class="chip c2">SQL Server</span>
-              <span class="chip c2">PostgreSQL</span>
+              <span class="chip c1">.NET engineer</span>
               <span class="chip c3">AI</span>
-              <span class="chip c3">MCP</span>
-              <span class="chip c3">Self-hosted</span>
+              <span class="chip c2">transporte sanitario</span>
+              <span class="chip c1">ciberseguridad</span>
             </div>
 
             <div class="back-links">
               <a href="https://github.com/AlPeFe" target="_blank" rel="noopener">github <span class="go">↗</span></a>
-              <a href="https://www.alpefe.me" target="_blank" rel="noopener">alpefe.me <span class="go">↗</span></a>
+              <a href="https://www.instagram.com/alpefe.exe" target="_blank" rel="noopener">instagram <span class="go">↗</span></a>
               <a href="mailto:alexpf.me@gmail.com">contact <span class="go">✉</span></a>
             </div>
 
@@ -428,7 +410,7 @@
 
     <footer>
       <p class="copy">
-        © 2026 · <span class="heart">♥</span> a conference badge, made of plain HTML/CSS/JS · no trackers, no cookies<br>
+        © 2026 · <span class="heart">♥</span> an id badge, made of plain HTML/CSS/JS · no trackers, no cookies<br>
         <a href="https://github.com/AlPeFe/AlPeFe.github.io" target="_blank" rel="noopener">source</a> ·
         best viewed in netscape 4.0
       </p>
