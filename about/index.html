@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>sobre mí — alpefe</title>
+<title>sobre mí — P103</title>
 <meta name="description" content="Quién está detrás del handle, en cuatro líneas, con una ficha y un colofón. Sin blog, sin fotos personales y sin currículum en PDF.">
-<meta name="theme-color" content="#0b0912">
+<meta name="theme-color" content="#03050a">
 <link rel="canonical" href="https://alpefe.me/about/">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
@@ -14,102 +14,82 @@
 <body>
 <a class="skip" href="#contenido">saltar al contenido</a>
 
-<div class="bezel">
+<svg class="defs" aria-hidden="true" focusable="false">
+  <filter id="tube-warp" primitiveUnits="objectBoundingBox" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+    <feImage href="../assets/tube-map.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"></feImage>
+    <feDisplacementMap in="SourceGraphic" in2="map" scale="0.05" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+  </filter>
+  <filter id="tube-warp-sm" primitiveUnits="objectBoundingBox" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+    <feImage href="../assets/tube-map.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"></feImage>
+    <feDisplacementMap in="SourceGraphic" in2="map" scale="0.045" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+  </filter>
+</svg>
 
-  <div class="osbar">
-    <span>index of / <b>alpefe.me</b> / sobre mí</span>
-    <span class="flip">sin cookies · sin trackers · sin analítica</span>
-  </div>
+<div class="tube">
+  <div class="glass">
+    <div class="warp">
+      <div class="screen">
+        <main class="tt" id="contenido">
 
-  <main id="contenido">
-    <div class="sheet">
-
-      <div class="page-head">
-        <h1>sobre mí</h1>
-      </div>
-
-      <nav class="ring" aria-label="Recorrido del sitio">
-        <span class="rr"><a href="../certs/index.html">&lt; anterior</a></span>
-        <ol class="route">
-          <li><a href="../index.html">índice</a></li>
-          <li><a href="../projects/index.html">proyectos</a></li>
-          <li><a href="../certs/index.html">certificados</a></li>
-          <li><a href="index.html" aria-current="page">sobre mí</a></li>
-        </ol>
-        <span class="rr"><a href="../index.html">siguiente &gt;</a></span>
-      </nav>
-
-      <div class="about">
-        <section aria-labelledby="lines-h">
-          <h2 class="mini" id="lines-h">cuatro líneas</h2>
-          <p>
-            Trabajo en software de salud, sobre todo en transporte sanitario: coordinar vehículos y
-            personal, controlar caducidades, cumplir listas de verificación que no me he inventado yo.
-            Es un terreno donde un error se sale de la pantalla, y eso enseña a escribir código aburrido
-            y a desconfiar de lo que no se entiende.
-          </p>
-          <p>
-            Lo que hago por mi cuenta empieza casi siempre igual: algo me molesta, lo construyo, y
-            resulta que también le molestaba a más gente. De ahí sale la mitad de la lista de proyectos,
-            incluidos los que no puedo enseñar por dentro.
-          </p>
-          <p>
-            Me interesa contar lo técnico sin adornos. La charla de cuatro horas sobre inteligencia
-            artificial que di a mi equipo salió de esa manía, no de un encargo.
-          </p>
-          <p>
-            Aquí no hay blog, ni fotos personales, ni currículum en PDF. Lo que hay es exactamente lo
-            que necesitas para decidir si te apetece hablar conmigo.
-          </p>
-        </section>
-
-        <aside aria-labelledby="ficha-h">
-          <div class="ficha">
-            <h2 id="ficha-h">ficha</h2>
-            <dl>
-              <div><dt>handle</dt><dd><b>alpefe</b> · <b>polaper</b></dd></div>
-              <div><dt>oficio</dt><dd>ingeniería de software</dd></div>
-              <div><dt>terreno</dt><dd>salud · datos · seguridad</dd></div>
-              <div><dt>cómo</dt><dd>código aburrido, seguro por defecto, datos en mi propio hardware</dd></div>
-              <div><dt>aquí no</dt><dd>blog, fotos, ubicación, analítica</dd></div>
-              <div><dt>aquí sí</dt><dd>proyectos, certificados, contacto</dd></div>
-            </dl>
+          <div class="tt-bar">
+            <span class="pg">P103</span>
+            <span class="nm">alpefe.me / sobre mí</span>
+            <span class="rt">cuatro líneas · un colofón</span>
           </div>
 
-          <div class="ficha">
-            <h2>colofón</h2>
-            <p>
-              Cuatro archivos. Dos tipografías que se sirven desde este mismo dominio. Ningún JavaScript,
-              ninguna cookie, ninguna analítica y ni una sola petición a un tercero.
-            </p>
+          <div class="tt-body">
+
+            <h1 class="tt-h">sobre mí</h1>
+
+            <div class="two-col">
+              <div>
+                <p>Trabajo en software de salud, sobre todo en transporte sanitario: coordinar vehículos y personal, controlar caducidades, cumplir listas de verificación que no me he inventado yo. Es un terreno donde un error se sale de la pantalla, y eso enseña a escribir código aburrido y a desconfiar de lo que no se entiende.</p>
+                <p>Lo que hago por mi cuenta empieza casi siempre igual: algo me molesta, lo construyo, y resulta que también le molestaba a más gente. De ahí sale la mitad de la lista de proyectos, incluidos los que no puedo enseñar por dentro.</p>
+                <p>Me interesa contar lo técnico sin adornos. La charla de cuatro horas sobre inteligencia artificial que di a mi equipo salió de esa manía, no de un encargo.</p>
+                <p>Aquí no hay blog, ni fotos personales, ni currículum en PDF. Lo que hay es exactamente lo que necesitas para decidir si te apetece hablar conmigo.</p>
+              </div>
+
+              <div>
+                <h2>ficha</h2>
+                <dl class="spec">
+                  <div><dt>handle</dt><dd>alpefe · polaper</dd></div>
+                  <div><dt>oficio</dt><dd>ingeniería de software</dd></div>
+                  <div><dt>terreno</dt><dd>salud · datos · seguridad</dd></div>
+                  <div><dt>cómo</dt><dd>código aburrido, seguro por defecto, datos en mi propio hardware</dd></div>
+                  <div><dt>aquí no</dt><dd>blog, fotos, ubicación, analítica</dd></div>
+                  <div><dt>aquí sí</dt><dd>proyectos, certificados, contacto</dd></div>
+                </dl>
+
+                <h2>colofón</h2>
+                <p>Cuatro archivos. Dos tipografías servidas desde este mismo dominio. Ningún JavaScript, ninguna cookie, ninguna analítica y ni una sola petición a un tercero. La curvatura del tubo la calcula un mapa de desplazamiento propio, no una foto de un monitor.</p>
+
+                <h2>contacto</h2>
+                <ul class="log">
+                  <li><span class="d">github</span><span class="t"><a href="https://github.com/AlPeFe" rel="me">github.com/AlPeFe</a></span><span class="w">código, issues</span><span class="st">abierto</span></li>
+                  <li><span class="d">x</span><span class="t"><a href="https://x.com/alpefe" rel="me">x.com/alpefe</a></span><span class="w">poco</span><span class="st">abierto</span></li>
+                  <li><span class="d">instagram</span><span class="t"><a href="https://www.instagram.com/alpefe.exe" rel="me">alpefe.exe</a></span><span class="w">fotos</span><span class="st">abierto</span></li>
+                  <li><span class="d">linkedin</span><span class="t"><a href="https://www.linkedin.com/in/alpefe" rel="me">in/alpefe</a></span><span class="w">lo formal</span><span class="st">abierto</span></li>
+                  <li><span class="d">correo</span><span class="t"><a href="mailto:alexpf.me@gmail.com">alexpf.me@gmail.com</a></span><span class="w">te contesto</span><span class="st">abierto</span></li>
+                </ul>
+              </div>
+            </div>
+
           </div>
-        </aside>
+
+          <nav class="tt-keys" aria-label="Recorrido del sitio">
+            <a class="k1" href="../index.html"><i aria-hidden="true"></i>índice</a>
+            <a class="k2" href="../projects/index.html"><i aria-hidden="true"></i>proyectos</a>
+            <a class="k3" href="../certs/index.html"><i aria-hidden="true"></i>certificados</a>
+            <a class="k4" href="index.html" aria-current="page"><i aria-hidden="true"></i>sobre mí</a>
+          </nav>
+
+        </main>
       </div>
-
-      <section aria-labelledby="contact-h">
-        <div class="sect-head">
-          <h2 id="contact-h">contacto</h2>
-          <span>cuatro puertas</span>
-        </div>
-        <div class="contact">
-          <a href="https://github.com/AlPeFe" rel="me">github</a>
-          <a href="https://x.com/alpefe" rel="me">x</a>
-          <a href="https://www.instagram.com/alpefe.exe" rel="me">instagram</a>
-          <a href="https://www.linkedin.com/in/alpefe" rel="me">linkedin</a>
-        </div>
-        <p class="mail">escribir: <a href="mailto:alexpf.me@gmail.com">alexpf.me@gmail.com</a></p>
-      </section>
-
     </div>
-  </main>
-
-  <footer>
-    <span>© 2026 alpefe</span>
-    <span class="prov">hecho a mano · html y css · cero javascript</span>
-    <span><a href="https://github.com/AlPeFe/AlPeFe.github.io">código fuente</a></span>
-    <span>best viewed in 800×600</span>
-  </footer>
-
+    <div class="crt" aria-hidden="true"></div>
+    <div class="bloom" aria-hidden="true"></div>
+    <div class="led" aria-hidden="true"></div>
+  </div>
 </div>
 </body>
 </html>

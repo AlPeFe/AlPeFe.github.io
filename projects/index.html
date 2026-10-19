@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>proyectos — alpefe</title>
-<meta name="description" content="Dieciséis proyectos, nueve con el código abierto y siete cerrados. Qué hace cada uno, sin hablar de tecnologías.">
-<meta name="theme-color" content="#0b0912">
+<title>proyectos — P101</title>
+<meta name="description" content="Dieciséis proyectos, nueve con el código abierto y siete cerrados. Qué hace cada uno, sin nombrar una sola tecnología.">
+<meta name="theme-color" content="#03050a">
 <link rel="canonical" href="https://alpefe.me/projects/">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
@@ -14,196 +14,159 @@
 <body>
 <a class="skip" href="#contenido">saltar al contenido</a>
 
-<div class="bezel">
+<svg class="defs" aria-hidden="true" focusable="false">
+  <filter id="tube-warp" primitiveUnits="objectBoundingBox" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+    <feImage href="../assets/tube-map.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"></feImage>
+    <feDisplacementMap in="SourceGraphic" in2="map" scale="0.05" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+  </filter>
+  <filter id="tube-warp-sm" primitiveUnits="objectBoundingBox" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+    <feImage href="../assets/tube-map.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"></feImage>
+    <feDisplacementMap in="SourceGraphic" in2="map" scale="0.045" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+  </filter>
+</svg>
 
-  <div class="osbar">
-    <span>index of / <b>alpefe.me</b> / proyectos</span>
-    <span class="flip">sin cookies · sin trackers · sin analítica</span>
-  </div>
+<div class="tube">
+  <div class="glass">
+    <div class="warp">
+      <div class="screen">
+        <main class="tt" id="contenido">
 
-  <main id="contenido">
-    <div class="sheet">
+          <div class="tt-bar">
+            <span class="pg">P101</span>
+            <span class="nm">alpefe.me / proyectos</span>
+            <span class="rt">16 piezas · sin tecnologías</span>
+          </div>
 
-      <div class="page-head">
-        <h1>proyectos</h1>
-        <p class="lede">
-          Todo lo de esta página está hecho por mí. La columna de estado solo dice si el código es
-          público; los cerrados se explican igual que los demás, por lo que hacen. Por eso aquí no
-          vas a encontrar ni una tecnología.
-        </p>
+          <div class="tt-body">
+
+            <h1 class="tt-h">proyectos</h1>
+            <p class="claim">Todo lo de esta pantalla está hecho por mí. El estado sólo dice si el código es público; lo cerrado se explica igual, por lo que hace.</p>
+
+            <table class="tbl">
+              <caption>abiertos — nueve</caption>
+              <thead>
+                <tr><th>nº</th><th>proyecto</th><th>qué hace</th><th>estado</th><th>último</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="n">01</td>
+                  <td class="nm"><a href="https://github.com/AlPeFe/fuji-ptp-android">fuji-ptp-android</a></td>
+                  <td>Leer y escribir las recetas personalizadas de una Fujifilm X100VI desde el móvil.</td>
+                  <td class="st">abierto</td><td class="up">2026-08</td>
+                </tr>
+                <tr>
+                  <td class="n">02</td>
+                  <td class="nm"><a href="https://github.com/AlPeFe/xiaomi-tv-debloat">xiaomi-tv-debloat</a></td>
+                  <td>602 MB de RAM y 503 MB de almacenamiento liberados en una Xiaomi Mi TV: 31 paquetes desactivados, sin root y reversibles.</td>
+                  <td class="st">abierto</td><td class="up">2026-09</td>
+                </tr>
+                <tr>
+                  <td class="n">03</td>
+                  <td class="nm"><a href="https://github.com/AlPeFe/kivotos">kivotos</a></td>
+                  <td>Biblioteca de ROMs que vive en tu ordenador y sirve las descargas al resto de la red de casa, en un solo ejecutable.</td>
+                  <td class="st">abierto</td><td class="up">2026-08</td>
+                </tr>
+                <tr>
+                  <td class="n">04</td>
+                  <td class="nm"><a href="https://github.com/AlPeFe/gesipan">gesipan</a></td>
+                  <td>Pizarra infinita de notas y marcadores, con la interfaz metida dentro del propio ejecutable.</td>
+                  <td class="st">abierto</td><td class="up">2026-08</td>
+                </tr>
+                <tr>
+                  <td class="n">05</td>
+                  <td class="nm"><a href="https://github.com/AlPeFe/HanniGram">HanniGram</a></td>
+                  <td>Memoria persistente para agentes de código: que el agente recuerde lo decidido entre una sesión y la siguiente.</td>
+                  <td class="st">abierto</td><td class="up">2026-10</td>
+                </tr>
+                <tr>
+                  <td class="n">06</td>
+                  <td class="nm"><a href="https://github.com/AlPeFe/music-grabber">music-grabber</a></td>
+                  <td>Descargador de audio propio, autoalojado, para Spotify, YouTube, SoundCloud y Bandcamp.</td>
+                  <td class="st">abierto</td><td class="up">2026-06</td>
+                </tr>
+                <tr>
+                  <td class="n">07</td>
+                  <td class="nm"><a href="https://github.com/AlPeFe/SqlServerMcp">SqlServerMcp</a></td>
+                  <td>Le enseña a un modelo el esquema y las reglas de negocio de una base de datos, para que deje de inventarse consultas.</td>
+                  <td class="st">abierto</td><td class="up">2026-01</td>
+                </tr>
+                <tr>
+                  <td class="n">08</td>
+                  <td class="nm"><a href="https://github.com/AlPeFe/WindowsServerAgent">WindowsServerAgent</a></td>
+                  <td>Agente para administrar servidores Windows en remoto, sin sentarse delante de ellos.</td>
+                  <td class="st">abierto</td><td class="up">2026-05</td>
+                </tr>
+                <tr>
+                  <td class="n">09</td>
+                  <td class="nm"><a href="https://github.com/AlPeFe/tui-server-setup">tui-server-setup</a></td>
+                  <td>Asistente de terminal que deja listo un servidor Windows recién instalado, con menús en vez de documentación.</td>
+                  <td class="st">abierto</td><td class="up">2026-04</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="tbl">
+              <caption>cerrados — siete</caption>
+              <thead>
+                <tr><th>nº</th><th>proyecto</th><th>qué hace</th><th>estado</th><th>último</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="n">10</td><td class="nm">tsnu-plataforma</td>
+                  <td>Gestión de flota y personal para transporte sanitario: ficha de cada vehículo, caducidades y listas de verificación normativas. Vive en los servidores de la empresa.</td>
+                  <td class="st closed">cerrado</td><td class="up">2026-10</td>
+                </tr>
+                <tr>
+                  <td class="n">11</td><td class="nm">gam-mcp</td>
+                  <td>Consultar y operar la base de datos del producto en lenguaje natural, sin atarse a un cliente concreto.</td>
+                  <td class="st closed">cerrado</td><td class="up">2026-10</td>
+                </tr>
+                <tr>
+                  <td class="n">12</td><td class="nm">Nagomi</td>
+                  <td>Coordinación de transporte sanitario pensada para sitios pequeños: hospitales comarcales, clínicas, residencias.</td>
+                  <td class="st closed">cerrado</td><td class="up">2026-09</td>
+                </tr>
+                <tr>
+                  <td class="n">13</td><td class="nm">GamFleet</td>
+                  <td>La aplicación de gestión de flota, reescrita entera sobre la plataforma nueva sin dejar de funcionar durante el cambio.</td>
+                  <td class="st closed">cerrado</td><td class="up">2026-09</td>
+                </tr>
+                <tr>
+                  <td class="n">14</td><td class="nm">charla-ia-equipo</td>
+                  <td>Cuatro horas de charla para mi equipo sobre qué es la inteligencia artificial y cómo se usa con agentes: 148 diapositivas en un único archivo.</td>
+                  <td class="st closed">cerrado</td><td class="up">2026-10</td>
+                </tr>
+                <tr>
+                  <td class="n">15</td><td class="nm">Rac0</td>
+                  <td>Llevar la cuenta de los restaurantes a los que quieres ir y de los que ya has ido, con su nota. Hecho para usarlo yo.</td>
+                  <td class="st closed">cerrado</td><td class="up">2026-01</td>
+                </tr>
+                <tr>
+                  <td class="n">16</td><td class="nm">PolaperPOS</td>
+                  <td>Un punto de venta sencillo para un solo evento: cobrar, cuadrar y cerrar, sin más.</td>
+                  <td class="st closed">cerrado</td><td class="up">2026-03</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p class="claim">Los cerrados son producto real, trabajo de empresa o herramientas que son sólo mías. Que el código no sea público no cambia lo que hacen; sí cambia que no puedas mirarlo por dentro.</p>
+
+          </div>
+
+          <nav class="tt-keys" aria-label="Recorrido del sitio">
+            <a class="k1" href="../index.html"><i aria-hidden="true"></i>índice</a>
+            <a class="k2" href="index.html" aria-current="page"><i aria-hidden="true"></i>proyectos</a>
+            <a class="k3" href="../certs/index.html"><i aria-hidden="true"></i>certificados</a>
+            <a class="k4" href="../about/index.html"><i aria-hidden="true"></i>sobre mí</a>
+          </nav>
+
+        </main>
       </div>
-
-      <nav class="ring" aria-label="Recorrido del sitio">
-        <span class="rr"><a href="../index.html">&lt; anterior</a></span>
-        <ol class="route">
-          <li><a href="../index.html">índice</a></li>
-          <li><a href="index.html" aria-current="page">proyectos</a></li>
-          <li><a href="../certs/index.html">certificados</a></li>
-          <li><a href="../about/index.html">sobre mí</a></li>
-        </ol>
-        <span class="rr"><a href="../certs/index.html">siguiente &gt;</a></span>
-      </nav>
-
-      <section aria-labelledby="open-h">
-        <table class="table">
-          <caption id="open-h">abiertos — nueve</caption>
-          <thead>
-            <tr>
-              <th scope="col">nº</th>
-              <th scope="col">proyecto</th>
-              <th scope="col">qué hace</th>
-              <th scope="col">estado</th>
-              <th scope="col">último cambio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="n">01</td>
-              <td class="nm"><a href="https://github.com/AlPeFe/fuji-ptp-android">fuji-ptp-android</a></td>
-              <td>Leer y escribir las recetas personalizadas de una Fujifilm X100VI desde el móvil.</td>
-              <td class="st">abierto</td>
-              <td class="yr">2026-08</td>
-            </tr>
-            <tr>
-              <td class="n">02</td>
-              <td class="nm"><a href="https://github.com/AlPeFe/xiaomi-tv-debloat">xiaomi-tv-debloat</a></td>
-              <td>602 MB de RAM y 503 MB de almacenamiento liberados en una Xiaomi Mi TV: 31 paquetes desactivados, sin root y del todo reversibles.</td>
-              <td class="st">abierto</td>
-              <td class="yr">2026-09</td>
-            </tr>
-            <tr>
-              <td class="n">03</td>
-              <td class="nm"><a href="https://github.com/AlPeFe/kivotos">kivotos</a></td>
-              <td>Biblioteca de ROMs que vive en tu ordenador y sirve las descargas al resto de la red de casa, en un solo ejecutable.</td>
-              <td class="st">abierto</td>
-              <td class="yr">2026-08</td>
-            </tr>
-            <tr>
-              <td class="n">04</td>
-              <td class="nm"><a href="https://github.com/AlPeFe/gesipan">gesipan</a></td>
-              <td>Pizarra infinita de notas y marcadores, con la interfaz metida dentro del propio ejecutable.</td>
-              <td class="st">abierto</td>
-              <td class="yr">2026-08</td>
-            </tr>
-            <tr>
-              <td class="n">05</td>
-              <td class="nm"><a href="https://github.com/AlPeFe/HanniGram">HanniGram</a></td>
-              <td>Memoria persistente para agentes de código: que el agente recuerde lo decidido entre una sesión y la siguiente.</td>
-              <td class="st">abierto</td>
-              <td class="yr">2026-10</td>
-            </tr>
-            <tr>
-              <td class="n">06</td>
-              <td class="nm"><a href="https://github.com/AlPeFe/music-grabber">music-grabber</a></td>
-              <td>Descargador de audio propio, autoalojado, para Spotify, YouTube, SoundCloud y Bandcamp.</td>
-              <td class="st">abierto</td>
-              <td class="yr">2026-06</td>
-            </tr>
-            <tr>
-              <td class="n">07</td>
-              <td class="nm"><a href="https://github.com/AlPeFe/SqlServerMcp">SqlServerMcp</a></td>
-              <td>Le enseña a un modelo el esquema y las reglas de negocio de una base de datos, para que deje de inventarse consultas.</td>
-              <td class="st">abierto</td>
-              <td class="yr">2026-01</td>
-            </tr>
-            <tr>
-              <td class="n">08</td>
-              <td class="nm"><a href="https://github.com/AlPeFe/WindowsServerAgent">WindowsServerAgent</a></td>
-              <td>Agente para administrar servidores Windows en remoto, sin sentarse delante de ellos.</td>
-              <td class="st">abierto</td>
-              <td class="yr">2026-05</td>
-            </tr>
-            <tr>
-              <td class="n">09</td>
-              <td class="nm"><a href="https://github.com/AlPeFe/tui-server-setup">tui-server-setup</a></td>
-              <td>Asistente de terminal que deja listo un servidor Windows recién instalado, con menús en vez de documentación.</td>
-              <td class="st">abierto</td>
-              <td class="yr">2026-04</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section aria-labelledby="closed-h">
-        <table class="table">
-          <caption id="closed-h">cerrados — siete</caption>
-          <thead>
-            <tr>
-              <th scope="col">nº</th>
-              <th scope="col">proyecto</th>
-              <th scope="col">qué hace</th>
-              <th scope="col">estado</th>
-              <th scope="col">último cambio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="n">10</td>
-              <td class="nm">tsnu-plataforma</td>
-              <td>Gestión de flota y personal para transporte sanitario: ficha de cada vehículo, caducidades y listas de verificación normativas. Vive en los servidores de la empresa, no en internet.</td>
-              <td class="st closed">cerrado</td>
-              <td class="yr">2026-10</td>
-            </tr>
-            <tr>
-              <td class="n">11</td>
-              <td class="nm">gam-mcp</td>
-              <td>Consultar y operar la base de datos del producto en lenguaje natural, sin atarse a un cliente concreto. Nació de una pregunta muy concreta: ¿y si preguntar por un dato no obligara a abrir tres programas?</td>
-              <td class="st closed">cerrado</td>
-              <td class="yr">2026-10</td>
-            </tr>
-            <tr>
-              <td class="n">12</td>
-              <td class="nm">Nagomi</td>
-              <td>Coordinación de transporte sanitario pensada para sitios pequeños: hospitales comarcales, clínicas, residencias de mayores, donde montar un sistema grande no tiene sentido.</td>
-              <td class="st closed">cerrado</td>
-              <td class="yr">2026-09</td>
-            </tr>
-            <tr>
-              <td class="n">13</td>
-              <td class="nm">GamFleet</td>
-              <td>La aplicación de gestión de flota, reescrita entera sobre la plataforma nueva sin dejar de funcionar durante el cambio.</td>
-              <td class="st closed">cerrado</td>
-              <td class="yr">2026-09</td>
-            </tr>
-            <tr>
-              <td class="n">14</td>
-              <td class="nm">charla-ia-equipo</td>
-              <td>Cuatro horas de charla para mi equipo sobre qué es la inteligencia artificial, cómo funciona por dentro y cómo se usa con agentes. 148 diapositivas en un único archivo que se abre con doble clic.</td>
-              <td class="st closed">cerrado</td>
-              <td class="yr">2026-10</td>
-            </tr>
-            <tr>
-              <td class="n">15</td>
-              <td class="nm">Rac0</td>
-              <td>Llevar la cuenta de los restaurantes a los que quieres ir y de los que ya has ido, con su nota. Hecho para usarlo yo.</td>
-              <td class="st closed">cerrado</td>
-              <td class="yr">2026-01</td>
-            </tr>
-            <tr>
-              <td class="n">16</td>
-              <td class="nm">PolaperPOS</td>
-              <td>Un punto de venta sencillo para un solo evento: cobrar, cuadrar y cerrar, sin más.</td>
-              <td class="st closed">cerrado</td>
-              <td class="yr">2026-03</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="note">
-          Los cerrados son producto real, trabajo de empresa o herramientas que son solo mías. Que el
-          código no sea público no cambia lo que hacen; sí cambia que no puedas mirarlo por dentro.
-        </p>
-      </section>
-
     </div>
-  </main>
-
-  <footer>
-    <span>© 2026 alpefe</span>
-    <span class="prov">hecho a mano · html y css · cero javascript</span>
-    <span><a href="https://github.com/AlPeFe/AlPeFe.github.io">código fuente</a></span>
-    <span>best viewed in 800×600</span>
-  </footer>
-
+    <div class="crt" aria-hidden="true"></div>
+    <div class="bloom" aria-hidden="true"></div>
+    <div class="led" aria-hidden="true"></div>
+  </div>
 </div>
 </body>
 </html>

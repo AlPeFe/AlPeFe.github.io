@@ -1,244 +1,267 @@
 ---
 name: alpefe.me
-description: A personal index built as a 1998 homepage — two inks, one plate, zero JavaScript.
+description: A 4:3 phosphor tube showing a teletext service of exactly one person. Zero JavaScript.
 colors:
-  ink-structure: "#ff3d8b"
-  ink-state: "#7dff3d"
-  ink-reserved: "#ffcc33"
-  ground: "#0b0912"
-  plate: "#141126"
-  plate-deep: "#100e1e"
-  stock: "#e8e0ff"
-  structure-rule: "rgba(255,61,139,.34)"
-  structure-hair: "rgba(255,61,139,.2)"
-  prose-soft: "rgba(232,224,255,.72)"
+  room: "#03050a"
+  glass: "#04060b"
+  ink: "#eef0ff"
+  ink-dim: "rgba(238,240,255,.62)"
+  bar-ink: "rgba(4,6,11,.72)"
+  yellow: "#e8d84a"
+  cyan: "#3ce8ff"
+  green: "#3ce86a"
+  red: "#ff5442"
+  magenta: "#ff58c8"
+  blue: "#3c6cff"
+  rule: "rgba(60,232,255,.38)"
+  hair: "rgba(60,232,255,.13)"
 typography:
   display:
     fontFamily: "Doto, ui-monospace, 'Courier New', monospace"
-    fontSize: "clamp(54px, 7.6vw, 112px)"
+    fontSize: "1.15em"
     fontWeight: 900
-    lineHeight: 0.86
-    letterSpacing: "0.005em"
+    lineHeight: 1
+    letterSpacing: "0"
     fontVariation: "'ROND' 0"
   headline:
-    fontFamily: "Doto, ui-monospace, 'Courier New', monospace"
-    fontSize: "clamp(44px, 7vw, 84px)"
-    fontWeight: 900
-    lineHeight: 0.9
-    fontVariation: "'ROND' 0"
-  title:
     fontFamily: "'DotGothic16', ui-monospace, 'Courier New', monospace"
-    fontSize: "19px"
+    fontSize: "1.45em"
     fontWeight: 400
-    lineHeight: 1.25
-    letterSpacing: "0.2em"
+    lineHeight: 1.35
+    letterSpacing: "0.16em"
+  logo:
+    fontFamily: "'DotGothic16', ui-monospace, 'Courier New', monospace"
+    fontSize: "min(.78em, 2.25cqi)"
+    fontWeight: 400
+    lineHeight: 1
+    letterSpacing: "0"
   body:
     fontFamily: "'DotGothic16', ui-monospace, 'Courier New', monospace"
-    fontSize: "16px"
+    fontSize: "clamp(11px, 1.45cqi, 17px)"
     fontWeight: 400
-    lineHeight: 1.7
+    lineHeight: 1.4
   label:
     fontFamily: "'DotGothic16', ui-monospace, 'Courier New', monospace"
-    fontSize: "12px"
+    fontSize: ".86em"
     fontWeight: 400
-    lineHeight: 1.6
-    letterSpacing: "0.16em"
+    lineHeight: 1.4
+    letterSpacing: "0.08em"
   numeral:
     fontFamily: "Doto, ui-monospace, 'Courier New', monospace"
-    fontSize: "15px"
+    fontSize: ".95em"
     fontWeight: 700
     lineHeight: 1
 rounded:
   none: "0px"
+  bezel: "5.6% / 7.4%"
+  glass: "5.2% / 8.6%"
+  bezel-phone: "16px"
+  glass-phone: "20px"
 spacing:
-  bezel-inset: "12px"
-  sheet-padding: "22px"
-  sheet-max: "940px"
-  plate-gap: "20px"
-  plate-band-gap: "12px"
-  block-gap: "14px"
-  section-top: "52px"
-  bead-inset: "5px"
+  bezel-x: "2.93cqi"
+  bezel-y: "2.2cqi"
+  safe-x: "4.6%"
+  safe-y: "4.8%"
+  row-pad: ".16em .5ch"
+  row-gap: ".1em"
+  bar-pad: ".3em .7em"
+  block-gap: ".35em"
 components:
-  plate:
-    backgroundColor: "{colors.plate}"
-    textColor: "{colors.stock}"
+  tube:
+    backgroundColor: "{colors.room}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.bezel}"
+    padding: "2.2cqi 2.93cqi"
+  glass:
+    backgroundColor: "{colors.glass}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.glass}"
+  page-bar:
+    backgroundColor: "{colors.yellow}"
+    textColor: "{colors.glass}"
     rounded: "{rounded.none}"
-    height: "74px"
-  plate-primary:
-    backgroundColor: "{colors.plate}"
-    textColor: "{colors.ink-reserved}"
+    padding: ".3em .7em"
+  row:
+    backgroundColor: "{colors.glass}"
+    textColor: "{colors.ink}"
     rounded: "{rounded.none}"
-    height: "74px"
-  plate-hover:
-    backgroundColor: "{colors.plate}"
-    textColor: "{colors.stock}"
+    padding: ".16em .5ch"
+  row-hover:
+    backgroundColor: "{colors.cyan}"
+    textColor: "{colors.glass}"
     rounded: "{rounded.none}"
-  contact-plate:
-    backgroundColor: "{colors.plate-deep}"
-    textColor: "{colors.ink-state}"
+  key-index:
+    backgroundColor: "{colors.red}"
+    textColor: "{colors.ink-dim}"
     rounded: "{rounded.none}"
-    height: "60px"
-  ring-current:
-    backgroundColor: "{colors.ink-state}"
-    textColor: "{colors.ground}"
+  key-projects:
+    backgroundColor: "{colors.green}"
+    textColor: "{colors.ink-dim}"
     rounded: "{rounded.none}"
-    padding: "2px 8px"
-  page-bezel:
-    backgroundColor: "{colors.ground}"
-    textColor: "{colors.stock}"
+  key-certs:
+    backgroundColor: "{colors.yellow}"
+    textColor: "{colors.ink-dim}"
     rounded: "{rounded.none}"
-    padding: "22px"
-  project-row:
-    backgroundColor: "{colors.ground}"
-    textColor: "{colors.prose-soft}"
+  key-about:
+    backgroundColor: "{colors.cyan}"
+    textColor: "{colors.ink-dim}"
     rounded: "{rounded.none}"
-    padding: "14px 0"
-  log-row:
-    backgroundColor: "{colors.ground}"
-    textColor: "{colors.prose-soft}"
+  slot:
+    backgroundColor: "{colors.glass}"
+    textColor: "{colors.red}"
     rounded: "{rounded.none}"
-    padding: "12px 0"
+    padding: ".5em .8ch"
 ---
 
 # Design System: alpefe.me
 
 ## Overview
 
-**Creative North Star: "The Index of One"**
+**Creative North Star: "The Teletext Tube"**
 
-A directory listing with exactly one person in it. The site behaves like a file index rendered in two inks: a bezelled sheet, an `index of /` header, rows that carry dates, and a navigation made of the one control the late-nineties personal web actually had — the 88×31 button, drawn at its true proportion and scaled up until it can hold a word. Nothing here is a brochure. Every element is an entry, and every entry is either a fact or a way out.
+This is not a web page dressed as a monitor. It is what the monitor shows. A dark room, one 4:3 tube with a plastic bezel and a green pilot light, and behind curved glass a teletext service with exactly one subscriber: a numbered page index, a dated log, four keyed destinations, and a block-mosaic wordmark built out of solid cells. Every mark on the screen is made of the same stuff — the eight inks a broadcast teletext decoder had, none of them pure, laid on phosphor black.
 
-The material is two fluorescent inks printed slightly out of register on an impure violet-white stock, sitting inside a dark tube. Depth is not light; depth is misregistration. Where a contemporary interface would drop a soft shadow, this one separates two printed layers by a hard offset with no blur, and collapses them flush when pressed. Hovering pulls them apart. The effect is the wobble of a CRT edge and the slip of a bad print run at the same time, and it is the only motion the site has.
+The signal is bent, not painted. A generated radial displacement map warps the live page through an SVG filter, so straight rules bow downward at the centre, verticals splay, and the top edge of the page bar arcs. It is real geometry: a 3 KB map computed from `u·r²`, applied with zero JavaScript, and switching off in one media query when the glass gets small. Nothing here is a photograph of a monitor, and nothing is a CSS bevel pretending to be one.
 
-Density stays deliberately low — this world could carry ten times the elements it does, and the brief's whole request was to resist that. Two sentences of prose, three plates, one log, four doors. What carries the character is commitment: the inks are saturated and unreconciled, the numerals are set in a dot matrix that echoes the ground's dot tile, and nothing is grey.
+The density is deliberately low but the grid is strict: everything sits in a fixed-pitch character cell, set at 11–17px depending on how big the tube is. The window is the frame, not the page. Where a modern site would scroll a document, this one shows one screenful and, when a list is longer than the glass, scrolls inside it the way a terminal does.
 
 **Key Characteristics:**
-- Two inks own every structural mark: hot magenta and acid green. No neutral draws a rule.
-- One impure violet-white stock carries prose, so the two inks never have to soften.
-- One reserved amber exists, and it is spent once, on the landing's primary plate.
-- Depth is registration: hard-offset ink layers, no blur anywhere.
+- One 4:3 glass, centred in a dark room; the phone grows it taller so nothing is trapped.
+- Eight teletext inks, none pure, plus a dimmed phosphor white for prose.
+- Curvature from a computed displacement map, never from an image of a monitor.
+- Aperture grille in vertical RGB stripes and horizontal scanlines, above the signal.
+- Every word in a bitmap gothic; every numeral and the page number in a dot matrix.
 - Zero JavaScript, zero cookies, zero third-party requests.
-- Faces are a dot-matrix display and a 16px bitmap gothic — screen materials, not a console costume.
 
 ## Colors
 
-A committed two-ink system on a violet-black ground, with a single reserved third that exists to mark one thing.
+The eight colours a teletext decoder could actually print, their purity removed, plus a dimmed white for reading. Each one has a job and none of them is decorative.
 
 ### Primary
-- **Hot Magenta Ink** (#ff3d8b): The structural ink. Plate borders, dotted inset frames, section rules, section headings, index numerals and every log state that means "closed". Rarely used as a fill; a magenta fill is reserved for the skip link and for text selection.
-- **Acid Green State** (#7dff3d): The state ink. Dates, quantities, bands under the plates, hover colours, focus rings, links in body text, and the solid chip that marks the current page in the ring bar.
+- **Page Yellow** (#e8d84a): The page bar, every section caption, every quantity and every index numeral. It is the colour of a heading on a teletext page.
+- **Signal Cyan** (#3ce8ff): Structure and reading. Rules, table headers, the field labels of a record, and every link inside prose.
+- **Open Green** (#3ce86a): The state that means the code is public, and the pilot light on the bezel.
 
-### Tertiary
-- **Reserved Amber** (#ffcc33): Spent exactly once on the landing, on the primary plate's border and label. It marks the one action the visitor came to take. It appears nowhere on the subpages.
+### Secondary
+- **Closed Red** (#ff5442): The state that means the code is not public, and the frame of an asset that is still missing.
+- **Route Magenta** (#ff58c8): Appears once in the system — the magenta fastext key. It carries no other meaning anywhere.
 
 ### Neutral
-- **Impure Violet-Black** (#0b0912): The ground. Never pure black; it is a violet that reads as dark with a bias you feel rather than see.
-- **Plate Violet** (#141126): The raised face of every plate and of the contact buttons.
-- **Plate Deep** (#100e1e): The recessed face of certificate documents and ficha blocks.
-- **Violet-White Stock** (#e8e0ff): Prose, wordmark and row titles. Never pure white.
-- **Structure Rule** (rgba(255,61,139,.34)): The dotted inset line inside a bezel or a plate, and the soft rules that frame a surface.
-- **Structure Hair** (rgba(255,61,139,.2)): Row separators inside a log, a table or a ficha — the structure ink at low alpha, so that no neutral ever draws a line.
-- **Prose Soft** (rgba(232,224,255,.72)): Secondary prose — descriptions, ledes, table cells. The only neutral with a job, and its job is reading.
+- **Room Black** (#03050a): The dark around the tube, and the socket the tube sits in.
+- **Phosphor Black** (#04060b): The inside of the glass and the field every page is written on. Never pure black; it is a blue-black that reads warm under the vignette.
+- **Phosphor White** (#eef0ff): Row titles, the wordmark, and closed descriptions. Never pure white.
+- **Dim Phosphor** (rgba(238,240,255,.62)): Secondary prose — descriptions, ledes, table cells — and the label of every fastext key.
+- **Frame Ink** (rgba(4,6,11,.72)): The small right-hand label inside the yellow page bar, which must stay readable against yellow.
+- **Rule** (rgba(60,232,255,.38)) and **Hair** (rgba(60,232,255,.13)): The cyan line under a heading and the row separator. Both are the signal ink at low alpha; nothing neutral ever draws a line.
 
 ### Named Rules
-**The Two Inks Rule.** Every rule, border, box and label is magenta or acid green. A neutral never draws structure; it only carries prose. Row separators are the structure ink at 20% alpha, and a plate's dotted interior is the same ink at 34%. If an element needs a line and neither ink fits, the element is wrong, not the palette.
+**The Eight Inks Rule.** Only the eight teletext colours plus a dimmed phosphor white may appear. A colour outside that set is a decoder that never existed.
 
-**The Once Rule.** The reserved amber appears a single time in the whole site, on the landing's primary plate. A second appearance is a bug, not a flourish.
+**The No-Pure-Ink Rule.** Nothing reaches purity. The black is blue-black, the white is phosphor-tinted, and every saturated ink stops short of the primaries. Pure #000, #fff, #00ff00, #ff0000 and #0000ff are forbidden.
 
-**The Impure Ink Rule.** No colour reaches purity. The black is violet, the white is violet-tinged, the green is a chartreuse, the magenta stops short of full saturation, and the amber is a gold. Pure #000, #fff, #00ff00 and #ff00ff are forbidden.
+**The Blue Is Not Text Rule.** Blue (#3c6cff) is a fill and a frame, never a body colour: on phosphor black it does not reach AA contrast, so it never carries reading.
 
-**The One Action Rule.** The landing owns the site's single action. The three subpages are reading surfaces: they spend no reserved ink and they never compete with the landing's plate.
+**The Once-Magenta Rule.** Magenta appears in exactly one place in the whole site: the magenta route key. Anywhere else it is a bug.
 
 ## Typography
 
 **Display Font:** Doto (with ui-monospace, 'Courier New', monospace)
 **Body Font:** DotGothic16 (with ui-monospace, 'Courier New', monospace)
 
-**Character:** A dot-matrix display and a bitmap gothic, both screen materials from the same era as the world they describe. Doto's dots rhyme with the 4px dot tile in the ground, so the wordmark looks printed by the same machine that textured the page. DotGothic16 is a real 16px dot-matrix Japanese gothic: it renders Latin at half-width, which gives prose the fixed pitch of a text-mode screen without asking a neutral mono to pretend.
+**Character:** A dot-matrix face for numerals and a 16px bitmap gothic for words — both screen materials from the era the tube belongs to. DotGothic16 is a real Japanese bitmap gothic: its Latin sits on a half-width cell, which is what makes a character grid possible at all and what gives the page its teletext rhythm. Doto's dot matrix marks anything countable — a page number, a row index, a date — so a reader can tell a quantity from a word at a glance without reading it.
 
 ### Hierarchy
-- **Display** (900, clamp(54px, 7.6vw, 112px), line-height 0.86, 'ROND' 0): The wordmark on the landing, and nothing else. Square dots, tight leading, one chromatic shadow pair.
-- **Headline** (900, clamp(44px, 7vw, 84px), line-height 0.9): Page titles on the three subpages.
-- **Title** (400, 19px, letter-spacing .2em, uppercase): Section headings, in magenta. Also the certificate names, in stock.
-- **Body** (400, 16px, line-height 1.7): All prose. Measure stays between 60ch and 72ch.
-- **Label** (400, 12px, letter-spacing .16em, uppercase): System bars, plate bands, table headers, log dates, footer.
-- **Numeral** (700, 15–26px): The numbered bands under the plates and the index column of the project tables. Numerals are always Doto, never DotGothic16.
+- **Display** (900, 1.15em, line-height 1, 'ROND' 0): The page number in the yellow bar. Doto, and nothing else, sits there.
+- **Headline** (400, 1.45em, letter-spacing .16em, uppercase): The page title on a subpage, in yellow — the one place a heading is allowed to stand visibly larger than the cell.
+- **Logo** (400, min(.78em, 2.25cqi), line-height 1): The wordmark, drawn out of `█` in the character cell. It is text, so it scales, it selects, and it needs no asset.
+- **Body** (400, clamp(11px, 1.45cqi, 17px), line-height 1.4): All reading. The size tracks the tube, not the viewport, so the page fills the glass it is in.
+- **Label** (400, .86em, letter-spacing .08em, uppercase): Section captions, table headers, states, and the fastext keys.
+- **Numeral** (700, .95em): Row indices, dates, status counts. Always Doto, never the gothic.
 
 ### Named Rules
-**The Two Voices Rule.** Doto speaks only for the wordmark and for numerals; DotGothic16 speaks for every other word in the site. A third face is a regression.
+**The Character Cell Rule.** Every word sits in a fixed-pitch cell and the layout is measured in characters — `ch` for columns, `em` for rhythm. A proportionally-set word anywhere in this site breaks the screen.
 
-**The Half-Width Rule.** Prose runs at 16px and never below 13px, because DotGothic16 is drawn for a 16px cell and anything smaller loses its grid.
+**The Flush Mosaic Rule.** The wordmark sets `line-height: 1` on purpose: its rows of `█` must touch, because the leading *is* the artwork. This is the only place in the system where leading is allowed under 1.3, and it is text rather than an image so that it scales and selects.
 
 ## Layout
 
-One column inside a bezelled sheet. The bezel is a 1px magenta frame inset 12px from the viewport with a dotted magenta line 5px inside it; the page itself is therefore the first plate in the system, and the sheet is capped at 940px and centred with 22px of internal padding.
+One glass. It is 4:3, sized `min(100% of the room, 76vh × 4/3, 1240px)`, centred, with a proportional bezel inset (`2.2cqi` vertical, `2.93cqi` horizontal — the ratio that keeps the inner box 4:3). Inside, a safe-area inset of 4.6% horizontal and 4.8% vertical keeps text off the curved edge, where the warp is strongest.
 
-Vertical rhythm is generous and one-directional: 52px above a section heading and 10px below it, so a heading always belongs to what follows and never to what precedes. Plates sit in a three-across grid with a 20px gap on desktop; below 860px the rack becomes a single column capped at 420px and centred, so a plate never loses its proportion. Below 620px the page padding drops to 16px and the bezel margin to 8px.
+The type size is a container query unit, not a viewport unit: `1.45cqi` of the tube. Grow the window and the tube grows until 76vh caps it; the character grid stays the same number of cells and simply renders larger. On a phone the tube stops being 4:3 and becomes a taller panel whose height follows its content, so the only scroll is the page's own.
 
-Tables are real tables on desktop and become labelled blocks below 620px, where each row stacks number, name, description, state and year in reading order. Long content never scrolls sideways.
+Two-column records (`ficha`, certificates, project tables) keep their banded order: label in cyan at a fixed character width, value in dim phosphor beside it. Below 820px every banded row stacks, one fact per line.
 
 ## Elevation & Depth
 
-There are no soft shadows in this system. Depth is registration: two printed ink layers separated by a hard offset with zero blur, exactly as a badly aligned print run would show. A plate rests with a 3px green layer peeking out behind it; hover separates the layers to 6px and swaps the visible layer to magenta; pressing collapses them flush to 0 so the plate reads as physically depressed. Nothing casts a blurred shadow anywhere on the site.
+There is no elevation in this system. Nothing is layered, nothing floats, and no shadow anywhere represents a light source above a surface. Depth is a physical fact of the object: a recessed glass inside a raised plastic bezel, held by an inset ring highlight and a wide inset vignette that darkens toward the tube's edge.
 
-The ground carries the tube: a radial vignette darkening the outer edge, a 4px dot tile at 15% magenta, and a fixed scanline overlay at 2% violet-white drawn above all content. Together they read as a screen surface rather than a background image.
+There is no glow anywhere on the case. The pilot light is a flat green lens seated in a dark ring, not a halo: the only light this site emits comes from the phosphor inside the glass. A glow on the plastic would be decoration pretending to be emission.
 
-### Shadow Vocabulary
-- **Ink layer at rest** (`box-shadow: 3px 3px 0 rgba(125,255,61,.55)`): The green layer behind a plate, out of register.
-- **Ink layer separated** (`box-shadow: 6px 6px 0 #ff3d8b`): Hover and keyboard focus. The layers pull apart and the visible layer turns magenta.
-- **Ink layer flush** (`box-shadow: 0 0 0 #ff3d8b`): Active. The plate is pressed down onto its own layer.
-- **Primary plate layer** (`box-shadow: 3px 3px 0 rgba(255,204,51,.5)`): The reserved amber plate, the one place the system prints in gold.
+The screen adds two depth cues that are not shadows: a fixed 3px aperture grille and 3px scanlines drawn above the signal, and a slow vertical-retrace band that travels up the glass every 13 seconds.
 
 ### Named Rules
-**The Registration Rule.** Depth is misregistration. An offset shadow always has zero blur and always represents a second printed layer. Introducing a blurred shadow to "add depth" breaks the world.
+**The No-Lift Rule.** Nothing casts a shadow to imply it sits above the page. A blurred shadow on a border, a card or a button is a regression.
 
-**The Freeze Rule.** Under `prefers-reduced-motion: reduce` every transition and animation is removed and the plate stops translating. Registration becomes a static 1px state change; the hierarchy must still read.
+**The Grille-Above Rule.** Aperture stripes and scanlines always sit above the content, never behind it, at low alpha. Below the content they become a background pattern and the screen stops being glass.
 
 ## Shapes
 
-Everything is a rectangle with square corners and a hard 1px edge. There is not a single border radius in the system, and no diagonal, circle or curved mask anywhere — the two exception-shaped things in the world, a dot-matrix glyph and a crosshair in an empty certificate frame, are drawn as ink on a rectangular field.
+Two shapes exist: the tube and the character. The tube is a rounded rectangle whose corner radii are elliptical percentages, so the top and bottom edges bow differently from the sides — the silhouette of glass that was blown, not cut. On a phone the same tube takes fixed 16px and 20px radii, because a tall panel with percentage radii stops reading as a screen.
 
-The recurring silhouette is the plate: a box at the true 88×31 proportion of a web button, edged in 1px ink with a dotted inset line 5px in from the edge, drawn in the structure ink at 34% alpha — the same construction as the page bezel, one scale down. The same silhouette, unaltered, is used for navigation, for contact doors, for the rack, and — scaled to the whole viewport — for the page bezel. A second silhouette is the sheet: a rectangle with a dotted inner frame, used for certificate documents and ficha blocks.
+Everything inside is a rectangle with square corners: rows, bars, rules, table cells, keys. Not one border radius appears inside the glass. The recurring inner form is the banded record — a fixed-width cyan label and a dim value on one line, separated by a cyan hair below.
 
 ## Components
 
-### Buttons
-- **Shape:** Square cornered, 1px ink border, dotted inset line, zero blur offset layer behind. The plate is 88:31 by proportion, minimum 74px tall.
-- **Primary:** Background `{colors.plate}`, 1px border and label in `{colors.ink-reserved}`, an ink layer behind in the same gold. This is the only amber element in the site.
-- **Secondary plate:** Background `{colors.plate}`, 1px border in `{colors.ink-structure}`, stock label, green ink layer behind.
-- **Hover / Focus:** The plate translates 2px up and left with a 2-step step transition, the layer separates to 6px and turns magenta, and the label runs a 400ms two-step jitter for exactly two iterations. Keyboard focus adds a 2px green focus ring at 3px offset.
-- **Active:** The plate translates 3px down and right, the layer collapses to 0. Reads as pressed.
-- **Contact door:** Same grammar at a smaller height, resting on `{colors.plate-deep}` with a green label; hover turns border, label and layer green.
+### The Tube
+- **Shape:** Elliptical-cornered rectangle, 4:3, with a proportional bezel inset and a 1px inset ring highlight. A green pilot lens sits inside the bezel at the bottom right. The plastic is drawn by a pseudo-element behind the glass, so the set is one enclosure rather than a container inside a container.
+- **Glass:** Inset by the bezel, with a wide inset vignette and a diagonal reflection at 5% white in the upper left.
+- **Phone:** Height follows content, radii become fixed, and the page scrolls normally instead of the glass.
 
-### Navigation
-Two components, both functional and both world-native. The **rack** is the section navigation: three plates, each with a numbered band beneath carrying its facts. The **ring bar** is a bordered strip that walks the site's own four pages — a previous link, the route as a bordered green chip for the current page, and a next link, ending in a text arrow rather than an icon.
+### The Warp
+- **What it is:** An SVG filter on the signal layer only: a 96×72 radial displacement map, `primitiveUnits="objectBoundingBox"` with the map stretched over the element, `scale="0.05"` on the desk and `0.045` on the phone.
+- **Why those units:** objectBoundingBox is what makes one map work at every tube size — the displacement stays a fixed fraction of the glass instead of a fixed pixel count.
+- **Boundary:** The grille, scanlines, vignette and reflection are *not* warped: they belong to the glass, not to the signal.
+
+### Page Bar
+- **Shape:** A full-width bar with no radius, yellow field, phosphor-black text.
+- **Contents:** Page number in Doto, the page's path, and a right-hand claim in dimmed frame ink.
+- **Padding:** .3em vertical so the bar has a body; children never touch its edges.
+
+### Rows
+- **Index row:** Four cells — a Doto number in yellow, a name in phosphor white, a dim note, and a cyan arrow. Hover and keyboard focus invert to a solid cyan field with black text.
+- **Log row:** Four cells — a Doto date in cyan, a name, a dim description, and an uppercase state in green or red, right-aligned.
+- **Current page:** Marked with a 16% cyan wash and a cyan numeral, never with colour alone.
+
+### Fastext Keys
+- **Shape:** Four inline labels with a 1.5ch square in the key's own colour, on the page's bottom edge above a cyan hair.
+- **Order:** Red index, green projects, yellow certificates, cyan about. The current page's key goes phosphor white.
+- **Why:** The keys are the navigation, and they stay pinned when the glass scrolls — the same promise a real remote made.
 
 ### Tables
-Project lists are real tables with an uppercase magenta header row, a magenta Doto index numeral per row, the project name as a stock link with a green underline, the description in prose soft, the state as an uppercase label — green for open, magenta for closed — and the repository's own last-change date in the final column. Row separators use the structure ink at 20% alpha.
+- **Banded records:** A Doto yellow index, a phosphor-white name (a link where there is a repository), the plain description in dim phosphor, an uppercase state in green or red, and the repository's own last-change date in Doto cyan.
+- **Below 820px:** Header row hidden from the eye but kept for screen readers, and every row becomes a stacked block.
 
-### Rows / Lists
-The landing's log is a three-column row: a green label date, a name with its one-line description, and a state label aligned right. Every row carries the repository's own last-change date, and the section heading says so.
-
-### Empty Frames
-Certificate documents ship with a real 4:3 frame holding a drawn crosshair, the words "imagen pendiente", and a caption. This is a deliberate placeholder component, not a broken image: it states that the asset is the owner's to supply.
+### Empty Slots
+- **Shape:** A 1px dashed red frame with uppercase red text inside.
+- **Purpose:** A deliberate placeholder for an asset the owner still owes — a certificate image. It states the absence; it does not pretend to be a broken image.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** draw every rule, border and box in one of the two inks — magenta for structure, acid green for state.
-- **Do** spend the reserved amber exactly once, on the landing's primary plate, and never on a subpage.
-- **Do** keep depth as a zero-blur offset layer that separates on hover and collapses on press.
-- **Do** set the wordmark and every numeral in Doto, and everything else in DotGothic16 at 16px.
-- **Do** keep prose measure between 60ch and 72ch and cap display at 112px.
-- **Do** label a date with what it actually is — the repository's last change — rather than implying a release.
-- **Do** mark a closed-source project in magenta and explain it by what it does.
+- **Do** keep the tube 4:3 on the desk and let only the phone grow it.
+- **Do** keep the warp on the signal alone, and let the grille and vignette stay flat on the glass.
+- **Do** size type in `cqi` so the character grid tracks the tube, not the window.
+- **Do** give every quantity Doto and every word DotGothic16.
+- **Do** draw the bezel with a pseudo-element behind the glass: the set is one enclosure, not a card inside a card.
+- **Do** keep a hairline's row padded — .26em above and below is the floor, never .12em.
+- **Do** spend yellow on structure, cyan on reading, green on open, red on closed, and magenta exactly once.
+- **Do** label a date with what it is — the repository's last change — rather than implying a release.
 
 ### Don't:
-- **Don't** add a third ink, a grey, or a gradient. If a line needs a colour, it is magenta or green.
-- **Don't** add a border radius, a blurred shadow, a glass panel or a coloured left border. The system is square, flat and printed.
-- **Don't** spend the amber twice, or move the primary action below the fold.
-- **Don't** ship JavaScript, a cookie, an analytics tag or a third-party font request. The claim in the top bar has to stay true.
+- **Don't** add a shadow that implies something floats, or a glow anywhere on the case. The pilot lens is flat; the phosphor is the only light.
+- **Don't** use blue for text, magenta for anything but the route key, or any pure primary.
+- **Don't** put a border radius inside the glass.
+- **Don't** replace the displacement map with a photo of a monitor, or a CSS bevel pretending to be plastic.
+- **Don't** ship JavaScript, a cookie, an analytics tag or a third-party font request.
 - **Don't** name a technology on the projects page. The list is about what things do.
-- **Don't** put location, legal name, portrait, or a blog on any page.
-- **Don't** let a subpage compete with the landing for the visitor's one action.
+- **Don't** let a fixed glass height trap content on a phone.

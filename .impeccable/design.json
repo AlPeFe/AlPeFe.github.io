@@ -1,213 +1,222 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-19T09:45:00Z",
+  "generatedAt": "2026-10-19T10:35:00Z",
   "title": "Design System: alpefe.me",
   "extensions": {
     "colorMeta": {
-      "ink-structure": {
+      "yellow": {
         "role": "primary",
-        "displayName": "Hot Magenta Ink",
-        "canonical": "#ff3d8b",
-        "tonalRamp": ["#2b0916", "#4d0f27", "#711739", "#951f4c", "#ba285f", "#d93572", "#e8629a", "#f5a6c6"]
+        "displayName": "Page Yellow",
+        "canonical": "#e8d84a",
+        "tonalRamp": ["#2a2708", "#4a450d", "#6d6614", "#91881b", "#b5aa24", "#d9cc2f", "#e8dd6a", "#f4eead"]
       },
-      "ink-state": {
+      "cyan": {
+        "role": "primary",
+        "displayName": "Signal Cyan",
+        "canonical": "#3ce8ff",
+        "tonalRamp": ["#05282e", "#084854", "#0d6b7c", "#138fa5", "#1ab3cd", "#24d6f2", "#64e5fa", "#adeffc"]
+      },
+      "green": {
+        "role": "primary",
+        "displayName": "Open Green",
+        "canonical": "#3ce86a",
+        "tonalRamp": ["#052a10", "#084a1c", "#0d6d29", "#139339", "#1ab64a", "#24d95c", "#64e88d", "#adf4c3"]
+      },
+      "red": {
         "role": "secondary",
-        "displayName": "Acid Green State",
-        "canonical": "#7dff3d",
-        "tonalRamp": ["#0d2b01", "#164d03", "#217106", "#309507", "#43ba08", "#5ed90c", "#8ce860", "#c3f5a6"]
+        "displayName": "Closed Red",
+        "canonical": "#ff5442",
+        "tonalRamp": ["#2e0b07", "#500e09", "#76200c", "#983012", "#bd4218", "#e05523", "#ec8560", "#f7c0ab"]
       },
-      "ink-reserved": {
-        "role": "tertiary",
-        "displayName": "Reserved Amber",
-        "canonical": "#ffcc33",
-        "tonalRamp": ["#2b2106", "#4d3b0a", "#71560f", "#957215", "#ba8f1e", "#d9ab26", "#e8c362", "#f5e0a6"]
+      "magenta": {
+        "role": "secondary",
+        "displayName": "Route Magenta",
+        "canonical": "#ff58c8",
+        "tonalRamp": ["#2e0924", "#520a3a", "#77124f", "#9c1c66", "#c2287f", "#e83698", "#ee6fb6", "#f7b1d9"]
       },
-      "ground": {
+      "blue": {
         "role": "neutral",
-        "displayName": "Impure Violet-Black",
-        "canonical": "#0b0912",
-        "tonalRamp": ["#07060b", "#0b0912", "#13101f", "#1d1930", "#2b2646", "#3f3863", "#5c5588", "#8d87b0"]
+        "displayName": "Frame Blue",
+        "canonical": "#3c6cff",
+        "tonalRamp": ["#070d2e", "#0b1850", "#112476", "#1a339c", "#2345c2", "#335ce0", "#6b8ae8", "#adc0f7"]
       },
-      "plate": {
+      "room": {
         "role": "neutral",
-        "displayName": "Plate Violet",
-        "canonical": "#141126",
-        "tonalRamp": ["#0a0814", "#110e20", "#141126", "#201c3c", "#2f2a58", "#474077", "#6a6299", "#9d96c2"]
+        "displayName": "Room Black",
+        "canonical": "#03050a",
+        "tonalRamp": ["#02040a", "#050810", "#090f1a", "#0f1826", "#182334", "#243147", "#394459", "#5e6a7d"]
       },
-      "plate-deep": {
+      "glass": {
         "role": "neutral",
-        "displayName": "Plate Deep",
-        "canonical": "#100e1e",
-        "tonalRamp": ["#08070f", "#0c0a18", "#100e1e", "#1a1730", "#27224a", "#3b3569", "#5b548d", "#9089b8"]
+        "displayName": "Phosphor Black",
+        "canonical": "#04060b",
+        "tonalRamp": ["#03050b", "#060910", "#0b0f19", "#111725", "#1a2333", "#253044", "#3a4457", "#606a7a"]
       },
-      "stock": {
+      "ink": {
         "role": "neutral",
-        "displayName": "Violet-White Stock",
-        "canonical": "#e8e0ff",
-        "tonalRamp": ["#1c1830", "#332b57", "#4b407e", "#6559a4", "#8177c5", "#a49ce0", "#c6c0f2", "#e8e0ff"]
+        "displayName": "Phosphor White",
+        "canonical": "#eef0ff",
+        "tonalRamp": ["#1d1f2e", "#343653", "#4d4f7a", "#676aa0", "#8387c1", "#a4a7dd", "#c7c9f0", "#eef0ff"]
       },
-      "structure-rule": {
+      "ink-dim": {
         "role": "neutral",
-        "displayName": "Structure Rule",
-        "canonical": "rgba(255,61,139,.34)",
-        "tonalRamp": ["rgba(255,61,139,.05)", "rgba(255,61,139,.09)", "rgba(255,61,139,.14)", "rgba(255,61,139,.2)", "rgba(255,61,139,.27)", "rgba(255,61,139,.34)", "rgba(255,61,139,.5)", "rgba(255,61,139,.7)"]
+        "displayName": "Dim Phosphor",
+        "canonical": "rgba(238,240,255,.62)",
+        "tonalRamp": ["rgba(238,240,255,.28)", "rgba(238,240,255,.38)", "rgba(238,240,255,.46)", "rgba(238,240,255,.54)", "rgba(238,240,255,.62)", "rgba(238,240,255,.72)", "rgba(238,240,255,.84)", "rgba(238,240,255,1)"]
       },
-      "structure-hair": {
+      "bar-ink": {
         "role": "neutral",
-        "displayName": "Structure Hair",
-        "canonical": "rgba(255,61,139,.2)",
-        "tonalRamp": ["rgba(255,61,139,.04)", "rgba(255,61,139,.07)", "rgba(255,61,139,.1)", "rgba(255,61,139,.14)", "rgba(255,61,139,.2)", "rgba(255,61,139,.3)", "rgba(255,61,139,.45)", "rgba(255,61,139,.65)"]
+        "displayName": "Frame Ink",
+        "canonical": "rgba(4,6,11,.72)",
+        "tonalRamp": ["rgba(4,6,11,.35)", "rgba(4,6,11,.44)", "rgba(4,6,11,.52)", "rgba(4,6,11,.6)", "rgba(4,6,11,.72)", "rgba(4,6,11,.82)", "rgba(4,6,11,.9)", "rgba(4,6,11,1)"]
       },
-      "prose-soft": {
+      "rule": {
         "role": "neutral",
-        "displayName": "Prose Soft",
-        "canonical": "rgba(232,224,255,.72)",
-        "tonalRamp": ["rgba(232,224,255,.3)", "rgba(232,224,255,.4)", "rgba(232,224,255,.52)", "rgba(232,224,255,.62)", "rgba(232,224,255,.72)", "rgba(232,224,255,.82)", "rgba(232,224,255,.9)", "#e8e0ff"]
+        "displayName": "Rule",
+        "canonical": "rgba(60,232,255,.38)",
+        "tonalRamp": ["rgba(60,232,255,.06)", "rgba(60,232,255,.1)", "rgba(60,232,255,.16)", "rgba(60,232,255,.22)", "rgba(60,232,255,.3)", "rgba(60,232,255,.38)", "rgba(60,232,255,.52)", "rgba(60,232,255,.7)"]
+      },
+      "hair": {
+        "role": "neutral",
+        "displayName": "Hair",
+        "canonical": "rgba(60,232,255,.13)",
+        "tonalRamp": ["rgba(60,232,255,.03)", "rgba(60,232,255,.05)", "rgba(60,232,255,.08)", "rgba(60,232,255,.1)", "rgba(60,232,255,.13)", "rgba(60,232,255,.2)", "rgba(60,232,255,.3)", "rgba(60,232,255,.45)"]
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "The landing wordmark, and nothing else. Dot matrix with the rounding axis turned off." },
-      "headline": { "displayName": "Headline", "purpose": "Page titles on the three subpages." },
-      "title": { "displayName": "Title", "purpose": "Section headings and certificate names." },
-      "body": { "displayName": "Body", "purpose": "All prose, at the 16px cell the bitmap gothic was drawn for." },
-      "label": { "displayName": "Label", "purpose": "System bars, plate bands, table headers, dates, footer." },
-      "numeral": { "displayName": "Numeral", "purpose": "Plate bands and the project index column. Numerals are always the dot matrix." }
+      "display": { "displayName": "Display", "purpose": "The page number in the yellow bar. Doto only." },
+      "headline": { "displayName": "Headline", "purpose": "A subpage's title, 1.45em in yellow: the one heading allowed to stand visibly larger than the character cell." },
+      "logo": { "displayName": "Logo", "purpose": "The wordmark, drawn out of solid blocks in the character cell. Text, not an image." },
+      "body": { "displayName": "Body", "purpose": "All reading, sized in container units so the character grid tracks the tube." },
+      "label": { "displayName": "Label", "purpose": "Captions, table headers, states, fastext keys." },
+      "numeral": { "displayName": "Numeral", "purpose": "Row indices, dates, counts — anything countable." }
     },
     "shadows": [
-      { "name": "ink-layer-rest", "value": "3px 3px 0 rgba(125,255,61,.55)", "purpose": "A second printed layer sitting out of register behind a plate." },
-      { "name": "ink-layer-separated", "value": "6px 6px 0 #ff3d8b", "purpose": "Hover and keyboard focus: the layers pull apart and the visible layer turns magenta." },
-      { "name": "ink-layer-flush", "value": "0 0 0 #ff3d8b", "purpose": "Active: the plate is pressed down onto its own layer." },
-      { "name": "primary-plate-layer", "value": "3px 3px 0 rgba(255,204,51,.5)", "purpose": "The reserved amber layer, printed once in the whole site." }
+      { "name": "glass-ring", "value": "inset 0 0 0 1px rgba(255,255,255,.05)", "purpose": "The inner ring where the bezel meets the glass." },
+      { "name": "glass-vignette", "value": "inset 0 0 54px 14px rgba(0,0,0,.92)", "purpose": "The tube darkening toward its own edge. Not elevation: the inside of a funnel." },
+      { "name": "pilot-lens", "value": "inset 0 0 0 1px rgba(4,6,11,.55), 0 0 0 1px rgba(4,6,11,.9)", "purpose": "The dark ring that seats the green pilot lens into the plastic. A ring, not a halo: no glow appears anywhere on the case." },
+      { "name": "set-cast", "value": "0 46px 90px -34px rgba(0,0,0,.95)", "purpose": "The only outward shadow in the system, under the whole set on the desk." }
     ],
     "motion": [
-      { "name": "step-two", "value": "steps(2, end)", "purpose": "Every state transition. A mechanical two-step snap, never a smooth ease." },
-      { "name": "jitter", "value": "0.4s steps(2, end) 2", "purpose": "The label jitter on a hovered plate: exactly two iterations, then still." }
+      { "name": "power-on", "value": "0.95s cubic-bezier(.2,.85,.15,1)", "purpose": "Once, on load: the tube's line opens into a picture." },
+      { "name": "vhold", "value": "7s steps(1, end) infinite", "purpose": "An occasional 1px vertical jitter: the set is not perfectly locked." },
+      { "name": "roll", "value": "13s linear infinite", "purpose": "The slow vertical-retrace band travelling up the glass." }
     ],
     "breakpoints": [
-      { "name": "rack-stack", "value": "860px" },
-      { "name": "table-to-blocks", "value": "620px" }
+      { "name": "phone", "value": "820px" }
     ]
   },
   "components": [
     {
-      "name": "Plate",
-      "kind": "button",
-      "refersTo": "plate",
-      "description": "The system's only control: an 88×31 button drawn at its true proportion, scaled up to hold a word. Used for section navigation and for going back one page.",
-      "html": "<a class=\"ds-plate\" href=\"#\">proyectos</a>",
-      "css": ".ds-plate{display:flex;align-items:center;justify-content:center;aspect-ratio:88/31;min-height:74px;position:relative;background:#141126;border:1px solid #ff3d8b;box-shadow:3px 3px 0 rgba(125,255,61,.55);color:#e8e0ff;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:15px;letter-spacing:.14em;text-transform:lowercase;text-decoration:none;transition:transform .12s steps(2,end),box-shadow .12s steps(2,end)}.ds-plate::after{content:'';position:absolute;inset:5px;border:1px dotted rgba(232,224,255,.24);pointer-events:none}.ds-plate:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #ff3d8b}.ds-plate:active{transform:translate(3px,3px);box-shadow:0 0 0 #ff3d8b}.ds-plate:focus-visible{outline:2px solid #7dff3d;outline-offset:3px}"
-    },
-    {
-      "name": "Primary Plate",
-      "kind": "button",
-      "refersTo": "plate-primary",
-      "description": "The one reserved-amber element in the site: the landing's primary action. It must never be repeated anywhere else.",
-      "html": "<a class=\"ds-plate-primary\" href=\"#\">proyectos</a>",
-      "css": ".ds-plate-primary{display:flex;align-items:center;justify-content:center;aspect-ratio:88/31;min-height:74px;position:relative;background:#141126;border:1px solid #ffcc33;box-shadow:3px 3px 0 rgba(255,204,51,.5);color:#ffcc33;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:15px;letter-spacing:.14em;text-transform:lowercase;text-decoration:none;transition:transform .12s steps(2,end),box-shadow .12s steps(2,end)}.ds-plate-primary::after{content:'';position:absolute;inset:5px;border:1px dotted rgba(232,224,255,.24);pointer-events:none}.ds-plate-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #ffcc33}.ds-plate-primary:active{transform:translate(3px,3px);box-shadow:0 0 0 #ffcc33}.ds-plate-primary:focus-visible{outline:2px solid #7dff3d;outline-offset:3px}"
-    },
-    {
-      "name": "Plate Band",
-      "kind": "custom",
-      "refersTo": "plate-hover",
-      "description": "The numbered caption under a plate, carrying the same fixed facts in the same order for every section.",
-      "html": "<p class=\"ds-plate-band\"><span class=\"ds-plate-band-k\">[ 01 ]</span> nueve abiertos · siete cerrados</p>",
-      "css": ".ds-plate-band{margin:0;padding-top:10px;border-top:1px dotted rgba(255,61,139,.34);color:#7dff3d;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:13px}.ds-plate-band-k{margin-right:8px;color:#ff3d8b;font-family:'Doto',ui-monospace,monospace;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}"
-    },
-    {
-      "name": "Contact Door",
-      "kind": "button",
-      "refersTo": "contact-plate",
-      "description": "The smaller plate used for the four contact destinations, resting on the recessed plate colour.",
-      "html": "<a class=\"ds-door\" href=\"#\">github</a>",
-      "css": ".ds-door{display:flex;align-items:center;justify-content:center;aspect-ratio:88/31;min-height:60px;border:1px solid rgba(255,61,139,.34);background:#100e1e;color:#7dff3d;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:13px;letter-spacing:.12em;text-transform:lowercase;text-decoration:none;transition:transform .12s steps(2,end),box-shadow .12s steps(2,end)}.ds-door:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 #7dff3d;color:#7dff3d;border-color:#7dff3d}.ds-door:focus-visible{outline:2px solid #7dff3d;outline-offset:3px}"
-    },
-    {
-      "name": "Page Bezel",
+      "name": "The Tube",
       "kind": "card",
-      "refersTo": "page-bezel",
-      "description": "The site's outermost surface. The page is the first plate in the system: a 1px magenta frame with a dotted magenta line 5px inside it.",
-      "html": "<div class=\"ds-bezel\"><div class=\"ds-bezel-osbar\"><span>index of / <b>alpefe.me</b></span><span class=\"ds-bezel-claim\">sin cookies · sin trackers · sin analítica</span></div><div class=\"ds-bezel-body\">el resto de la página</div></div>",
-      "css": ".ds-bezel{position:relative;margin:12px;border:1px solid #ff3d8b;background:linear-gradient(180deg,rgba(20,17,38,.86),rgba(11,9,18,.92));color:#e8e0ff;font-family:'DotGothic16',ui-monospace,'Courier New',monospace}.ds-bezel::before{content:'';position:absolute;inset:5px;border:1px dotted rgba(255,61,139,.34);pointer-events:none}.ds-bezel-osbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;padding:12px 22px;border-bottom:1px solid rgba(255,61,139,.34);color:#ff3d8b;font-size:12px;letter-spacing:.16em;text-transform:uppercase}.ds-bezel-osbar b{font-weight:400;color:#7dff3d}.ds-bezel-claim{color:#ff3d8b}.ds-bezel-body{padding:22px}"
+      "refersTo": "tube",
+      "description": "The 4:3 set: an elliptical-cornered plastic bezel recessed around a glass, with a green pilot light. On a phone its height follows its content.",
+      "html": "<div class=\"ds-tube\"><div class=\"ds-glass\"><div class=\"ds-screen\">P100 alpefe.me</div></div><span class=\"ds-led\"></span></div>",
+      "css": ".ds-tube{position:relative;width:min(100%,calc(76vh * 4 / 3),1240px);aspect-ratio:4 / 3;container-type:inline-size;padding:2.2cqi 2.93cqi;border-radius:5.6% / 7.4%;background:linear-gradient(176deg,#242833 0%,#12151c 42%,#0b0d12 72%,#1c2029 100%);box-shadow:0 46px 90px -34px rgba(0,0,0,.95),inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.7)}.ds-glass{position:relative;width:100%;height:100%;border-radius:5.2% / 8.6%;overflow:hidden;background:#04060b;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),inset 0 0 54px 14px rgba(0,0,0,.92)}.ds-screen{padding:4.8% 4.6%;color:#eef0ff;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:1.45cqi;line-height:1.4;text-shadow:0 0 1px currentColor,0 0 7px rgba(120,200,255,.16)}.ds-led{position:absolute;right:3.4%;bottom:1.5%;width:.5cqi;height:.5cqi;min-width:4px;min-height:4px;border-radius:50%;background:#3ce86a;box-shadow:0 2px 6px 1px rgba(60,232,106,.55),0 3px 16px 3px rgba(60,232,106,.22)}"
     },
     {
-      "name": "Ring Bar",
+      "name": "The Warp",
+      "kind": "custom",
+      "refersTo": "glass",
+      "description": "A generated radial displacement map bends the signal so straight rules bow. Zero JavaScript; one 3 KB asset; off in one media query on a phone.",
+      "html": "<svg width=\"0\" height=\"0\" style=\"position:absolute\" aria-hidden=\"true\"><filter id=\"ds-warp\" primitiveUnits=\"objectBoundingBox\" x=\"-8%\" y=\"-8%\" width=\"116%\" height=\"116%\" color-interpolation-filters=\"sRGB\"><feImage href=\"/assets/tube-map.png\" x=\"0\" y=\"0\" width=\"1\" height=\"1\" preserveAspectRatio=\"none\" result=\"map\"></feImage><feDisplacementMap in=\"SourceGraphic\" in2=\"map\" scale=\"0.05\" xChannelSelector=\"R\" yChannelSelector=\"G\"></feDisplacementMap></filter></svg>",
+      "css": ".ds-warp{position:absolute;inset:0;filter:url(#ds-warp);animation:ds-on .95s cubic-bezier(.2,.85,.15,1) both}@keyframes ds-on{0%{transform:scaleY(.004);filter:brightness(7)}34%{transform:scaleY(.004);filter:brightness(7)}62%{transform:scaleY(1.03);filter:brightness(1.5)}100%{transform:scaleY(1);filter:brightness(1)}}"
+    },
+    {
+      "name": "Aperture and Scanlines",
+      "kind": "custom",
+      "refersTo": "glass",
+      "description": "Two overlays above the signal: vertical RGB stripes at 3px and horizontal scanlines at 3px. They belong to the glass, so they are never warped with the content.",
+      "html": "<div class=\"ds-crt\" aria-hidden=\"true\"></div>",
+      "css": ".ds-crt{position:absolute;inset:0;pointer-events:none;background-image:repeating-linear-gradient(90deg,rgba(255,70,60,.15) 0 1px,rgba(70,255,140,.11) 1px 2px,rgba(80,120,255,.15) 2px 3px),repeating-linear-gradient(0deg,rgba(0,0,0,.34) 0 1px,rgba(0,0,0,0) 1px 3px)}"
+    },
+    {
+      "name": "Page Bar",
       "kind": "nav",
-      "refersTo": "ring-current",
-      "description": "The site's own four-page ring. Previous and next links on the outside, the route in the middle with the current page as a solid green chip.",
-      "html": "<nav class=\"ds-ring\" aria-label=\"Recorrido del sitio\"><span class=\"ds-ring-rr\">&lt; anterior</span><ol class=\"ds-ring-route\"><li><a href=\"#\" aria-current=\"page\">índice</a></li><li><a href=\"#\">proyectos</a></li><li><a href=\"#\">certificados</a></li><li><a href=\"#\">sobre mí</a></li></ol><span class=\"ds-ring-rr ds-ring-rr-next\">siguiente &gt;</span></nav>",
-      "css": ".ds-ring{margin:0;padding:14px 22px;border-top:1px solid rgba(255,61,139,.34);border-bottom:1px solid rgba(255,61,139,.34);display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:13px;letter-spacing:.1em}.ds-ring .ds-ring-route{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 auto;padding:0;list-style:none}.ds-ring .ds-ring-route li{display:flex;align-items:center;gap:8px}.ds-ring .ds-ring-route li+li::before{content:'>';color:rgba(255,61,139,.55);margin-right:2px}.ds-ring a{color:#ff3d8b;text-decoration:none}.ds-ring a:hover{color:#ff3d8b}.ds-ring .ds-ring-route a[aria-current=\"page\"]{color:#0b0912;background:#7dff3d;padding:2px 8px}.ds-ring .ds-ring-rr{flex:0 0 auto;min-width:104px}.ds-ring .ds-ring-rr a{color:#7dff3d}.ds-ring .ds-ring-rr-next{text-align:right}"
+      "refersTo": "page-bar",
+      "description": "The yellow strip at the top of every page: page number in the dot matrix, the path, and a right-hand claim in dimmed frame ink.",
+      "html": "<div class=\"ds-bar\"><span class=\"ds-bar-pg\">P100</span><span class=\"ds-bar-nm\">alpefe.me</span><span class=\"ds-bar-rt\">sin cookies · sin js</span></div>",
+      "css": ".ds-bar{display:flex;align-items:center;gap:1ch;background:#e8d84a;color:#04060b;padding:.3em .7em;text-transform:uppercase;letter-spacing:.06em;text-shadow:none;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:14px}.ds-bar-pg{font-family:'Doto',ui-monospace,monospace;font-weight:900;font-size:1.15em;letter-spacing:0}.ds-bar-nm{flex:1}.ds-bar-rt{font-size:.85em;color:rgba(4,6,11,.72)}"
+    },
+    {
+      "name": "Index Row",
+      "kind": "nav",
+      "refersTo": "row",
+      "description": "A numbered destination: a dot-matrix key in yellow, the name in phosphor white, a dim note, and a cyan arrow. Hover inverts the whole row to a solid cyan field.",
+      "html": "<a class=\"ds-row\" href=\"#\"><span class=\"ds-row-k\">101</span><span class=\"ds-row-n\">proyectos</span><span class=\"ds-row-d\">9 abiertos · 7 cerrados, por lo que hacen</span><span class=\"ds-row-go\">&gt;</span></a>",
+      "css": ".ds-row{display:grid;grid-template-columns:5ch minmax(12ch,16ch) 1fr 2ch;gap:0 1ch;align-items:baseline;padding:.16em .5ch;text-decoration:none;color:#eef0ff;border-bottom:1px solid rgba(60,232,255,.13);font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:14px;line-height:1.4}.ds-row-k{font-family:'Doto',ui-monospace,monospace;font-weight:700;color:#e8d84a}.ds-row-d{color:rgba(238,240,255,.62);font-size:.94em}.ds-row-go{color:#3ce8ff;text-align:right}.ds-row:hover,.ds-row:focus-visible{background:#3ce8ff;color:#04060b;text-shadow:none}.ds-row:hover .ds-row-k,.ds-row:hover .ds-row-n,.ds-row:hover .ds-row-d,.ds-row:hover .ds-row-go{color:#04060b}"
     },
     {
       "name": "Log Row",
       "kind": "custom",
-      "refersTo": "log-row",
-      "description": "The landing's dated entry: a green date label, the name with its one-line description, and the state aligned right. Every date is the repository's own last-change date.",
-      "html": "<ul class=\"ds-log\"><li><span class=\"ds-log-d\">2026-10</span><span class=\"ds-log-w\"><b>gam-mcp</b> Consultar y operar la base de datos del producto en lenguaje natural.</span><span class=\"ds-log-st ds-log-closed\">cerrado</span></li></ul>",
-      "css": ".ds-log{margin:0;padding:0;list-style:none;border-top:1px solid rgba(232,224,255,.14);font-family:'DotGothic16',ui-monospace,'Courier New',monospace}.ds-log li{display:grid;grid-template-columns:96px 1fr auto;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(232,224,255,.14)}.ds-log-d{color:#7dff3d;font-size:12px;letter-spacing:.12em}.ds-log-w{color:rgba(232,224,255,.72);font-size:15px}.ds-log-w b{display:block;color:#e8e0ff;font-weight:400}.ds-log-st{color:#7dff3d;font-size:11px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}.ds-log-closed{color:#ff3d8b}"
+      "refersTo": "row",
+      "description": "A dated entry: a dot-matrix date in cyan, a name, a dim description, and an uppercase state in green or red aligned right.",
+      "html": "<ul class=\"ds-log\"><li><span class=\"ds-log-d\">2026-10</span><span class=\"ds-log-t\">gam-mcp</span><span class=\"ds-log-w\">consultar la base de datos del producto en lenguaje natural</span><span class=\"ds-log-st ds-closed\">cerrado</span></li></ul>",
+      "css": ".ds-log{margin:0;padding:0;list-style:none;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:14px}.ds-log li{display:grid;grid-template-columns:8ch minmax(14ch,22ch) 1fr 9ch;gap:0 1ch;align-items:baseline;padding:.16em .5ch;border-bottom:1px solid rgba(60,232,255,.13);color:#eef0ff;line-height:1.4}.ds-log-d{font-family:'Doto',ui-monospace,monospace;font-weight:700;color:#3ce8ff;font-size:.95em}.ds-log-w{color:rgba(238,240,255,.62);font-size:.94em}.ds-log-st{text-align:right;text-transform:uppercase;font-size:.82em;color:#3ce86a;letter-spacing:.06em}.ds-closed{color:#ff5442}"
     },
     {
-      "name": "Project Row",
+      "name": "Fastext Keys",
+      "kind": "nav",
+      "refersTo": "key-projects",
+      "description": "Four colour-coded destinations pinned to the bottom edge of the glass with a 1.5ch square in the key's own colour. They stay in view when the glass scrolls.",
+      "html": "<nav class=\"ds-keys\"><a class=\"k1\" href=\"#\"><i></i>índice</a><a class=\"k2\" href=\"#\"><i></i>proyectos</a><a class=\"k3\" href=\"#\"><i></i>certificados</a><a class=\"k4\" href=\"#\"><i></i>sobre mí</a></nav>",
+      "css": ".ds-keys{display:flex;gap:1.6ch;flex-wrap:wrap;padding-top:.35em;border-top:1px solid rgba(60,232,255,.28);font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:.86em;text-transform:uppercase;letter-spacing:.08em}.ds-keys a{display:inline-flex;align-items:center;gap:.6ch;text-decoration:none;color:rgba(238,240,255,.62)}.ds-keys i{width:1.5ch;height:.9em;display:inline-block;background:currentColor}.ds-keys .k1{color:#ff5442}.ds-keys .k2{color:#3ce86a}.ds-keys .k3{color:#e8d84a}.ds-keys .k4{color:#3ce8ff}.ds-keys a[aria-current]{color:#eef0ff}.ds-keys a:hover{color:#eef0ff}"
+    },
+    {
+      "name": "Empty Slot",
       "kind": "custom",
-      "refersTo": "project-row",
-      "description": "A row of the project index: a dot-matrix numeral, the name as a stock link, what the thing does in plain language, the state, the year. No technology is ever named.",
-      "html": "<table class=\"ds-ptable\"><thead><tr><th scope=\"col\">nº</th><th scope=\"col\">proyecto</th><th scope=\"col\">qué hace</th><th scope=\"col\">estado</th><th scope=\"col\">año</th></tr></thead><tbody><tr><td class=\"ds-p-n\">01</td><td class=\"ds-p-nm\"><a href=\"#\">fuji-ptp-android</a></td><td>Leer y escribir las recetas personalizadas de una Fujifilm X100VI desde el móvil.</td><td class=\"ds-p-st\">abierto</td><td class=\"ds-p-yr\">2026</td></tr></tbody></table>",
-      "css": ".ds-ptable{width:100%;border-collapse:collapse;font-family:'DotGothic16',ui-monospace,'Courier New',monospace}.ds-ptable th{text-align:left;font-weight:400;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#ff3d8b;border-bottom:1px solid rgba(255,61,139,.34);padding:0 12px 8px 0}.ds-ptable td{vertical-align:top;padding:14px 12px 14px 0;border-bottom:1px solid rgba(232,224,255,.14);color:rgba(232,224,255,.72);font-size:15px}.ds-p-n{font-family:'Doto',ui-monospace,monospace;font-size:17px;font-weight:700;color:#ff3d8b;font-variant-numeric:tabular-nums}.ds-p-nm a{color:#e8e0ff;text-decoration:none;border-bottom:1px solid rgba(255,61,139,.55)}.ds-p-nm a:hover{color:#7dff3d;border-bottom-color:#7dff3d}.ds-p-st{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7dff3d}.ds-p-yr{font-size:12px;color:#7dff3d;white-space:nowrap}"
+      "refersTo": "slot",
+      "description": "A deliberate placeholder for an asset the owner still owes. It states the absence instead of pretending to be a broken image.",
+      "html": "<p class=\"ds-slot\">imagen pendiente — la captura del certificado la subo yo</p>",
+      "css": ".ds-slot{margin:.4em 0 0;border:1px dashed rgba(255,84,66,.55);color:#ff5442;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:.85em;text-transform:uppercase;letter-spacing:.1em;padding:.5em .8ch;text-align:center;line-height:1.4}"
     },
     {
-      "name": "Ficha Block",
-      "kind": "card",
-      "refersTo": "page-bezel",
-      "description": "A recessed sheet of banded facts — label on the left, value on the right — used for the spec table and the colophon.",
-      "html": "<div class=\"ds-ficha\"><h2>ficha</h2><dl><div><dt>handle</dt><dd>alpefe · polaper</dd></div><div><dt>terreno</dt><dd>salud · datos · seguridad</dd></div></dl></div>",
-      "css": ".ds-ficha{border:1px solid rgba(255,61,139,.34);background:#100e1e;padding:18px;font-family:'DotGothic16',ui-monospace,'Courier New',monospace}.ds-ficha h2{margin:0 0 12px;font-size:13px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:#ff3d8b;line-height:1.4}.ds-ficha dl{margin:0}.ds-ficha div{display:grid;grid-template-columns:11ch 1fr;gap:12px;padding:8px 0;border-bottom:1px solid rgba(232,224,255,.14)}.ds-ficha div:last-child{border-bottom:0}.ds-ficha dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#ff3d8b}.ds-ficha dd{margin:0;font-size:14px;color:rgba(232,224,255,.72)}"
-    },
-    {
-      "name": "Empty Frame",
+      "name": "Phosphor Logo",
       "kind": "custom",
-      "refersTo": "page-bezel",
-      "description": "A deliberate placeholder for an asset the owner still has to supply. It states that the image is pending rather than pretending to be a broken file.",
-      "html": "<figure class=\"ds-frame\"><span class=\"ds-frame-cross\" aria-hidden=\"true\"></span><span>imagen pendiente</span><figcaption>Captura del certificado.</figcaption></figure>",
-      "css": ".ds-frame{margin:18px 0 0;border:1px solid rgba(255,61,139,.34);background:#0b0912;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#7dff3d;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase}.ds-frame-cross{width:30px;height:30px;position:relative;opacity:.8}.ds-frame-cross::before,.ds-frame-cross::after{content:'';position:absolute;background:rgba(255,61,139,.55)}.ds-frame-cross::before{left:50%;top:0;width:1px;height:100%}.ds-frame-cross::after{top:50%;left:0;height:1px;width:100%}.ds-frame figcaption{color:rgba(232,224,255,.72);text-transform:none;letter-spacing:.04em;font-size:13px}"
+      "refersTo": "tube",
+      "description": "The wordmark drawn as a block mosaic in the character cell: text, so it scales and selects, with flush leading because the leading is the artwork.",
+      "html": "<pre class=\"ds-logo\" aria-label=\"alpefe\" translate=\"no\">  ██████    ██          ████████    ██████████  ██████████  ██████████\n██      ██  ██          ██      ██  ██          ██          ██        \n██████████  ██          ████████    ████████    ████████    ████████  \n██      ██  ██          ██          ██          ██          ██        \n██      ██  ██████████  ██          ██████████  ██          ██████████</pre>",
+      "css": ".ds-logo{margin:.45em 0 .35em;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:min(.78em,2.25cqi);line-height:1;color:#eef0ff;text-shadow:0 0 3px rgba(120,200,255,.3)}"
     }
   ],
   "narrative": {
-    "northStar": "The Index of One",
-    "overview": "A directory listing with exactly one person in it. The site behaves like a file index rendered in two inks: a bezelled sheet, an `index of /` header, rows that carry dates, and a navigation made of the one control the late-nineties personal web actually had — the 88×31 button, drawn at its true proportion and scaled up until it can hold a word. Nothing here is a brochure. Every element is an entry, and every entry is either a fact or a way out.\n\nThe material is two fluorescent inks printed slightly out of register on an impure violet-white stock, sitting inside a dark tube. Depth is not light; depth is misregistration. Where a contemporary interface would drop a soft shadow, this one separates two printed layers by a hard offset with no blur, and collapses them flush when pressed. Hovering pulls them apart. The effect is the wobble of a CRT edge and the slip of a bad print run at the same time, and it is the only motion the site has.\n\nDensity stays deliberately low — this world could carry ten times the elements it does, and the brief's whole request was to resist that. Two sentences of prose, three plates, one log, four doors. What carries the character is commitment: the inks are saturated and unreconciled, the numerals are set in a dot matrix that echoes the ground's dot tile, and nothing is grey.",
+    "northStar": "The Teletext Tube",
+    "overview": "This is not a web page dressed as a monitor. It is what the monitor shows. A dark room, one 4:3 tube with a plastic bezel and a green pilot light, and behind curved glass a teletext service with exactly one subscriber: a numbered page index, a dated log, four keyed destinations, and a block-mosaic wordmark built out of solid cells. Every mark on the screen is made of the same stuff — the eight inks a broadcast teletext decoder had, none of them pure, laid on phosphor black.\n\nThe signal is bent, not painted. A generated radial displacement map warps the live page through an SVG filter, so straight rules bow downward at the centre, verticals splay, and the top edge of the page bar arcs. It is real geometry: a 3 KB map computed from u·r², applied with zero JavaScript, and switching off in one media query when the glass gets small. Nothing here is a photograph of a monitor, and nothing is a CSS bevel pretending to be one.\n\nThe density is deliberately low but the grid is strict: everything sits in a fixed-pitch character cell, set at 11-17px depending on how big the tube is. The window is the frame, not the page. Where a modern site would scroll a document, this one shows one screenful and, when a list is longer than the glass, scrolls inside it the way a terminal does.",
     "keyCharacteristics": [
-      "Two inks own every structural mark: hot magenta and acid green. No neutral draws a rule.",
-      "One impure violet-white stock carries prose, so the two inks never have to soften.",
-      "One reserved amber exists, and it is spent once, on the landing's primary plate.",
-      "Depth is registration: hard-offset ink layers, no blur anywhere.",
-      "Zero JavaScript, zero cookies, zero third-party requests.",
-      "Faces are a dot-matrix display and a 16px bitmap gothic — screen materials, not a console costume."
+      "One 4:3 glass, centred in a dark room; the phone grows it taller so nothing is trapped.",
+      "Eight teletext inks, none pure, plus a dimmed phosphor white for prose.",
+      "Curvature from a computed displacement map, never from an image of a monitor.",
+      "Aperture grille in vertical RGB stripes and horizontal scanlines, above the signal.",
+      "Every word in a bitmap gothic; every numeral and the page number in a dot matrix.",
+      "Zero JavaScript, zero cookies, zero third-party requests."
     ],
     "rules": [
-      { "name": "The Two Inks Rule", "body": "Every rule, border, box and label is magenta or acid green. A neutral never draws structure; it only carries prose. Row separators are the structure ink at 20% alpha, and a plate's dotted interior is the same ink at 34%. If an element needs a line and neither ink fits, the element is wrong, not the palette.", "section": "colors" },
-      { "name": "The Once Rule", "body": "The reserved amber appears a single time in the whole site, on the landing's primary plate. A second appearance is a bug, not a flourish.", "section": "colors" },
-      { "name": "The Impure Ink Rule", "body": "No colour reaches purity. The black is violet, the white is violet-tinged, the green is a chartreuse, the magenta stops short of full saturation, and the amber is a gold. Pure #000, #fff, #00ff00 and #ff00ff are forbidden.", "section": "colors" },
-      { "name": "The One Action Rule", "body": "The landing owns the site's single action. The three subpages are reading surfaces: they spend no reserved ink and they never compete with the landing's plate.", "section": "colors" },
-      { "name": "The Two Voices Rule", "body": "Doto speaks only for the wordmark and for numerals; DotGothic16 speaks for every other word in the site. A third face is a regression.", "section": "typography" },
-      { "name": "The Half-Width Rule", "body": "Prose runs at 16px and never below 13px, because DotGothic16 is drawn for a 16px cell and anything smaller loses its grid.", "section": "typography" },
-      { "name": "The Registration Rule", "body": "Depth is misregistration. An offset shadow always has zero blur and always represents a second printed layer. Introducing a blurred shadow to \"add depth\" breaks the world.", "section": "elevation" },
-      { "name": "The Freeze Rule", "body": "Under prefers-reduced-motion: reduce every transition and animation is removed and the plate stops translating. Registration becomes a static 1px state change; the hierarchy must still read.", "section": "elevation" }
+      { "name": "The Eight Inks Rule", "body": "Only the eight teletext colours plus a dimmed phosphor white may appear. A colour outside that set is a decoder that never existed.", "section": "colors" },
+      { "name": "The No-Pure-Ink Rule", "body": "Nothing reaches purity. The black is blue-black, the white is phosphor-tinted, and every saturated ink stops short of the primaries. Pure #000, #fff, #00ff00, #ff0000 and #0000ff are forbidden.", "section": "colors" },
+      { "name": "The Blue Is Not Text Rule", "body": "Blue (#3c6cff) is a fill and a frame, never a body colour: on phosphor black it does not reach AA contrast, so it never carries reading.", "section": "colors" },
+      { "name": "The Once-Magenta Rule", "body": "Magenta appears in exactly one place in the whole site: the magenta route key. Anywhere else it is a bug.", "section": "colors" },
+      { "name": "The Character Cell Rule", "body": "Every word sits in a fixed-pitch cell and the layout is measured in characters — ch for columns, em for rhythm. A proportionally-set word anywhere in this site breaks the screen.", "section": "typography" },
+      { "name": "The Flush Mosaic Rule", "body": "The wordmark sets line-height: 1 on purpose: its rows of solid blocks must touch, because the leading is the artwork. This is the only place in the system where leading is allowed under 1.3, and it is text rather than an image so that it scales and selects.", "section": "typography" },
+      { "name": "The No-Lift Rule", "body": "Nothing casts a shadow to imply it sits above the page, and nothing on the case glows. The pilot lens is a flat dot in a dark ring; the only light in the site comes from the phosphor inside the glass.", "section": "elevation" },
+      { "name": "The Grille-Above Rule", "body": "Aperture stripes and scanlines always sit above the content, never behind it, at low alpha. Below the content they become a background pattern and the screen stops being glass.", "section": "elevation" }
     ],
     "dos": [
-      "Do draw every rule, border and box in one of the two inks — magenta for structure, acid green for state.",
-      "Do spend the reserved amber exactly once, on the landing's primary plate, and never on a subpage.",
-      "Do keep depth as a zero-blur offset layer that separates on hover and collapses on press.",
-      "Do set the wordmark and every numeral in Doto, and everything else in DotGothic16 at 16px.",
-      "Do keep prose measure between 60ch and 72ch and cap display at 112px.",
-      "Do label a date with what it actually is — the repository's last change — rather than implying a release.",
-      "Do mark a closed-source project in magenta and explain it by what it does."
+      "Do keep the tube 4:3 on the desk and let only the phone grow it.",
+      "Do keep the warp on the signal alone, and let the grille and vignette stay flat on the glass.",
+      "Do size type in cqi so the character grid tracks the tube, not the window.",
+      "Do give every quantity Doto and every word DotGothic16.",
+      "Do spend yellow on structure, cyan on reading, green on open, red on closed, and magenta exactly once.",
+      "Do label a date with what it is — the repository's last change — rather than implying a release."
     ],
     "donts": [
-      "Don't add a third ink, a grey, or a gradient. If a line needs a colour, it is magenta or green.",
-      "Don't add a border radius, a blurred shadow, a glass panel or a coloured left border. The system is square, flat and printed.",
-      "Don't spend the amber twice, or move the primary action below the fold.",
-      "Don't ship JavaScript, a cookie, an analytics tag or a third-party font request. The claim in the top bar has to stay true.",
+      "Don't add a shadow that implies something floats, or a glow anywhere on the case. The pilot lens is flat; the phosphor is the only light.",
+      "Don't use blue for text, magenta for anything but the route key, or any pure primary.",
+      "Don't put a border radius inside the glass.",
+      "Don't replace the displacement map with a photo of a monitor, or a CSS bevel pretending to be plastic.",
+      "Don't ship JavaScript, a cookie, an analytics tag or a third-party font request.",
       "Don't name a technology on the projects page. The list is about what things do.",
-      "Don't put location, legal name, portrait, or a blog on any page.",
-      "Don't let a subpage compete with the landing for the visitor's one action."
+      "Don't let a fixed glass height trap content on a phone."
     ]
   }
 }
