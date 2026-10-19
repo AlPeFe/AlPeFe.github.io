@@ -1,14 +1,17 @@
 #!/usr/bin/env node
-// Contadores de la sección «tokens» de la portada. Fuentes, en orden de
-// preferencia por proveedor:
+// Contadores de la sección «tokens» de la portada. Reparto de filas (cada
+// fila vive entre sus propios marcadores tok:* y NADIE escribe fuera de los
+// suyos — así varios cron pueden convivir sin pisarse):
 //
-//   opencode-go — registros locales de HanniPI (~/.pi/agent/sessions/*.jsonl):
+//   tok:oc-go   — ESTE script. Suma los tokens del proveedor opencode-go de
+//                 los registros locales de HanniPI (~/.pi/agent/sessions):
 //                 opencode-go no expone API pública de uso (comprobado 2026-10).
-//   hermes      — PORTAL DE NOUS como valor real si hay NOUS_TOKEN en el
-//                 entorno (lo que factura la cuenta); si no, registros locales.
-//   copilot     — API de GitHub «premium request usage» si hay GH_PAT en el
-//                 entorno (PAT con permiso Plan de lectura). Unidad: requests,
-//                 no tokens — GitHub no publica tokens de Copilot.
+//   tok:hermes  — NO lo toca este script: lo gobierna un cron del dueño que
+//                 escribe el total real del portal de Nous.
+//   tok:copilot — «undefined undefined» fijo. Si algún día existe GH_PAT en
+//                 el entorno (PAT con Plan:read), este script lo sustituye
+//                 por las premium requests de la API de GitHub. GitHub no
+//                 publica tokens de Copilot, sólo requests.
 //
 // Uso:
 //   node scripts/update-tokens.mjs           sólo actualiza index.html
@@ -28,7 +31,6 @@ const PUSH = process.argv.includes('--push');
 const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LANDING = path.join(REPO, 'index.html');
 const SESSIONS = path.join(os.homedir(), '.pi', 'agent', 'sessions');
-const NOUS_TOKEN = process.env.NOUS_TOKEN || '';
 const GH_PAT = process.env.GH_PAT || '';
 const GH_USER = 'AlPeFe';
 
@@ -36,12 +38,13 @@ const compact = (n) =>
   n >= 1e9 ? `${(n / 1e9).toFixed(1)}B` : n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` :
   n >= 1e3 ? `${(n / 1e3).toFixed(1)}k` : String(n);
 
-// ————— registros locales de HanniPI: opencode-go y nous (respaldo de hermes) —————
+const replaceRow = (html, key, row) =>
+  html.replace(
+    new RegExp(`(<!-- tok:${key}:start -->)[\\s\\S]*?(<!-- tok:${key}:end -->)`),
+    `$1${row}$2`,
+  );
 
-const LOCAL_PROVIDERS = new Map([
-  ['opencode-go', 'opencode-go'],
-  ['nous', 'hermes'],
-]);
+// ————— opencode-go: registros locales de HanniPI —————
 
 async function* sessionFiles(dir) {
   let entries = [];
@@ -53,11 +56,11 @@ async function* sessionFiles(dir) {
   }
 }
 
-async function aggregateLocal() {
-  const agg = new Map([...LOCAL_PROVIDERS.values()].map((p) => [p, { total: 0, day: 0 }]));
+async function aggregateOpencodeGo() {
+  const agg = { total: 0, day: 0 };
   const now = Date.now();
   for await (const file of sessionFiles(SESSIONS)) {
-    let current = null; // proveedor del último model_change del fichero
+    let isOcGo = false; // proveedor del último model_change del fichero
     let text;
     try { text = await readFile(file, 'utf8'); } catch { continue; }
     for (const line of text.split('\n')) {
@@ -65,60 +68,25 @@ async function aggregateLocal() {
       let d;
       try { d = JSON.parse(line); } catch { continue; }
       if (d.type === 'model_change') {
-        if (d.provider) current = d.provider;
+        isOcGo = d.provider === 'opencode-go';
         continue;
       }
       if (d.type !== 'message' || d.message?.role !== 'assistant') continue;
       const u = d.message.usage;
-      const provider = d.message.provider || current;
-      if (!u || !provider || !LOCAL_PROVIDERS.has(provider)) continue;
+      const provider = d.message.provider || (isOcGo ? 'opencode-go' : null);
+      if (!u || provider !== 'opencode-go') continue;
       const tokens = u.totalTokens ??
         (u.input || 0) + (u.output || 0) + (u.cacheRead || 0) + (u.cacheWrite || 0);
-      const slot = agg.get(LOCAL_PROVIDERS.get(provider));
-      slot.total += tokens;
+      agg.total += tokens;
       const when = Date.parse(d.timestamp || '');
-      if (when && now - when <= DAY) slot.day += tokens;
+      if (when && now - when <= DAY) agg.day += tokens;
     }
   }
   return agg;
 }
 
-// ————— hermes: total real del portal de Nous —————
-// El portal está tras el checkpoint de Vercel y no documenta la ruta; se
-// prueban las candidatas con la key y gana la primera que responda 200.
-async function fetchNousPortalTotal() {
-  if (!NOUS_TOKEN) return null;
-  const candidates = [
-    'https://portal.nousresearch.com/api/v1/usage',
-    'https://portal.nousresearch.com/api/usage',
-    'https://inference-api.nousresearch.com/v1/usage',
-  ];
-  const findTokens = (o) => {
-    if (!o || typeof o !== 'object') return null;
-    for (const [k, v] of Object.entries(o)) {
-      if (typeof v === 'number' && /total.*token|token.*total/i.test(k)) return v;
-    }
-    for (const v of Object.values(o)) {
-      const found = findTokens(v);
-      if (found !== null) return found;
-    }
-    return null;
-  };
-  for (const url of candidates) {
-    try {
-      const res = await fetch(url, { headers: { authorization: `Bearer ${NOUS_TOKEN}` } });
-      if (!res.ok) continue;
-      const total = findTokens(await res.json());
-      if (total !== null) { console.log(`nous portal: ${url} -> ${total.toLocaleString('es-ES')}`); return total; }
-    } catch { /* siguiente candidata */ }
-  }
-  console.warn('nous portal: ninguna ruta candidata respondió con datos; se usa el registro local');
-  return null;
-}
+// ————— copilot: sólo si hay GH_PAT (PAT con Plan:read) —————
 
-// ————— copilot: premium requests según GitHub —————
-// GET /users/{user}/settings/billing/premium_request/usage (PAT con Plan:read).
-// unitType "requests": GitHub no publica tokens de Copilot, publica requests.
 async function fetchCopilotUsage(params = '') {
   const url = `https://api.github.com/users/${GH_USER}/settings/billing/premium_request/usage${params}`;
   const res = await fetch(url, {
@@ -136,53 +104,45 @@ async function fetchCopilotUsage(params = '') {
 }
 
 async function copilotRow() {
-  if (!GH_PAT) return null;
+  if (!GH_PAT) return null; // sin PAT: la fila «undefined undefined» se queda como está
+  const total = await fetchCopilotUsage();
+  let day = 'undefined';
+  const now = new Date();
   try {
-    const total = await fetchCopilotUsage();
-    let day = null;
-    const now = new Date();
-    try {
-      day = await fetchCopilotUsage(
-        `?year=${now.getUTCFullYear()}&month=${now.getUTCMonth() + 1}&day=${now.getUTCDate()}`,
-      );
-    } catch { /* sin desglose diario: se muestra sólo el total */ }
-    return { total, day };
-  } catch (e) {
-    console.warn(`copilot: ${e.message}; fila omitida`);
-    return null;
-  }
+    day = `+${compact(await fetchCopilotUsage(
+      `?year=${now.getUTCFullYear()}&month=${now.getUTCMonth() + 1}&day=${now.getUTCDate()}`,
+    ))} / 24 h`;
+  } catch { /* sin desglose diario */ }
+  return `<li><span class="p">copilot</span><span class="n">${compact(total)} req</span><span class="d">${day}</span></li>`;
 }
 
-// ————— bloque de la portada —————
+// ————— aplicar al HTML —————
 
 const html = await readFile(LANDING, 'utf8').catch(() => '');
 if (!html) { console.error(`no puedo leer ${LANDING}`); process.exit(1); }
 
-const agg = await aggregateLocal();
-const nousPortal = await fetchNousPortalTotal();
-if (nousPortal !== null) agg.get('hermes').total = nousPortal; // el portal manda
+let next = html;
 
-const rows = [];
-for (const [name, { total, day }] of agg) {
-  rows.push(`<li><span class="p">${name}</span><span class="n">${compact(total)}</span><span class="d">+${compact(day)} / 24 h</span></li>`);
-}
-const copilot = await copilotRow();
-if (copilot) {
-  const day = copilot.day === null ? '—' : `+${compact(copilot.day)} / 24 h`;
-  rows.push(`<li><span class="p">copilot</span><span class="n">${compact(copilot.total)} req</span><span class="d">${day}</span></li>`);
-}
-
-const next = html.replace(
-  /(<!-- tokens:start -->)[\s\S]*?(<!-- tokens:end -->)/,
-  `$1\n${rows.join('\n')}\n$2`,
+const oc = await aggregateOpencodeGo();
+next = replaceRow(
+  next,
+  'oc-go',
+  `<li><span class="p">opencode-go</span><span class="n">${compact(oc.total)}</span><span class="d">+${compact(oc.day)} / 24 h</span></li>`,
 );
-if (next === html) console.log('sin marcadores tokens:start / tokens:end o sin cambios');
-else await writeFile(LANDING, next);
+console.log(`opencode-go  total=${oc.total.toLocaleString('es-ES')}  24h=${oc.day.toLocaleString('es-ES')}`);
 
-for (const [name, { total, day }] of agg) {
-  console.log(`${name.padEnd(12)} total=${total.toLocaleString('es-ES')}  24h=${day.toLocaleString('es-ES')}`);
+try {
+  const row = await copilotRow();
+  if (row) {
+    next = replaceRow(next, 'copilot', row);
+    console.log('copilot      actualizado desde GitHub');
+  }
+} catch (e) {
+  console.warn(`copilot: ${e.message}; se conserva la fila`);
 }
-if (copilot) console.log(`copilot      total=${copilot.total.toLocaleString('es-ES')} req  24h=${copilot.day ?? '—'}`);
+
+if (next === html) console.log('sin cambios');
+else await writeFile(LANDING, next);
 
 if (PUSH && next !== html) {
   const git = (args) => execFileSync('git', args, { cwd: REPO, stdio: 'inherit' });
