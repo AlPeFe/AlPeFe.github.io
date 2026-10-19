@@ -219,18 +219,26 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
 .row.here{background:rgba(60,232,255,.16)}
 .row.here .k{color:var(--cyan)}
 
-/* registro y listas: misma retícula bandeada */
-.log{margin:.4em 0 0;display:flex;flex-direction:column}
-.log li{
-  display:grid;grid-template-columns:8ch minmax(14ch,22ch) 1fr 9ch;
+/* ————— contribuciones: el grafo del perfil de GitHub, mismo tamaño y colores ————— */
+.contribs{margin:.4em 0 0}
+.contribs svg{display:block;width:100%;max-width:738px;height:auto}
+.contribs text{fill:var(--dim);font-family:var(--mono);font-size:9px}
+.contribs .total{color:var(--dim);font-size:.94em;margin:.4em 0 .2em}
+.contribs .total b{color:var(--ink);font-weight:400}
+.legend{display:inline-flex;align-items:center;gap:3px;margin-left:1.5ch;
+  font-size:.82em;text-transform:uppercase;letter-spacing:.1em}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+
+/* tokens: misma retícula bandeada que el resto de listas */
+.toks{margin:.4em 0 0;display:flex;flex-direction:column}
+.toks li{
+  display:grid;grid-template-columns:minmax(14ch,22ch) 1fr auto;
   gap:0 1ch;align-items:baseline;padding:.26em .5ch;
   border-bottom:1px solid var(--hair);
 }
-.log .d{font-family:var(--display);font-weight:700;color:var(--cyan);font-size:.95em}
-.log .t{color:var(--ink)}
-.log .w{color:var(--dim);font-size:.94em}
-.log .st{text-align:right;text-transform:uppercase;font-size:.82em;color:var(--green);letter-spacing:.06em}
-.log .st.closed{color:var(--red)}
+.toks .p{color:var(--ink)}
+.toks .n{color:var(--dim)}
+.toks .d{color:var(--green);text-align:right}
 
 .tag{text-transform:uppercase;letter-spacing:.14em;font-size:.82em;color:var(--yellow);margin:.9em 0 .2em}
 
@@ -318,9 +326,8 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
   .row{padding:.45em .5ch}
   .row .d,.row .go{text-align:left}
   .row .go{display:none}
-  .log li{grid-template-columns:1fr;padding:.5em .5ch}
-  .log .st,.log .st.closed{text-align:left}
-  .log .t,.log .d{display:inline}
+  .toks li{grid-template-columns:1fr;gap:0;padding:.5em .5ch}
+  .toks .d{text-align:left}
   .cert,.two-col{grid-template-columns:1fr}
   .socials{margin-left:0;width:100%}
   .tbl .nm{width:auto}

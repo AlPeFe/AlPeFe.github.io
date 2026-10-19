@@ -1,13 +1,14 @@
-name: refrescar últimos cambios
+name: refrescar actividad de GitHub
 
-# Una vez al día, y a mano cuando haga falta, actualiza las fechas de "último
-# cambio" de la portada y de /proyectos leyéndolas de la API de GitHub.
+# Una vez al día, y a mano cuando haga falta: redibuja el grafo de
+# contribuciones de la portada y las fechas de "último cambio" de /proyectos.
+# Todo sale de la API pública de GitHub, así que puede correr en la nube.
+# (Los tokens de la portada los actualiza una tarea LOCAL: viven en los
+# registros de sesión de HanniPI de la máquina — scripts/update-tokens.mjs.)
 #
 # Para ver también los repositorios privados hace falta un token personal con
 # permiso de lectura de repositorios, guardado como secreto `ALPEFE_TOKEN`
 # (Settings → Secrets and variables → Actions → New repository secret).
-# Sin ese secreto el script funciona igual, pero los privados conservan la
-# fecha que ya está publicada.
 
 on:
   schedule:
@@ -18,7 +19,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: update-log
+  group: update-live
   cancel-in-progress: true
 
 jobs:
@@ -31,10 +32,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Leer las fechas de la API de GitHub
+      - name: Redibujar contribuciones y leer fechas de la API de GitHub
         env:
           GH_TOKEN: ${{ secrets.ALPEFE_TOKEN }}
-        run: node scripts/update-log.mjs
+        run: node scripts/update-live.mjs
 
       - name: Commit y push si algo cambió
         run: |
@@ -45,5 +46,5 @@ jobs:
             exit 0
           fi
           git add index.html projects/index.html
-          git commit -m "chore: refrescar los últimos cambios desde GitHub"
+          git commit -m "chore: refrescar contribuciones y fechas desde GitHub"
           git push
