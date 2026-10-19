@@ -6,8 +6,9 @@
 //   tok:oc-go   — ESTE script. Suma los tokens del proveedor opencode-go de
 //                 los registros locales de HanniPI (~/.pi/agent/sessions):
 //                 opencode-go no expone API pública de uso (comprobado 2026-10).
-//   tok:hermes  — NO lo toca este script: lo gobierna un cron del dueño que
-//                 escribe el total real del portal de Nous.
+//   tok:hermes  — ESTE script también, SI hay NOUS_TOKEN en el entorno: toma
+//                 el total real del portal de Nous (lo que factura la cuenta).
+//                 Sin key, la fila se queda como estaba.
 //   tok:copilot — «undefined undefined» fijo. Si algún día existe GH_PAT en
 //                 el entorno (PAT con Plan:read), este script lo sustituye
 //                 por las premium requests de la API de GitHub. GitHub no
@@ -32,6 +33,7 @@ const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LANDING = path.join(REPO, 'index.html');
 const SESSIONS = path.join(os.homedir(), '.pi', 'agent', 'sessions');
 const GH_PAT = process.env.GH_PAT || '';
+const NOUS_TOKEN = process.env.NOUS_TOKEN || '';
 const GH_USER = 'AlPeFe';
 
 const compact = (n) =>
@@ -83,6 +85,55 @@ async function aggregateOpencodeGo() {
     }
   }
   return agg;
+}
+
+// ————— hermes: total real del portal de Nous (si hay NOUS_TOKEN) —————
+// El portal está tras el checkpoint de Vercel y no documenta la ruta; se
+// prueban candidatas con la key (Bearer y x-api-key) y gana la primera que
+// responda 200 con algo parseable. El día que se sepa la buena, se deja sola.
+async function fetchNousUsage() {
+  if (!NOUS_TOKEN) return null;
+  const candidates = [
+    'https://portal.nousresearch.com/api/v1/usage',
+    'https://portal.nousresearch.com/api/usage',
+    'https://portal.nousresearch.com/api/v1/account/usage',
+    'https://portal.nousresearch.com/api/v1/me/usage',
+    'https://inference-api.nousresearch.com/v1/usage',
+  ];
+  const headers = [
+    { authorization: `Bearer ${NOUS_TOKEN}` },
+    { 'x-api-key': NOUS_TOKEN },
+  ];
+  // busca números en claves tipo total/input/output tokens, en cualquier nivel
+  const pick = (o, re) => {
+    if (!o || typeof o !== 'object') return null;
+    for (const [k, v] of Object.entries(o)) {
+      if (typeof v === 'number' && re.test(k)) return v;
+    }
+    for (const v of Object.values(o)) {
+      const found = pick(v, re);
+      if (found !== null) return found;
+    }
+    return null;
+  };
+  for (const url of candidates) {
+    for (const h of headers) {
+      try {
+        const res = await fetch(url, { headers: h });
+        if (!res.ok) continue;
+        const data = await res.json();
+        const total = pick(data, /total.*tokens?|tokens?.*total/i);
+        const input = pick(data, /^(input|prompt).*tokens?|tokens?.*(input|prompt)$/i);
+        const output = pick(data, /^(output|completion).*tokens?|tokens?.*(output|completion)$/i);
+        if (total !== null || (input !== null && output !== null)) {
+          console.log(`nous portal: ${url} -> ok`);
+          return { total: total ?? input + output, input, output };
+        }
+      } catch { /* siguiente */ }
+    }
+  }
+  console.warn('nous portal: ninguna candidata respondió con datos; la fila hermes se conserva');
+  return null;
 }
 
 // ————— copilot: sólo si hay GH_PAT (PAT con Plan:read) —————
@@ -138,6 +189,23 @@ next = replaceRow(
   `<li><span class="p">opencode-go</span><span class="n">${compact(oc.total)}</span><span class="d">+${compact(oc.day)} / 24 h</span></li>`,
 );
 console.log(`opencode-go  total=${oc.total.toLocaleString('es-ES')}  24h=${oc.day.toLocaleString('es-ES')}`);
+
+try {
+  const nous = await fetchNousUsage();
+  if (nous) {
+    const detail = nous.input !== null && nous.output !== null
+      ? `${compact(nous.input)} in · ${compact(nous.output)} out`
+      : 'nous portal';
+    next = replaceRow(
+      next,
+      'hermes',
+      `<li><span class="p">hermes</span><span class="n">${compact(nous.total)}</span><span class="d">${detail}</span></li>`,
+    );
+    console.log(`hermes       total=${nous.total.toLocaleString('es-ES')} (portal de Nous)`);
+  }
+} catch (e) {
+  console.warn(`hermes: ${e.message}; se conserva la fila`);
+}
 
 try {
   const row = await copilotRow();
