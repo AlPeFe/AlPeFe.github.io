@@ -25,7 +25,8 @@ Content is edited by the owner directly in the repository; certificates arrive a
 - No build step, no framework, no package manager: everything must run from static files committed to the repository.
 - Deploy is GitHub Pages through `CNAME` → `alpefe.me`; the apex domain is the canonical host.
 - Subpages share one visual world with the landing and must stay reachable without JavaScript.
-- Contact channels, confirmed: X, Instagram, LinkedIn, GitHub. The X and LinkedIn handles are still to be supplied by the owner; Instagram is `alpefe.exe`.
+- Contact channels, confirmed and live: GitHub (`AlPeFe`), X (`alpefe_me`), Instagram (`alpefe.exe`) and LinkedIn (`alex-pérez-ferreira-a790b0236`).
+- Certifications are listed by title and issuer only: no image, no credential identifier, no dates.
 - Public email on the site is still open; the current `mailto:` is `alexpf.me@gmail.com`.
 - Certificate pages wait on images the owner provides; the page structure ships without them.
 - Deliberately minimal personal disclosure: no location, no legal name, no portrait, no dated personal narrative, no blog.

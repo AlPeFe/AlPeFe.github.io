@@ -1,0 +1,49 @@
+name: refrescar últimos cambios
+
+# Una vez al día, y a mano cuando haga falta, actualiza las fechas de "último
+# cambio" de la portada y de /proyectos leyéndolas de la API de GitHub.
+#
+# Para ver también los repositorios privados hace falta un token personal con
+# permiso de lectura de repositorios, guardado como secreto `ALPEFE_TOKEN`
+# (Settings → Secrets and variables → Actions → New repository secret).
+# Sin ese secreto el script funciona igual, pero los privados conservan la
+# fecha que ya está publicada.
+
+on:
+  schedule:
+    - cron: '17 4 * * *'   # 04:17 UTC, todos los días
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-log
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Leer las fechas de la API de GitHub
+        env:
+          GH_TOKEN: ${{ secrets.ALPEFE_TOKEN }}
+        run: node scripts/update-log.mjs
+
+      - name: Commit y push si algo cambió
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "Sin cambios hoy."
+            exit 0
+          fi
+          git add index.html projects/index.html
+          git commit -m "chore: refrescar los últimos cambios desde GitHub"
+          git push

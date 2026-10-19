@@ -193,12 +193,13 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
 
 /* ————— certificados ————— */
 .cert{
-  display:grid;grid-template-columns:minmax(18ch,26ch) 1fr;
-  gap:.2em 1.6ch;padding:.55em .5ch;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.1em 1.8ch;
+  margin:0;padding:.5em .5ch;
   border-bottom:1px solid var(--hair);
+  font-weight:400;font-size:1.05em;color:var(--ink);
+  text-transform:uppercase;letter-spacing:.06em;line-height:1.35;
 }
-.cert h2,.cert h3{margin:0;font-weight:400;font-size:1.05em;color:var(--ink);text-transform:uppercase;letter-spacing:.06em;line-height:1.35}
-.cert .iss{color:var(--yellow);font-size:.9em;text-transform:uppercase;letter-spacing:.1em}
+.cert .iss{color:var(--yellow);font-size:.82em;letter-spacing:.1em;margin-left:auto}
 .cert dl{margin:0;display:flex;flex-direction:column}
 .cert dl div{display:grid;grid-template-columns:11ch 1fr;gap:0 1ch;padding:.2em 0}
 .cert dt{color:var(--cyan);font-size:.85em;text-transform:uppercase;letter-spacing:.08em}
@@ -229,8 +230,7 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
   border-bottom:1px solid var(--rule);padding:0 1ch .2em 0}
 .tbl td{padding:.3em 1ch .3em 0;border-bottom:1px solid var(--hair);
   color:var(--dim);vertical-align:top}
-.tbl .n{font-family:var(--display);font-weight:700;color:var(--yellow);width:4ch}
-.tbl .nm{width:22ch;color:var(--ink)}
+.tbl .nm{width:20ch;color:var(--ink)}
 .tbl .nm a{color:var(--ink);text-decoration:none}
 .tbl .nm a:hover{background:var(--cyan);color:var(--glass);text-shadow:none}
 .tbl .st{width:8ch;text-transform:uppercase;font-size:.82em;color:var(--green);letter-spacing:.06em}
