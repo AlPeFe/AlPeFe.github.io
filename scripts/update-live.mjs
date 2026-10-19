@@ -24,7 +24,8 @@ const CATALOG = [
   'gam-mcp', 'tsnu-plataforma', 'HanniGram', 'xiaomi-tv-debloat',
   'fuji-ptp-android', 'kivotos', 'gesipan', 'SqlServerMcp', 'music-grabber',
   'WindowsServerAgent', 'tui-server-setup', 'Nagomi', 'GamFleet',
-  'charla-ia-equipo', 'Rac0', 'PolaperPOS',
+  'charla-ia-equipo', 'Rac0', 'PolaperPOS', 'HanniPI', 'konbini-psx',
+  'monitor-agent', 'monitor-agent-remote', 'fuji-ptp-core', 'PolaperBotV2',
 ];
 
 // Los cinco verdes del tema oscuro de GitHub, tal cual.
