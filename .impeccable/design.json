@@ -339,6 +339,14 @@
       "description": "The wordmark drawn as a block mosaic in the character cell: text, so it scales and selects, with flush leading because the leading is the artwork.",
       "html": "<pre class=\"ds-logo\" aria-label=\"alpefe\" translate=\"no\">  ██████    ██          ████████    ██████████  ██████████  ██████████\n██      ██  ██          ██      ██  ██          ██          ██        \n██████████  ██          ████████    ████████    ████████    ████████  \n██      ██  ██          ██          ██          ██          ██        \n██      ██  ██████████  ██          ██████████  ██          ██████████</pre>",
       "css": ".ds-logo{margin:.45em 0 .35em;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:min(.78em,2.25cqi);line-height:1;color:#eef0ff;text-shadow:0 0 3px rgba(120,200,255,.3)}"
+    },
+    {
+      "name": "The Channel Change",
+      "kind": "custom",
+      "refersTo": "window",
+      "description": "Every arrival plays a channel change: full-screen generated snow fading over 660ms, a bright sync band sweeping the glass, and the signal knocked sideways with a brightness flash. CSS only; removed entirely under reduced motion.",
+      "html": "<div class=\"ds-channel\" aria-hidden=\"true\"></div>",
+      "css": ".ds-channel{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:0;mix-blend-mode:screen;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E\");background-size:160px 160px;animation:ds-snow .66s steps(1,end) both}@keyframes ds-snow{0%{opacity:.92;background-position:0 0}15%{opacity:.8;background-position:-28% 36%}34%{opacity:.46;background-position:-46% 8%}60%{opacity:.16}100%{opacity:0}}"
     }
   ],
   "narrative": {
@@ -350,7 +358,8 @@
       "Curvature in the glass: vignette, grille and scanlines, plus a sub-degree trapezoid the transform can carry without moving the hit boxes away from the paint.",
       "Aperture grille in vertical RGB stripes and horizontal scanlines, above the signal.",
       "Every word in a bitmap gothic; every numeral and the page number in a dot matrix.",
-      "Zero JavaScript, zero cookies, zero third-party requests."
+      "Zero JavaScript, zero cookies, zero third-party requests.",
+      "Fixed size on the desk; only the subpages scroll, inside the glass."
     ],
     "rules": [
       {
@@ -400,7 +409,8 @@
       "Do give every quantity Doto and every word DotGothic16.",
       "Do spend yellow on structure, cyan on reading, green on open, red on closed, and magenta exactly once.",
       "Do label a date with what it is — the repository's last change — rather than implying a release.",
-      "Do keep contact in the bottom key row, right-aligned, rather than in a section of its own."
+      "Do keep contact in the bottom key row, right-aligned, rather than in a section of its own.",
+      "Do keep the desk at one fixed size and let long pages scroll inside the glass."
     ],
     "donts": [
       "Don't add a shadow that implies something floats, or a glow anywhere on the case. The pilot lens is flat; the phosphor is the only light.",

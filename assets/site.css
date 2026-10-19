@@ -33,10 +33,10 @@
   --mono:'DotGothic16',ui-monospace,'Courier New',monospace;
   --display:'Doto',ui-monospace,'Courier New',monospace;
 
-  --fs:clamp(11px,0.95vw,14px);
+  --fs:14px;               /* tamaño fijo en escritorio */
   --lh:1.4;
   --col:118ch;             /* la columna: el contenido es pequeño, la pantalla no */
-  --edge:clamp(18px,3.2vmin,54px);
+  --edge:44px;
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -56,7 +56,7 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
 /* ————— el tubo es la ventana ————— */
 .tube{position:relative;min-height:100dvh}
 .glass{
-  position:relative;min-height:100dvh;overflow:hidden;background:var(--glass);
+  position:relative;height:100dvh;overflow:hidden;background:var(--glass);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.045);
   display:flex;flex-direction:column;
 }
@@ -65,15 +65,14 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
    El filtro va en la COLUMNA, no en la página entera: el desplazamiento es
    radial y el centro de la pantalla no comba nada. */
 .warp{
-  position:relative;width:100%;
-  margin-block:auto;              /* centrado vertical sin cortar cuando el contenido crece */
+  position:relative;width:100%;height:100%;display:flex;flex-direction:column;
 }
 /* Sin animación de transform aquí: un transform animado en un ANCESTRO de un
    elemento filtrado duplica el render (fantasmas). El encendido se va al cristal. */
 
 .screen{
-  position:relative;
-  padding:var(--edge) var(--edge) calc(var(--edge) * 1.2);
+  position:relative;flex:1;min-height:0;display:flex;flex-direction:column;
+  padding:var(--edge) var(--edge) calc(var(--edge) * 1.1);
 }
 @keyframes vhold{
   0%,95.4%{transform:translateY(0)}
@@ -110,16 +109,69 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
       rgba(0,0,0,0) 1px 3px);
 }
 
-/* ————— la página de teletexto ————— */
-.tt{max-width:min(100%,var(--col));margin:0 auto;display:flex;flex-direction:column;gap:.4em;min-height:0;
-  padding:3em 3ch;          /* holgura para que el combado no toque el borde */
+/* ————— cambio de canal —————
+   Al entrar en otra página: el golpe de electrones contra el vidrio, la nieve
+   saltando, la banda de sincronismo subiendo y la señal temblando medio segundo. */
+.channel{
+  position:fixed;inset:0;z-index:5;pointer-events:none;
+  opacity:0;mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  background-size:160px 160px;
+  animation:channel-snow .66s steps(1,end) both;
 }
+@keyframes channel-snow{
+  0%  {opacity:.92;background-position:0 0}
+  7%  {opacity:.88;background-position:44% 12%}
+  15% {opacity:.8; background-position:-28% 36%}
+  24% {opacity:.62;background-position:16% -20%}
+  34% {opacity:.46;background-position:-46% 8%}
+  46% {opacity:.3; background-position:24% 26%}
+  60% {opacity:.16;background-position:-12% -8%}
+  76% {opacity:.05;background-position:8% 12%}
+  100%{opacity:0; background-position:0 0}
+}
+.channel::before{                 /* la banda de sincronismo que recorre la pantalla */
+  content:'';position:absolute;left:0;right:0;height:14%;
+  background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(205,240,255,.6) 50%,rgba(255,255,255,0) 100%);
+  animation:channel-band .66s cubic-bezier(.25,.9,.25,1) both;
+}
+@keyframes channel-band{
+  0%  {transform:translateY(-30%);opacity:0}
+  8%  {transform:translateY(6%);  opacity:1}
+  30% {transform:translateY(52%); opacity:.75}
+  55% {transform:translateY(96%); opacity:.4}
+  78% {transform:translateY(128%);opacity:.15}
+  100%{transform:translateY(150%);opacity:0}
+}
+/* la señal tiembla: es el golpe de electrones, no un fundido */
+.warp{animation:channel-wobble .66s steps(2,end) both}
+@keyframes channel-wobble{
+  0%  {transform:translate(-7px,2px)  skewX(1.6deg); filter:brightness(2.6) contrast(.7)}
+  10% {transform:translate(6px,-3px)  skewX(-1.3deg);filter:brightness(2.1) contrast(.8)}
+  22% {transform:translate(-4px,2px)  skewX(.9deg);  filter:brightness(1.7)}
+  36% {transform:translate(3px,-1px)  skewX(-.6deg); filter:brightness(1.4)}
+  52% {transform:translate(-2px,1px)  skewX(.35deg); filter:brightness(1.2)}
+  68% {transform:translate(1px,0)     skewX(-.18deg);filter:brightness(1.08)}
+  84% {transform:translate(0,0)       skewX(.06deg); filter:brightness(1.02)}
+  100%{transform:none;filter:none}
+}
+
+/* ————— la página de teletexto ————— */
+.tt{width:100%;max-width:min(100%,var(--col));margin:0 auto;
+  flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  display:flex;flex-direction:column;gap:.4em;
+  padding:2em 3ch 0;
+}
+.tt::-webkit-scrollbar{width:8px}
+.tt::-webkit-scrollbar-track{background:transparent}
+.tt::-webkit-scrollbar-thumb{background:rgba(60,232,255,.35)}
 /* Sin filtro de desplazamiento: un filtro pinta el dibujo desplazado pero deja la
    caja de clic quieta, y encima duplica el render al recortarlo. La curvatura vive
    en el cristal (viñeta, rejilla, fósforo) y aquí en un trapecio mínimo, que sí
    mueve la caja de clic porque es un transform. */
 .sig{
   display:flex;flex-direction:column;gap:.4em;
+  margin-top:auto;            /* el grupo entero se centra si cabe; si no, scroll desde arriba */
   transform:perspective(1600px) rotateX(.45deg);
   transform-origin:50% 50%;
 }
@@ -131,12 +183,11 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
 }
 .tt-bar .pg{font-family:var(--display);font-weight:900;font-size:1.15em;letter-spacing:0}
 .tt-bar .nm{flex:1}
-.tt-bar .rt{font-size:.85em;color:rgba(4,6,11,.72)}
 
 .tt-body{display:flex;flex-direction:column;gap:.1em;min-height:0}
 
 .logo{
-  font-family:var(--mono);font-size:min(.78em,2.6vw);line-height:1;
+  font-family:var(--mono);font-size:.78em;line-height:1;
   margin:.45em 0 .35em;color:var(--ink);
   text-shadow:0 0 3px rgba(120,200,255,.3);
 }
@@ -177,7 +228,8 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
 /* ————— pie: las cuatro teclas y, a la derecha, las puertas sociales ————— */
 .tt-keys{
   display:flex;align-items:center;gap:1.6ch;flex-wrap:wrap;
-  margin-top:.6em;padding-top:.4em;border-top:1px solid rgba(60,232,255,.28);
+  position:sticky;bottom:0;z-index:1;background:var(--glass);
+  margin-top:auto;margin-bottom:auto;padding:.45em 0 .9em;border-top:1px solid rgba(60,232,255,.28);
   font-size:.86em;text-transform:uppercase;letter-spacing:.08em;
 }
 .tt-keys a{display:inline-flex;align-items:center;gap:.6ch;text-decoration:none;color:var(--dim);padding:.35em .8ch}
@@ -244,6 +296,11 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
     --edge:clamp(14px,3.6vmin,26px);
     --col:100%;
   }
+  .glass{height:auto;min-height:100dvh}
+  .warp{height:auto;display:block}
+  .screen{display:block}
+  .tt{flex:none;overflow:visible;padding:1em 1ch}
+  .tt-keys{position:static}
   .crt{background-image:
     repeating-linear-gradient(0deg,rgba(0,0,0,.3) 0 1px,rgba(0,0,0,0) 1px 3px)}
   .sig{transform:perspective(1200px) rotateX(.3deg)}
@@ -266,6 +323,8 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
 @media (prefers-reduced-motion:reduce){
   *{animation:none !important;transition:none !important}
   .bloom::after{display:none}
+  .channel{display:none}
+  .warp{transform:none;filter:none}
 }
 
 /* ————— sólo para lectores de pantalla ————— */

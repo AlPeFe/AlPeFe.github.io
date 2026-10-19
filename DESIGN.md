@@ -182,7 +182,7 @@ The eight colours a teletext decoder could actually print, their purity removed,
 
 The glass is the window: it fills the viewport with no bezel, no radius and no room around it, and the page's own scroll is the only one. The content does not fill it — it sits in a centred column of `118ch` with `5ch` of slack on each side, and that slack is what keeps the bowing from being clipped at the column's corner.
 
-Type is sized in a container query unit (`0.95cqi` of the tube, capped at 14px) and the column is measured in `ch`, so the character grid stays the same number of cells whatever the window does; only its rendering scales. On a phone the column takes the full width and the size floor rises to 12px, because a phone is read at arm's length, not from across a desk.
+On the desk the size is **fixed**: 14px type, a `118ch` column, a 44px safe edge — nothing scales with the window, so the index lands identically on every monitor. The glass is exactly the window's height and the reading area scrolls inside it when a page is longer than the screen (projects, certificates, about); the index fits, which is why it is the base. On a phone nothing is fixed: the glass grows with its content and the page scrolls normally. On a phone the column takes the full width and the size floor rises to 12px, because a phone is read at arm's length, not from across a desk.
 
 Two-column records (`ficha`, certificates, project tables) keep their banded order: label in cyan at a fixed character width, value in dim phosphor beside it. Below 820px every banded row stacks, one fact per line.
 
@@ -218,6 +218,11 @@ Everything inside is a rectangle with square corners: rows, bars, rules, table c
 - **What carries the curvature instead:** the glass. The vignette falls off in a curve, the aperture grille and scanlines sit over the whole window, and the phosphor glows through its own shadow. That is the same trade the reference CRT pen makes.
 - **Boundary:** The grille, scanlines, vignette and reflection are never warped or tilted: they belong to the glass, not to the signal.
 
+### The Channel Change
+- **What it is:** On every arrival — which is every menu click, since navigation is a page load — the set changes channel: a full-screen field of generated snow at 92% fading over 660ms, a bright sync band sweeping down the glass, and the signal itself knocked sideways with `translate`/`skewX` and a brightness flash from 2.6 down to 1.
+- **Mechanics:** CSS keyframes only. The snow is an inline SVG `feTurbulence` data URI stepped through `background-position`; the wobble is a `transform` on the signal block, so it moves the hit boxes too.
+- **Reduced motion:** the whole thing is removed, not slowed.
+
 ### Page Bar
 - **Shape:** A full-width bar with no radius, yellow field, phosphor-black text.
 - **Contents:** Page number in Doto, the page's path, and a right-hand claim in dimmed frame ink.
@@ -245,7 +250,7 @@ Everything inside is a rectangle with square corners: rows, bars, rules, table c
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep the glass edge-to-edge with the content in a centred `118ch` column and `5ch` of slack for the bowing.
+- **Do** keep the desk at one fixed size and let the subpages scroll inside the glass; the index fits without scrolling.
 - **Do** bend with `transform`, never with a displacement filter: the hit box has to move with the paint.
 - **Do** size type in `cqi` so the character grid tracks the tube, not the window.
 - **Do** give every quantity Doto and every word DotGothic16.
