@@ -4,3 +4,7 @@
 .impeccable/review/
 .impeccable/questions/
 .impeccable/config.local.json
+
+# perfiles de navegador que alguna herramienta deje caer en el árbol
+cdp-*/
+Usersalexlocal*/

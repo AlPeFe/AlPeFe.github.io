@@ -277,10 +277,10 @@
       "css": ".ds-tube{position:relative;width:min(100%,calc(76vh * 4 / 3),1240px);aspect-ratio:4 / 3;container-type:inline-size;padding:2.2cqi 2.93cqi;border-radius:5.6% / 7.4%;background:linear-gradient(176deg,#242833 0%,#12151c 42%,#0b0d12 72%,#1c2029 100%);box-shadow:0 46px 90px -34px rgba(0,0,0,.95),inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.7)}.ds-glass{position:relative;width:100%;height:100%;border-radius:5.2% / 8.6%;overflow:hidden;background:#04060b;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),inset 0 0 54px 14px rgba(0,0,0,.92)}.ds-screen{padding:4.8% 4.6%;color:#eef0ff;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:1.45cqi;line-height:1.4;text-shadow:0 0 1px currentColor,0 0 7px rgba(120,200,255,.16)}.ds-led{position:absolute;right:3.4%;bottom:1.5%;width:.5cqi;height:.5cqi;min-width:4px;min-height:4px;border-radius:50%;background:#3ce86a;box-shadow:0 2px 6px 1px rgba(60,232,106,.55),0 3px 16px 3px rgba(60,232,106,.22)}"
     },
     {
-      "name": "The Warp",
+      "name": "The Signal Tilt",
       "kind": "custom",
       "refersTo": "glass",
-      "description": "A generated radial displacement map bends the content column so straight rules bow. On the column and not the window, because displacement is a function of r squared from the centre. Zero JavaScript, 4 KB of asset, region clipped to its own box.",
+      "description": "A trapezoid of less than half a degree on the content block, done with perspective+rotateX. A transform moves the paint and the hit box together; a displacement filter does not, which is why the curvature lives in the glass instead.",
       "html": "<svg width=\"0\" height=\"0\" style=\"position:absolute\" aria-hidden=\"true\"><filter id=\"ds-warp\" primitiveUnits=\"objectBoundingBox\" x=\"-8%\" y=\"-8%\" width=\"116%\" height=\"116%\" color-interpolation-filters=\"sRGB\"><feImage href=\"/assets/tube-map.png\" x=\"0\" y=\"0\" width=\"1\" height=\"1\" preserveAspectRatio=\"none\" result=\"map\"></feImage><feDisplacementMap in=\"SourceGraphic\" in2=\"map\" scale=\"0.05\" xChannelSelector=\"R\" yChannelSelector=\"G\"></feDisplacementMap></filter></svg>",
       "css": ".ds-warp{position:absolute;inset:0;filter:url(#ds-warp);animation:ds-on .95s cubic-bezier(.2,.85,.15,1) both}@keyframes ds-on{0%{transform:scaleY(.004);filter:brightness(7)}34%{transform:scaleY(.004);filter:brightness(7)}62%{transform:scaleY(1.03);filter:brightness(1.5)}100%{transform:scaleY(1);filter:brightness(1)}}"
     },
@@ -343,11 +343,11 @@
   ],
   "narrative": {
     "northStar": "The Teletext Tube",
-    "overview": "This is not a web page dressed as a monitor. It is what the monitor shows. The whole window is the tube, a phosphor field whose edges darken and bow, and inside it a teletext service with exactly one subscriber: a numbered page index, a dated log, four keyed destinations, and a block-mosaic wordmark built out of solid cells. Every mark on the screen is made of the same stuff — the eight inks a broadcast teletext decoder had, none of them pure, laid on phosphor black.\n\nThe signal is bent, not painted. A generated radial displacement map warps the live page through an SVG filter, so straight rules bow downward at the centre, verticals splay, and the top edge of the page bar arcs. It is real geometry: a 3 KB map computed from u·r², applied with zero JavaScript, and switching off in one media query when the glass gets small. Nothing here is a photograph of a monitor, and nothing is a CSS bevel pretending to be one.\n\nThe density is deliberately low but the grid is strict: everything sits in a fixed-pitch character cell, set at 11-17px depending on how big the tube is. The window is the frame, not the page. Where a modern site would scroll a document, this one shows one screenful and, when a list is longer than the glass, scrolls inside it the way a terminal does.",
+    "overview": "This is not a web page dressed as a monitor. It is what the monitor shows. The whole window is the tube, a phosphor field whose edges darken and bow, and inside it a teletext service with exactly one subscriber: a numbered page index, a dated log, four keyed destinations, and a block-mosaic wordmark built out of solid cells. Every mark on the screen is made of the same stuff — the eight inks a broadcast teletext decoder had, none of them pure, laid on phosphor black.\n\nThe curvature lives in the glass, not in the signal: a vignette that falls off in a curve, an aperture grille and scanlines across the whole window, phosphor glow on the type, and a trapezoid of less than half a degree on the content block. A displacement filter was tried and rejected — it bends what you see and leaves the hit box where it was, so every link became a target you could not click.\n\nThe density is deliberately low but the grid is strict: everything sits in a fixed-pitch character cell, set at 11-17px depending on how big the tube is. The window is the frame, not the page. Where a modern site would scroll a document, this one shows one screenful and, when a list is longer than the glass, scrolls inside it the way a terminal does.",
     "keyCharacteristics": [
       "The glass is the whole window; the content is a centred 118ch column with slack for the bowing.",
       "Eight teletext inks, none pure, plus a dimmed phosphor white for prose.",
-      "Curvature from a computed displacement map, never from an image of a monitor.",
+      "Curvature in the glass: vignette, grille and scanlines, plus a sub-degree trapezoid the transform can carry without moving the hit boxes away from the paint.",
       "Aperture grille in vertical RGB stripes and horizontal scanlines, above the signal.",
       "Every word in a bitmap gothic; every numeral and the page number in a dot matrix.",
       "Zero JavaScript, zero cookies, zero third-party requests."
@@ -410,7 +410,8 @@
       "Don't ship JavaScript, a cookie, an analytics tag or a third-party font request.",
       "Don't name a technology on the projects page. The list is about what things do.",
       "Don't let a fixed glass height trap content on a phone.",
-      "Do not add a case, a bezel, a radius or a background behind the glass: the tube is the window."
+      "Do not add a case, a bezel, a radius or a background behind the glass: the tube is the window.",
+      "Do not put a url() filter on anything that contains a link: it separates the paint from the hit box."
     ]
   }
 }

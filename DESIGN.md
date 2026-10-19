@@ -116,7 +116,7 @@ components:
 
 This is not a web page dressed as a monitor. It is what the monitor shows. The whole window is the tube: a phosphor field whose edges darken and bow, and inside it a teletext service with exactly one subscriber — a numbered page index, a dated log, four keyed destinations, and a block-mosaic wordmark built out of solid cells. Every mark on the screen is made of the same stuff: the eight inks a broadcast teletext decoder had, none of them pure, laid on phosphor black.
 
-The signal is bent, not painted. A generated radial displacement map warps the live page through an SVG filter, so straight rules bow downward at the centre, verticals splay, and the top edge of the page bar arcs. It is real geometry: a 3 KB map computed from `u·r²`, applied with zero JavaScript, and switching off in one media query when the glass gets small. Nothing here is a photograph of a monitor, and nothing is a CSS bevel pretending to be one.
+The signal is not warped, and that is a deliberate engineering decision: a displacement filter bends what you see and leaves the hit box where it was, which turns every link into a target you cannot click. The curvature lives in the glass instead — a vignette that falls off in a curve, an aperture grille and scanlines across the whole window, phosphor glow on the type — plus a trapezoid of less than half a degree on the content, which a transform can do without lying about where the buttons are. Nothing here is a photograph of a monitor and nothing is a CSS bevel pretending to be one.
 
 The density is deliberately low but the grid is strict: everything sits in a fixed-pitch character cell, set at 11–17px depending on how big the tube is. The window is the frame, not the page. Where a modern site would scroll a document, this one shows one screenful and, when a list is longer than the glass, scrolls inside it the way a terminal does.
 
@@ -212,11 +212,11 @@ Everything inside is a rectangle with square corners: rows, bars, rules, table c
 - **Glass:** Inset by the bezel, with a wide inset vignette and a diagonal reflection at 5% white in the upper left.
 - **Phone:** Height follows content, radii become fixed, and the page scrolls normally instead of the glass.
 
-### The Warp
-- **What it is:** An SVG filter on the content column: a 96×72 radial displacement map, `primitiveUnits="objectBoundingBox"` with the map stretched over the column, `scale="0.042"` on the desk and `0.035` on the phone, region clipped to the column's own box.
-- **Why the column and not the window:** the displacement is a function of `r²` from the centre, so a signal sitting in the middle of a wide screen would not bend at all. The map has to stretch over the thing that must curve.
-- **Why objectBoundingBox:** one map then works at every width — the displacement stays a fixed fraction of the column instead of a fixed pixel count.
-- **Boundary:** The grille, scanlines, vignette and reflection are never warped: they belong to the glass, not to the signal. The `5ch` of slack is what the corners need so the bowing is not cut off.
+### The Signal Tilt
+- **What it is:** A `perspective(1600px) rotateX(.45deg)` on the content block — a trapezoid of less than half a degree, `1200px`/`.3deg` on a phone.
+- **Why a transform and not a displacement filter:** a filter paints the content displaced but leaves its hit box where it was, so every link inside it becomes a target you can see and cannot click; on a long column it also re-renders parts of the text twice. A `transform` moves the paint and the hit box together.
+- **What carries the curvature instead:** the glass. The vignette falls off in a curve, the aperture grille and scanlines sit over the whole window, and the phosphor glows through its own shadow. That is the same trade the reference CRT pen makes.
+- **Boundary:** The grille, scanlines, vignette and reflection are never warped or tilted: they belong to the glass, not to the signal.
 
 ### Page Bar
 - **Shape:** A full-width bar with no radius, yellow field, phosphor-black text.
@@ -246,7 +246,7 @@ Everything inside is a rectangle with square corners: rows, bars, rules, table c
 
 ### Do:
 - **Do** keep the glass edge-to-edge with the content in a centred `118ch` column and `5ch` of slack for the bowing.
-- **Do** keep the warp on the content column alone, and let the grille and vignette stay flat on the glass.
+- **Do** bend with `transform`, never with a displacement filter: the hit box has to move with the paint.
 - **Do** size type in `cqi` so the character grid tracks the tube, not the window.
 - **Do** give every quantity Doto and every word DotGothic16.
 - **Do** keep contact in the bottom key row, right-aligned, rather than in a section of its own.
@@ -257,7 +257,7 @@ Everything inside is a rectangle with square corners: rows, bars, rules, table c
 ### Don't:
 - **Don't** add a case, a bezel, a radius or a background behind the glass: the tube is the window.
 - **Don't** add a shadow that implies something floats, or a glow anywhere. The phosphor is the only light.
-- **Don't** move the warp back onto the whole window, or give it a filter region wider than its own box.
+- **Don't** put a `url()` filter on anything that contains a link, or on an ancestor of one.
 - **Don't** use blue for text, magenta for anything but the route key, or any pure primary.
 - **Don't** put a border radius inside the glass.
 - **Don't** replace the displacement map with a photo of a monitor, or a CSS bevel pretending to be plastic.
