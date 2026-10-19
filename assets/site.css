@@ -71,8 +71,9 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
    elemento filtrado duplica el render (fantasmas). El encendido se va al cristal. */
 
 .screen{
-  position:relative;flex:1;min-height:0;display:flex;flex-direction:column;
-  padding:var(--edge) var(--edge) calc(var(--edge) * 1.1);
+  position:relative;flex:1;min-height:0;
+  display:flex;align-items:center;justify-content:center;
+  padding:var(--edge);
 }
 @keyframes vhold{
   0%,95.4%{transform:translateY(0)}
@@ -157,10 +158,17 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
 }
 
 /* ————— la página de teletexto ————— */
-.tt{width:100%;max-width:min(100%,var(--col));margin:0 auto;
-  flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+.tt{
+  /* el marco: mismo tamaño y misma proporción en todas las páginas y en
+     cualquier pantalla — 1120×840 como mucho, 4:3 exacto siempre (el ancho
+     manda y la proporción deriva el alto; así no entra en 4K ni se sale de
+     ventanas bajas). Si el contenido no cabe, se desplaza dentro. */
+  width:min(1120px, 100%, calc((100dvh - var(--edge) * 2) * 4 / 3));
+  aspect-ratio:4 / 3;
+  overflow-y:auto;overscroll-behavior:contain;
   display:flex;flex-direction:column;gap:.4em;
-  padding:2em 3ch 0;
+  padding:1.6em 2.6ch 0;   /* sin padding inferior: lo lleva la fila de teclas,
+     que es sticky — así su caja opaca tapa hasta el borde y no asoma nada */
 }
 .tt::-webkit-scrollbar{width:8px}
 .tt::-webkit-scrollbar-track{background:transparent}
@@ -171,7 +179,6 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
    mueve la caja de clic porque es un transform. */
 .sig{
   display:flex;flex-direction:column;gap:.4em;
-  margin-top:auto;            /* el grupo entero se centra si cabe; si no, scroll desde arriba */
   transform:perspective(1600px) rotateX(.45deg);
   transform-origin:50% 50%;
 }
@@ -228,8 +235,11 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
 /* ————— pie: las cuatro teclas y, a la derecha, las puertas sociales ————— */
 .tt-keys{
   display:flex;align-items:center;gap:1.6ch;flex-wrap:wrap;
+  /* la fila de teclas vive siempre en la fila de abajo del marco: el auto la
+     empuja al fondo cuando sobra sitio y sticky la mantiene visible cuando el
+     contenido se desplaza; fondo opaco para que nada asome por debajo. */
   position:sticky;bottom:0;z-index:1;background:var(--glass);
-  margin-top:auto;margin-bottom:auto;padding:.45em 0 .9em;border-top:1px solid rgba(60,232,255,.28);
+  margin-top:auto;padding:.45em 0 .6em;border-top:1px solid rgba(60,232,255,.28);
   font-size:.86em;text-transform:uppercase;letter-spacing:.08em;
 }
 .tt-keys a{display:inline-flex;align-items:center;gap:.6ch;text-decoration:none;color:var(--dim);padding:.35em .8ch}
@@ -299,7 +309,7 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
   .glass{height:auto;min-height:100dvh}
   .warp{height:auto;display:block}
   .screen{display:block}
-  .tt{flex:none;overflow:visible;padding:1em 1ch}
+  .tt{width:auto;height:auto;aspect-ratio:auto;max-width:100%;overflow:visible;padding:1em 1ch}
   .tt-keys{position:static}
   .crt{background-image:
     repeating-linear-gradient(0deg,rgba(0,0,0,.3) 0 1px,rgba(0,0,0,0) 1px 3px)}
