@@ -29,15 +29,15 @@ const CATALOG = [
 
 // Los cinco verdes del tema oscuro de GitHub, tal cual.
 const LEVELS = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
-const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 const CELL = 10, GAP = 3, STEP = CELL + GAP, X0 = 24, Y0 = 14;
 
 const stamp = (iso) => (iso || '').slice(0, 7); // 2026-10-18T... -> 2026-10
-const esDate = (iso) => {
+const enDate = (iso) => {
   const [y, m, d] = iso.split('-').map(Number);
-  return `${d} ${MONTHS[m - 1]} ${y}`;
+  return `${MONTHS[m - 1]} ${d}, ${y}`;
 };
-const esNum = (n) => n.toLocaleString('es-ES');
+const enNum = (n) => n.toLocaleString('en-US');
 
 async function readText(file) {
   try { return await readFile(file, 'utf8'); } catch { return ''; }
@@ -99,8 +99,8 @@ function contributionSvg(cells) {
     lastMonth = month;
     out.push(`<text class="m" x="${X0 + col * STEP}" y="10">${MONTHS[month - 1]}</text>`);
   }
-  // etiquetas de día: lun / mié / vie, como en el perfil
-  [['lun', 1], ['mié', 3], ['vie', 5]].forEach(([label, row]) => {
+  // etiquetas de día: mon / wed / fri, como en el perfil
+  [['mon', 1], ['wed', 3], ['fri', 5]].forEach(([label, row]) => {
     out.push(`<text class="d" x="0" y="${Y0 + row * STEP + 9}">${label}</text>`);
   });
 
@@ -110,16 +110,16 @@ function contributionSvg(cells) {
     const x = X0 + c.col * STEP, y = Y0 + c.row * STEP;
     const fill = LEVELS[future ? 0 : c.level];
     if (!future) total += c.count;
-    const what = c.count === 1 ? '1 contribución' : `${esNum(c.count)} contribuciones`;
-    const title = future ? '' : `<title>${esDate(c.date)}: ${what}</title>`;
+    const what = c.count === 1 ? '1 contribution' : `${enNum(c.count)} contributions`;
+    const title = future ? '' : `<title>${enDate(c.date)}: ${what}</title>`;
     out.push(`<rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="2" fill="${fill}">${title}</rect>`);
   }
 
   const legend = LEVELS.map((c) => `<i style="background:${c}"></i>`).join('');
   return {
     total,
-    block: `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${esNum(total)} contribuciones en GitHub en el último año">\n${out.join('\n')}\n</svg>
-<p class="total"><b>${esNum(total)}</b> contribuciones en el último año<span class="legend">menos ${legend} más</span></p>`,
+    block: `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${enNum(total)} contributions on GitHub in the last year">\n${out.join('\n')}\n</svg>
+<p class="total"><b>${enNum(total)}</b> contributions in the last year<span class="legend">less ${legend} more</span></p>`,
   };
 }
 

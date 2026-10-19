@@ -280,6 +280,16 @@ hr,.rule{border:0;border-top:1px solid var(--rule);margin:0}
   padding:.5em .8ch;text-align:center;
 }
 
+/* tecla de modboard: un keycap gordo que aún no lleva a ningún sitio */
+.modkey{
+  display:inline-block;margin:.7em 0 0;padding:.55em 1.8ch .45em;
+  border:1px solid var(--rule);border-bottom:3px solid var(--rule);border-radius:4px;
+  background:rgba(60,232,255,.06);color:var(--cyan);text-decoration:none;
+  text-transform:uppercase;letter-spacing:.18em;font-size:.9em;
+}
+.modkey:hover{background:var(--cyan);color:var(--glass);border-color:var(--cyan);text-shadow:none}
+.modkey:active{transform:translateY(2px);border-bottom-width:1px}
+
 /* ————— sobre mí ————— */
 .two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:.2em 2.4ch;margin-top:.5em}
 .two-col h2,.two-col h3{margin:.6em 0 .2em;font-weight:400;font-size:.86em;letter-spacing:.16em;

@@ -121,6 +121,14 @@ async function copilotRow() {
 const html = await readFile(LANDING, 'utf8').catch(() => '');
 if (!html) { console.error(`no puedo leer ${LANDING}`); process.exit(1); }
 
+// Protección: si el árbol YA estaba sucio antes de tocarlo, alguien está
+// trabajando en él — este script actualiza el archivo pero NO hace git.
+// (Un `pull --rebase --autostash` con trabajo ajeno a medias ya se cargó
+// una vez cambios sin commitear.)
+const dirtyBefore = PUSH
+  ? execFileSync('git', ['status', '--porcelain'], { cwd: REPO, encoding: 'utf8' }).trim()
+  : '';
+
 let next = html;
 
 const oc = await aggregateOpencodeGo();
@@ -144,9 +152,11 @@ try {
 if (next === html) console.log('sin cambios');
 else await writeFile(LANDING, next);
 
-if (PUSH && next !== html) {
+if (PUSH && next !== html && dirtyBefore) {
+  console.log('árbol sucio de antes: archivo actualizado, pero no hago git (protección)');
+} else if (PUSH && next !== html) {
   const git = (args) => execFileSync('git', args, { cwd: REPO, stdio: 'inherit' });
-  git(['pull', '--rebase', '--autostash']);
+  git(['pull', '--rebase']);
   git(['add', 'index.html']);
   try {
     git(['diff', '--cached', '--quiet', '--', 'index.html']);
