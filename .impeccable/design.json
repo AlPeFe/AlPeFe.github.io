@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-19T09:45:00Z",
+  "title": "Design System: alpefe.me",
+  "extensions": {
+    "colorMeta": {
+      "ink-structure": {
+        "role": "primary",
+        "displayName": "Hot Magenta Ink",
+        "canonical": "#ff3d8b",
+        "tonalRamp": ["#2b0916", "#4d0f27", "#711739", "#951f4c", "#ba285f", "#d93572", "#e8629a", "#f5a6c6"]
+      },
+      "ink-state": {
+        "role": "secondary",
+        "displayName": "Acid Green State",
+        "canonical": "#7dff3d",
+        "tonalRamp": ["#0d2b01", "#164d03", "#217106", "#309507", "#43ba08", "#5ed90c", "#8ce860", "#c3f5a6"]
+      },
+      "ink-reserved": {
+        "role": "tertiary",
+        "displayName": "Reserved Amber",
+        "canonical": "#ffcc33",
+        "tonalRamp": ["#2b2106", "#4d3b0a", "#71560f", "#957215", "#ba8f1e", "#d9ab26", "#e8c362", "#f5e0a6"]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Impure Violet-Black",
+        "canonical": "#0b0912",
+        "tonalRamp": ["#07060b", "#0b0912", "#13101f", "#1d1930", "#2b2646", "#3f3863", "#5c5588", "#8d87b0"]
+      },
+      "plate": {
+        "role": "neutral",
+        "displayName": "Plate Violet",
+        "canonical": "#141126",
+        "tonalRamp": ["#0a0814", "#110e20", "#141126", "#201c3c", "#2f2a58", "#474077", "#6a6299", "#9d96c2"]
+      },
+      "plate-deep": {
+        "role": "neutral",
+        "displayName": "Plate Deep",
+        "canonical": "#100e1e",
+        "tonalRamp": ["#08070f", "#0c0a18", "#100e1e", "#1a1730", "#27224a", "#3b3569", "#5b548d", "#9089b8"]
+      },
+      "stock": {
+        "role": "neutral",
+        "displayName": "Violet-White Stock",
+        "canonical": "#e8e0ff",
+        "tonalRamp": ["#1c1830", "#332b57", "#4b407e", "#6559a4", "#8177c5", "#a49ce0", "#c6c0f2", "#e8e0ff"]
+      },
+      "structure-rule": {
+        "role": "neutral",
+        "displayName": "Structure Rule",
+        "canonical": "rgba(255,61,139,.34)",
+        "tonalRamp": ["rgba(255,61,139,.05)", "rgba(255,61,139,.09)", "rgba(255,61,139,.14)", "rgba(255,61,139,.2)", "rgba(255,61,139,.27)", "rgba(255,61,139,.34)", "rgba(255,61,139,.5)", "rgba(255,61,139,.7)"]
+      },
+      "structure-hair": {
+        "role": "neutral",
+        "displayName": "Structure Hair",
+        "canonical": "rgba(255,61,139,.2)",
+        "tonalRamp": ["rgba(255,61,139,.04)", "rgba(255,61,139,.07)", "rgba(255,61,139,.1)", "rgba(255,61,139,.14)", "rgba(255,61,139,.2)", "rgba(255,61,139,.3)", "rgba(255,61,139,.45)", "rgba(255,61,139,.65)"]
+      },
+      "prose-soft": {
+        "role": "neutral",
+        "displayName": "Prose Soft",
+        "canonical": "rgba(232,224,255,.72)",
+        "tonalRamp": ["rgba(232,224,255,.3)", "rgba(232,224,255,.4)", "rgba(232,224,255,.52)", "rgba(232,224,255,.62)", "rgba(232,224,255,.72)", "rgba(232,224,255,.82)", "rgba(232,224,255,.9)", "#e8e0ff"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The landing wordmark, and nothing else. Dot matrix with the rounding axis turned off." },
+      "headline": { "displayName": "Headline", "purpose": "Page titles on the three subpages." },
+      "title": { "displayName": "Title", "purpose": "Section headings and certificate names." },
+      "body": { "displayName": "Body", "purpose": "All prose, at the 16px cell the bitmap gothic was drawn for." },
+      "label": { "displayName": "Label", "purpose": "System bars, plate bands, table headers, dates, footer." },
+      "numeral": { "displayName": "Numeral", "purpose": "Plate bands and the project index column. Numerals are always the dot matrix." }
+    },
+    "shadows": [
+      { "name": "ink-layer-rest", "value": "3px 3px 0 rgba(125,255,61,.55)", "purpose": "A second printed layer sitting out of register behind a plate." },
+      { "name": "ink-layer-separated", "value": "6px 6px 0 #ff3d8b", "purpose": "Hover and keyboard focus: the layers pull apart and the visible layer turns magenta." },
+      { "name": "ink-layer-flush", "value": "0 0 0 #ff3d8b", "purpose": "Active: the plate is pressed down onto its own layer." },
+      { "name": "primary-plate-layer", "value": "3px 3px 0 rgba(255,204,51,.5)", "purpose": "The reserved amber layer, printed once in the whole site." }
+    ],
+    "motion": [
+      { "name": "step-two", "value": "steps(2, end)", "purpose": "Every state transition. A mechanical two-step snap, never a smooth ease." },
+      { "name": "jitter", "value": "0.4s steps(2, end) 2", "purpose": "The label jitter on a hovered plate: exactly two iterations, then still." }
+    ],
+    "breakpoints": [
+      { "name": "rack-stack", "value": "860px" },
+      { "name": "table-to-blocks", "value": "620px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Plate",
+      "kind": "button",
+      "refersTo": "plate",
+      "description": "The system's only control: an 88×31 button drawn at its true proportion, scaled up to hold a word. Used for section navigation and for going back one page.",
+      "html": "<a class=\"ds-plate\" href=\"#\">proyectos</a>",
+      "css": ".ds-plate{display:flex;align-items:center;justify-content:center;aspect-ratio:88/31;min-height:74px;position:relative;background:#141126;border:1px solid #ff3d8b;box-shadow:3px 3px 0 rgba(125,255,61,.55);color:#e8e0ff;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:15px;letter-spacing:.14em;text-transform:lowercase;text-decoration:none;transition:transform .12s steps(2,end),box-shadow .12s steps(2,end)}.ds-plate::after{content:'';position:absolute;inset:5px;border:1px dotted rgba(232,224,255,.24);pointer-events:none}.ds-plate:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #ff3d8b}.ds-plate:active{transform:translate(3px,3px);box-shadow:0 0 0 #ff3d8b}.ds-plate:focus-visible{outline:2px solid #7dff3d;outline-offset:3px}"
+    },
+    {
+      "name": "Primary Plate",
+      "kind": "button",
+      "refersTo": "plate-primary",
+      "description": "The one reserved-amber element in the site: the landing's primary action. It must never be repeated anywhere else.",
+      "html": "<a class=\"ds-plate-primary\" href=\"#\">proyectos</a>",
+      "css": ".ds-plate-primary{display:flex;align-items:center;justify-content:center;aspect-ratio:88/31;min-height:74px;position:relative;background:#141126;border:1px solid #ffcc33;box-shadow:3px 3px 0 rgba(255,204,51,.5);color:#ffcc33;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:15px;letter-spacing:.14em;text-transform:lowercase;text-decoration:none;transition:transform .12s steps(2,end),box-shadow .12s steps(2,end)}.ds-plate-primary::after{content:'';position:absolute;inset:5px;border:1px dotted rgba(232,224,255,.24);pointer-events:none}.ds-plate-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #ffcc33}.ds-plate-primary:active{transform:translate(3px,3px);box-shadow:0 0 0 #ffcc33}.ds-plate-primary:focus-visible{outline:2px solid #7dff3d;outline-offset:3px}"
+    },
+    {
+      "name": "Plate Band",
+      "kind": "custom",
+      "refersTo": "plate-hover",
+      "description": "The numbered caption under a plate, carrying the same fixed facts in the same order for every section.",
+      "html": "<p class=\"ds-plate-band\"><span class=\"ds-plate-band-k\">[ 01 ]</span> nueve abiertos · siete cerrados</p>",
+      "css": ".ds-plate-band{margin:0;padding-top:10px;border-top:1px dotted rgba(255,61,139,.34);color:#7dff3d;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:13px}.ds-plate-band-k{margin-right:8px;color:#ff3d8b;font-family:'Doto',ui-monospace,monospace;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Contact Door",
+      "kind": "button",
+      "refersTo": "contact-plate",
+      "description": "The smaller plate used for the four contact destinations, resting on the recessed plate colour.",
+      "html": "<a class=\"ds-door\" href=\"#\">github</a>",
+      "css": ".ds-door{display:flex;align-items:center;justify-content:center;aspect-ratio:88/31;min-height:60px;border:1px solid rgba(255,61,139,.34);background:#100e1e;color:#7dff3d;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:13px;letter-spacing:.12em;text-transform:lowercase;text-decoration:none;transition:transform .12s steps(2,end),box-shadow .12s steps(2,end)}.ds-door:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 #7dff3d;color:#7dff3d;border-color:#7dff3d}.ds-door:focus-visible{outline:2px solid #7dff3d;outline-offset:3px}"
+    },
+    {
+      "name": "Page Bezel",
+      "kind": "card",
+      "refersTo": "page-bezel",
+      "description": "The site's outermost surface. The page is the first plate in the system: a 1px magenta frame with a dotted magenta line 5px inside it.",
+      "html": "<div class=\"ds-bezel\"><div class=\"ds-bezel-osbar\"><span>index of / <b>alpefe.me</b></span><span class=\"ds-bezel-claim\">sin cookies · sin trackers · sin analítica</span></div><div class=\"ds-bezel-body\">el resto de la página</div></div>",
+      "css": ".ds-bezel{position:relative;margin:12px;border:1px solid #ff3d8b;background:linear-gradient(180deg,rgba(20,17,38,.86),rgba(11,9,18,.92));color:#e8e0ff;font-family:'DotGothic16',ui-monospace,'Courier New',monospace}.ds-bezel::before{content:'';position:absolute;inset:5px;border:1px dotted rgba(255,61,139,.34);pointer-events:none}.ds-bezel-osbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;padding:12px 22px;border-bottom:1px solid rgba(255,61,139,.34);color:#ff3d8b;font-size:12px;letter-spacing:.16em;text-transform:uppercase}.ds-bezel-osbar b{font-weight:400;color:#7dff3d}.ds-bezel-claim{color:#ff3d8b}.ds-bezel-body{padding:22px}"
+    },
+    {
+      "name": "Ring Bar",
+      "kind": "nav",
+      "refersTo": "ring-current",
+      "description": "The site's own four-page ring. Previous and next links on the outside, the route in the middle with the current page as a solid green chip.",
+      "html": "<nav class=\"ds-ring\" aria-label=\"Recorrido del sitio\"><span class=\"ds-ring-rr\">&lt; anterior</span><ol class=\"ds-ring-route\"><li><a href=\"#\" aria-current=\"page\">índice</a></li><li><a href=\"#\">proyectos</a></li><li><a href=\"#\">certificados</a></li><li><a href=\"#\">sobre mí</a></li></ol><span class=\"ds-ring-rr ds-ring-rr-next\">siguiente &gt;</span></nav>",
+      "css": ".ds-ring{margin:0;padding:14px 22px;border-top:1px solid rgba(255,61,139,.34);border-bottom:1px solid rgba(255,61,139,.34);display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:13px;letter-spacing:.1em}.ds-ring .ds-ring-route{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 auto;padding:0;list-style:none}.ds-ring .ds-ring-route li{display:flex;align-items:center;gap:8px}.ds-ring .ds-ring-route li+li::before{content:'>';color:rgba(255,61,139,.55);margin-right:2px}.ds-ring a{color:#ff3d8b;text-decoration:none}.ds-ring a:hover{color:#ff3d8b}.ds-ring .ds-ring-route a[aria-current=\"page\"]{color:#0b0912;background:#7dff3d;padding:2px 8px}.ds-ring .ds-ring-rr{flex:0 0 auto;min-width:104px}.ds-ring .ds-ring-rr a{color:#7dff3d}.ds-ring .ds-ring-rr-next{text-align:right}"
+    },
+    {
+      "name": "Log Row",
+      "kind": "custom",
+      "refersTo": "log-row",
+      "description": "The landing's dated entry: a green date label, the name with its one-line description, and the state aligned right. Every date is the repository's own last-change date.",
+      "html": "<ul class=\"ds-log\"><li><span class=\"ds-log-d\">2026-10</span><span class=\"ds-log-w\"><b>gam-mcp</b> Consultar y operar la base de datos del producto en lenguaje natural.</span><span class=\"ds-log-st ds-log-closed\">cerrado</span></li></ul>",
+      "css": ".ds-log{margin:0;padding:0;list-style:none;border-top:1px solid rgba(232,224,255,.14);font-family:'DotGothic16',ui-monospace,'Courier New',monospace}.ds-log li{display:grid;grid-template-columns:96px 1fr auto;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid rgba(232,224,255,.14)}.ds-log-d{color:#7dff3d;font-size:12px;letter-spacing:.12em}.ds-log-w{color:rgba(232,224,255,.72);font-size:15px}.ds-log-w b{display:block;color:#e8e0ff;font-weight:400}.ds-log-st{color:#7dff3d;font-size:11px;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}.ds-log-closed{color:#ff3d8b}"
+    },
+    {
+      "name": "Project Row",
+      "kind": "custom",
+      "refersTo": "project-row",
+      "description": "A row of the project index: a dot-matrix numeral, the name as a stock link, what the thing does in plain language, the state, the year. No technology is ever named.",
+      "html": "<table class=\"ds-ptable\"><thead><tr><th scope=\"col\">nº</th><th scope=\"col\">proyecto</th><th scope=\"col\">qué hace</th><th scope=\"col\">estado</th><th scope=\"col\">año</th></tr></thead><tbody><tr><td class=\"ds-p-n\">01</td><td class=\"ds-p-nm\"><a href=\"#\">fuji-ptp-android</a></td><td>Leer y escribir las recetas personalizadas de una Fujifilm X100VI desde el móvil.</td><td class=\"ds-p-st\">abierto</td><td class=\"ds-p-yr\">2026</td></tr></tbody></table>",
+      "css": ".ds-ptable{width:100%;border-collapse:collapse;font-family:'DotGothic16',ui-monospace,'Courier New',monospace}.ds-ptable th{text-align:left;font-weight:400;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#ff3d8b;border-bottom:1px solid rgba(255,61,139,.34);padding:0 12px 8px 0}.ds-ptable td{vertical-align:top;padding:14px 12px 14px 0;border-bottom:1px solid rgba(232,224,255,.14);color:rgba(232,224,255,.72);font-size:15px}.ds-p-n{font-family:'Doto',ui-monospace,monospace;font-size:17px;font-weight:700;color:#ff3d8b;font-variant-numeric:tabular-nums}.ds-p-nm a{color:#e8e0ff;text-decoration:none;border-bottom:1px solid rgba(255,61,139,.55)}.ds-p-nm a:hover{color:#7dff3d;border-bottom-color:#7dff3d}.ds-p-st{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#7dff3d}.ds-p-yr{font-size:12px;color:#7dff3d;white-space:nowrap}"
+    },
+    {
+      "name": "Ficha Block",
+      "kind": "card",
+      "refersTo": "page-bezel",
+      "description": "A recessed sheet of banded facts — label on the left, value on the right — used for the spec table and the colophon.",
+      "html": "<div class=\"ds-ficha\"><h2>ficha</h2><dl><div><dt>handle</dt><dd>alpefe · polaper</dd></div><div><dt>terreno</dt><dd>salud · datos · seguridad</dd></div></dl></div>",
+      "css": ".ds-ficha{border:1px solid rgba(255,61,139,.34);background:#100e1e;padding:18px;font-family:'DotGothic16',ui-monospace,'Courier New',monospace}.ds-ficha h2{margin:0 0 12px;font-size:13px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:#ff3d8b;line-height:1.4}.ds-ficha dl{margin:0}.ds-ficha div{display:grid;grid-template-columns:11ch 1fr;gap:12px;padding:8px 0;border-bottom:1px solid rgba(232,224,255,.14)}.ds-ficha div:last-child{border-bottom:0}.ds-ficha dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#ff3d8b}.ds-ficha dd{margin:0;font-size:14px;color:rgba(232,224,255,.72)}"
+    },
+    {
+      "name": "Empty Frame",
+      "kind": "custom",
+      "refersTo": "page-bezel",
+      "description": "A deliberate placeholder for an asset the owner still has to supply. It states that the image is pending rather than pretending to be a broken file.",
+      "html": "<figure class=\"ds-frame\"><span class=\"ds-frame-cross\" aria-hidden=\"true\"></span><span>imagen pendiente</span><figcaption>Captura del certificado.</figcaption></figure>",
+      "css": ".ds-frame{margin:18px 0 0;border:1px solid rgba(255,61,139,.34);background:#0b0912;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#7dff3d;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase}.ds-frame-cross{width:30px;height:30px;position:relative;opacity:.8}.ds-frame-cross::before,.ds-frame-cross::after{content:'';position:absolute;background:rgba(255,61,139,.55)}.ds-frame-cross::before{left:50%;top:0;width:1px;height:100%}.ds-frame-cross::after{top:50%;left:0;height:1px;width:100%}.ds-frame figcaption{color:rgba(232,224,255,.72);text-transform:none;letter-spacing:.04em;font-size:13px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Index of One",
+    "overview": "A directory listing with exactly one person in it. The site behaves like a file index rendered in two inks: a bezelled sheet, an `index of /` header, rows that carry dates, and a navigation made of the one control the late-nineties personal web actually had — the 88×31 button, drawn at its true proportion and scaled up until it can hold a word. Nothing here is a brochure. Every element is an entry, and every entry is either a fact or a way out.\n\nThe material is two fluorescent inks printed slightly out of register on an impure violet-white stock, sitting inside a dark tube. Depth is not light; depth is misregistration. Where a contemporary interface would drop a soft shadow, this one separates two printed layers by a hard offset with no blur, and collapses them flush when pressed. Hovering pulls them apart. The effect is the wobble of a CRT edge and the slip of a bad print run at the same time, and it is the only motion the site has.\n\nDensity stays deliberately low — this world could carry ten times the elements it does, and the brief's whole request was to resist that. Two sentences of prose, three plates, one log, four doors. What carries the character is commitment: the inks are saturated and unreconciled, the numerals are set in a dot matrix that echoes the ground's dot tile, and nothing is grey.",
+    "keyCharacteristics": [
+      "Two inks own every structural mark: hot magenta and acid green. No neutral draws a rule.",
+      "One impure violet-white stock carries prose, so the two inks never have to soften.",
+      "One reserved amber exists, and it is spent once, on the landing's primary plate.",
+      "Depth is registration: hard-offset ink layers, no blur anywhere.",
+      "Zero JavaScript, zero cookies, zero third-party requests.",
+      "Faces are a dot-matrix display and a 16px bitmap gothic — screen materials, not a console costume."
+    ],
+    "rules": [
+      { "name": "The Two Inks Rule", "body": "Every rule, border, box and label is magenta or acid green. A neutral never draws structure; it only carries prose. Row separators are the structure ink at 20% alpha, and a plate's dotted interior is the same ink at 34%. If an element needs a line and neither ink fits, the element is wrong, not the palette.", "section": "colors" },
+      { "name": "The Once Rule", "body": "The reserved amber appears a single time in the whole site, on the landing's primary plate. A second appearance is a bug, not a flourish.", "section": "colors" },
+      { "name": "The Impure Ink Rule", "body": "No colour reaches purity. The black is violet, the white is violet-tinged, the green is a chartreuse, the magenta stops short of full saturation, and the amber is a gold. Pure #000, #fff, #00ff00 and #ff00ff are forbidden.", "section": "colors" },
+      { "name": "The One Action Rule", "body": "The landing owns the site's single action. The three subpages are reading surfaces: they spend no reserved ink and they never compete with the landing's plate.", "section": "colors" },
+      { "name": "The Two Voices Rule", "body": "Doto speaks only for the wordmark and for numerals; DotGothic16 speaks for every other word in the site. A third face is a regression.", "section": "typography" },
+      { "name": "The Half-Width Rule", "body": "Prose runs at 16px and never below 13px, because DotGothic16 is drawn for a 16px cell and anything smaller loses its grid.", "section": "typography" },
+      { "name": "The Registration Rule", "body": "Depth is misregistration. An offset shadow always has zero blur and always represents a second printed layer. Introducing a blurred shadow to \"add depth\" breaks the world.", "section": "elevation" },
+      { "name": "The Freeze Rule", "body": "Under prefers-reduced-motion: reduce every transition and animation is removed and the plate stops translating. Registration becomes a static 1px state change; the hierarchy must still read.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do draw every rule, border and box in one of the two inks — magenta for structure, acid green for state.",
+      "Do spend the reserved amber exactly once, on the landing's primary plate, and never on a subpage.",
+      "Do keep depth as a zero-blur offset layer that separates on hover and collapses on press.",
+      "Do set the wordmark and every numeral in Doto, and everything else in DotGothic16 at 16px.",
+      "Do keep prose measure between 60ch and 72ch and cap display at 112px.",
+      "Do label a date with what it actually is — the repository's last change — rather than implying a release.",
+      "Do mark a closed-source project in magenta and explain it by what it does."
+    ],
+    "donts": [
+      "Don't add a third ink, a grey, or a gradient. If a line needs a colour, it is magenta or green.",
+      "Don't add a border radius, a blurred shadow, a glass panel or a coloured left border. The system is square, flat and printed.",
+      "Don't spend the amber twice, or move the primary action below the fold.",
+      "Don't ship JavaScript, a cookie, an analytics tag or a third-party font request. The claim in the top bar has to stay true.",
+      "Don't name a technology on the projects page. The list is about what things do.",
+      "Don't put location, legal name, portrait, or a blog on any page.",
+      "Don't let a subpage compete with the landing for the visitor's one action."
+    ]
+  }
+}

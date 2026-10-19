@@ -1,420 +1,134 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>alex — .net engineer · internet person</title>
-  <meta name="description" content=".NET engineer in Barcelona. Building patient transport & healthcare software end to end. Cybersecurity, local AI, FOSS.">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0b0b10;
-      --bg-alt: #14141c;
-      --fg: #e4e4e7;
-      --muted: #9a9aa5;
-      --accent: #7c3aed;
-      --accent2: #22d3ee;
-      --green: #4ade80;
-      --border: #2a2a34;
-      --mono: 'JetBrains Mono', monospace;
-      --sans: 'Inter', sans-serif;
-      --pixel: 'VT323', monospace;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: var(--sans);
-      line-height: 1.5;
-      overflow-x: hidden;
-    }
-
-    ::selection { background: var(--accent); color: #fff; }
-
-    /* ————— crt scanlines ————— */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);
-      pointer-events: none;
-      z-index: 999;
-    }
-
-    /* ————— stage: the badge hangs centered ————— */
-    .stage {
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 2.5rem 1.25rem 3rem;
-    }
-
-    /* ————— lanyard (thin cord) ————— */
-        .lanyard {
-          position: relative;
-          width: 10px;
-          height: 150px;
-          background: linear-gradient(180deg, #23232e, #17171f 60%, #23232e);
-          border: 1px solid var(--border);
-          border-radius: 999px;
-          box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
-        }
-
-    /* clip that holds the card */
-    .clip {
-      width: 52px;
-      height: 22px;
-      margin: 0 auto 0;
-      background: linear-gradient(180deg, #2a2a34, #1a1a22);
-      border: 1px solid #3a3a46;
-      border-radius: 4px;
-      position: relative;
-      box-shadow: 0 3px 0 rgba(0,0,0,.4);
-    }
-    .clip::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: -4px;
-      transform: translateX(-50%);
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #3a3a46;
-      border: 1px solid #4a4a58;
-    }
-
-    /* ————— flip card ————— */
-    .flip-wrap { perspective: 1200px; margin-top: -2px; }
-    .card {
-      position: relative;
-      width: 340px;
-      height: 480px;
-      transform-style: preserve-3d;
-      transition: transform .8s cubic-bezier(0.4, 0.1, 0.2, 1);
-      cursor: pointer;
-    }
-    .card.flipped { transform: rotateY(180deg); }
-    .face {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      box-shadow: 0 20px 50px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.04);
-      display: flex;
-      flex-direction: column;
-    }
-    .face.back {
-      transform: rotateY(180deg);
-    }
-
-    /* ————— FRONT ————— */
-    .front-top {
-      padding: 1rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--mono);
-      font-size: .62rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .front-top .conf { color: var(--accent2); }
-        .front-top .loc {
-          display: inline-flex;
-          align-items: center;
-          gap: .35rem;
-          color: var(--muted);
-        }
-        .front-top .loc svg { width: 11px; height: 11px; }
-
-    .front-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      gap: .9rem;
-      text-align: center;
-    }
-    .avatar {
-      width: 104px;
-      height: 104px;
-      border-radius: 50%;
-      padding: 4px;
-      background: conic-gradient(var(--accent), var(--accent2), var(--green), var(--accent));
-    }
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      display: block;
-      border: 3px solid var(--bg-alt);
-      image-rendering: auto;
-    }
-    .badge-name {
-      font-family: var(--pixel);
-      font-size: 2.1rem;
-      line-height: 1;
-      color: var(--fg);
-    }
-    .badge-name .at { color: var(--accent); }
-    .badge-role {
-      font-family: var(--mono);
-      font-size: .72rem;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .badge-role b { color: var(--accent2); font-weight: 500; }
-    .badge-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: .45rem;
-      font-family: var(--mono);
-      font-size: .66rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: .3rem .7rem;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      margin-top: .2rem;
-    }
-    .badge-tag .dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 8px var(--green);
-    }
-
-    .front-foot {
-      padding: .8rem 1.25rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: var(--mono);
-      font-size: .62rem;
-      color: var(--border);
-      letter-spacing: .1em;
-    }
-    .front-foot .user { color: var(--muted); }
-    /* retro barcode */
-    .barcode { display: flex; gap: 2px; height: 18px; align-items: stretch; }
-    .barcode span { background: var(--muted); display: block; }
-    .flip-hint {
-      display: inline-flex;
-      align-items: center;
-      gap: .3rem;
-      color: var(--border);
-      font-family: var(--mono);
-      font-size: .58rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-    .flip-hint svg { width: 11px; height: 11px; }
-
-    /* ————— BACK (the detail) ————— */
-    .back-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 1.6rem 1.5rem;
-    }
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .4rem;
-      margin-bottom: 1.4rem;
-      padding-top: .2rem;
-    }
-    .chip {
-      font-family: var(--mono);
-      font-size: .7rem;
-      color: var(--muted);
-      padding: .32rem .6rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: #11111a;
-    }
-    .chip.c1 { border-color: rgba(124,58,237,.5); color: #c4b5fd; }
-    .chip.c2 { border-color: rgba(34,211,238,.45); color: #7dd3fc; }
-    .chip.c3 { border-color: rgba(74,222,128,.4); color: #86efac; }
-    .chip.c4 { border-color: rgba(244,114,182,.45); color: #f9a8d4; }
-
-    .back-links {
-      display: flex;
-      flex-direction: column;
-      gap: .5rem;
-    }
-    .back-links a {
-      font-family: var(--mono);
-      font-size: .78rem;
-      color: var(--muted);
-      text-decoration: none;
-      padding: .45rem .8rem;
-      border: 1px solid var(--border);
-      background: #11111a;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: all .2s;
-    }
-    .back-links a:hover {
-      color: var(--fg);
-      border-color: var(--accent);
-      box-shadow: 3px 3px 0 var(--accent);
-      transform: translate(-1px,-1px);
-    }
-    .back-links a:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
-    .back-links .go { color: var(--border); }
-    .back-note {
-      margin-top: 1.2rem;
-      font-family: var(--mono);
-      font-size: .66rem;
-      color: var(--border);
-      line-height: 1.8;
-    }
-    .back-note b { color: var(--green); font-weight: 500; }
-
-    /* ————— flip button (explicit) ————— */
-    .flip-btn {
-      margin-top: 1.6rem;
-      font-family: var(--mono);
-      font-size: .78rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      padding: .5rem 1.2rem;
-      cursor: pointer;
-      transition: all .2s;
-    }
-    .flip-btn:hover {
-      color: var(--fg);
-      border-color: var(--accent);
-      box-shadow: 3px 3px 0 var(--accent);
-      transform: translate(-1px,-1px);
-    }
-    .flip-btn:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
-
-    /* ————— footer ————— */
-    footer { padding: 2.5rem 1.25rem 3rem; text-align: center; }
-    .copy { font-family: var(--mono); font-size: .72rem; color: var(--border); line-height: 2; }
-    .copy .heart { color: var(--accent); }
-    .copy a { color: var(--muted); text-decoration: none; }
-    .copy a:hover { color: var(--accent2); }
-
-    @media (max-width: 420px) {
-      .card { width: 300px; height: 460px; }
-    }
-
-    /* ————— reduced motion ————— */
-    @media (prefers-reduced-motion: reduce) {
-      .card { transition: none; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>alpefe — Internet Person</title>
+<meta name="description" content="Ingeniero .NET. Software de salud, datos y seguridad, de la base de datos a la pantalla. Proyectos, certificados y contacto.">
+<meta name="theme-color" content="#0b0912">
+<meta property="og:type" content="website">
+<meta property="og:title" content="alpefe — Internet Person">
+<meta property="og:description" content="Ingeniero .NET. Software de salud, datos y seguridad, de la base de datos a la pantalla.">
+<meta property="og:url" content="https://alpefe.me/">
+<link rel="canonical" href="https://alpefe.me/">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip" href="#contenido">saltar al contenido</a>
 
-  <main class="stage">
-    <!-- lanyard -->
-    <div class="lanyard" aria-hidden="true"></div>
-    <div class="clip" aria-hidden="true"></div>
+<div class="bezel">
 
-    <!-- id badge (click to flip) -->
-    <div class="flip-wrap">
-      <div class="card" id="card" role="button" tabindex="0" aria-label="Presentación. Pulsa para girar la tarjeta">
-        <!-- FRONT -->
-        <div class="face front">
-          <div class="front-top">
-            <span class="conf">alpefe</span>
-            <span class="loc">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Barcelona
-            </span>
-          </div>
-          <div class="front-body">
-            <div class="avatar"><img src="assets/avatar.png" alt="Alex" width="104" height="104"></div>
-            <div class="badge-name">alex<span class="at">@</span>alpefe</div>
-            <div class="badge-role">Internet Person</div>
-            <div class="badge-tag"><span class="dot"></span> attendee · nº 001</div>
-          </div>
-          <div class="front-foot">
-            <span class="user">alex</span>
-            <div class="barcode" aria-hidden="true">
-              <span style="width:2px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:4px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:3px"></span><span style="width:1px"></span><span style="width:2px"></span><span style="width:4px"></span><span style="width:1px"></span><span style="width:3px"></span><span style="width:2px"></span>
-            </div>
-            <span class="flip-hint">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.5 15a9 9 0 1 0 2-9.5L1 10"/></svg>
-              flip
-            </span>
-          </div>
-        </div>
+  <div class="osbar">
+    <span>index of / <b>alpefe.me</b></span>
+    <span class="flip">sin cookies · sin trackers · sin analítica</span>
+  </div>
 
-        <!-- BACK (the detail) -->
-        <div class="face back">
-          <div class="back-body">
-            <div class="chip-row">
-              <span class="chip c1">.NET Engineer</span>
-              <span class="chip c3">AI</span>
-              <span class="chip c2">HealthTech</span>
-              <span class="chip c1">Cybersecurity</span>
-              <span class="chip c3" title="Free &amp; Open Source Software">FOSS</span>
-              <span class="chip c4">K-Pop</span>
-            </div>
+  <main id="contenido">
+    <div class="sheet">
 
-            <div class="back-links">
-              <a href="https://github.com/AlPeFe" target="_blank" rel="noopener">github <span class="go">↗</span></a>
-              <a href="https://www.instagram.com/alpefe.exe" target="_blank" rel="noopener">instagram <span class="go">↗</span></a>
-              <a href="mailto:alexpf.me@gmail.com">contact <span class="go">✉</span></a>
-            </div>
-
-            <p class="back-note">
-              building <b>healthcare</b> software end to end.<br>
-              <b>boring</b> code, secure by default,<br>
-              data that lives on my own hardware.
-            </p>
-          </div>
-        </div>
+      <div class="masthead">
+        <h1 class="wordmark">alpefe<small>· polaper ·</small></h1>
+        <p class="claim">
+          Ingeniero <b>.NET</b>. Construyo software donde la salud, los datos y la seguridad se cruzan,
+          de la base de datos a la pantalla. <b>Internet Person</b> es todo lo que vas a saber de mí
+          en la portada; el resto vive en tres páginas.
+        </p>
       </div>
+
+      <nav aria-label="Secciones del sitio">
+        <ul class="rack">
+          <li>
+            <a class="plate primary" href="projects/index.html">proyectos</a>
+            <p class="band"><span class="k">[ 01 ]</span> nueve abiertos · siete cerrados</p>
+          </li>
+          <li>
+            <a class="plate" href="certs/index.html">certificados</a>
+            <p class="band"><span class="k">[ 02 ]</span> dos · con sus imágenes</p>
+          </li>
+          <li>
+            <a class="plate" href="about/index.html">sobre mí</a>
+            <p class="band"><span class="k">[ 03 ]</span> cuatro líneas · colofón</p>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="ring" aria-label="Recorrido del sitio">
+        <span class="rr"><a href="about/index.html">&lt; anterior</a></span>
+        <ol class="route">
+          <li><a href="index.html" aria-current="page">índice</a></li>
+          <li><a href="projects/index.html">proyectos</a></li>
+          <li><a href="certs/index.html">certificados</a></li>
+          <li><a href="about/index.html">sobre mí</a></li>
+        </ol>
+        <span class="rr"><a href="projects/index.html">siguiente &gt;</a></span>
+      </nav>
+
+      <section aria-labelledby="log-h">
+        <div class="sect-head">
+          <h2 id="log-h">últimos cambios</h2>
+          <span>fecha del último envío al repositorio</span>
+        </div>
+        <ul class="log">
+          <li>
+            <span class="d">2026-10</span>
+            <span class="w"><b>gam-mcp</b> Consultar y operar la base de datos del producto en lenguaje natural, sin atarse a un cliente concreto.</span>
+            <span class="st closed">cerrado</span>
+          </li>
+          <li>
+            <span class="d">2026-10</span>
+            <span class="w"><b>tsnu-plataforma</b> Flota y personal de transporte sanitario: fichas de vehículo, caducidades y listas normativas.</span>
+            <span class="st closed">cerrado</span>
+          </li>
+          <li>
+            <span class="d">2026-10</span>
+            <span class="w"><b>HanniGram</b> Memoria persistente para agentes de código: que el agente recuerde lo decidido entre sesiones.</span>
+            <span class="st">abierto</span>
+          </li>
+          <li>
+            <span class="d">2026-09</span>
+            <span class="w"><b>xiaomi-tv-debloat</b> 602 MB de RAM y 503 MB de almacenamiento liberados en una Xiaomi Mi TV, sin root y del todo reversible.</span>
+            <span class="st">abierto</span>
+          </li>
+          <li>
+            <span class="d">2026-08</span>
+            <span class="w"><b>fuji-ptp-android</b> Leer y escribir las recetas personalizadas de una Fujifilm X100VI desde el móvil.</span>
+            <span class="st">abierto</span>
+          </li>
+          <li>
+            <span class="d">2026-08</span>
+            <span class="w"><b>kivotos</b> Biblioteca de ROMs y servidor de descargas dentro de la red de casa, en un solo ejecutable.</span>
+            <span class="st">abierto</span>
+          </li>
+        </ul>
+        <p class="note">La lista completa, con los cerrados explicados uno por uno, está en <a href="projects/index.html">proyectos</a>.</p>
+      </section>
+
+      <section aria-labelledby="contact-h">
+        <div class="sect-head">
+          <h2 id="contact-h">contacto</h2>
+          <span>cuatro puertas</span>
+        </div>
+        <div class="contact">
+          <a href="https://github.com/AlPeFe" rel="me">github</a>
+          <a href="https://x.com/alpefe" rel="me">x</a>
+          <a href="https://www.instagram.com/alpefe.exe" rel="me">instagram</a>
+          <a href="https://www.linkedin.com/in/alpefe" rel="me">linkedin</a>
+        </div>
+        <p class="mail">escribir: <a href="mailto:alexpf.me@gmail.com">alexpf.me@gmail.com</a></p>
+      </section>
+
     </div>
-
-    <button class="flip-btn" id="flipBtn" type="button">[ flip the badge ]</button>
-
-    <footer>
-      <p class="copy">
-        © 2026 · <span class="heart">♥</span> an id badge, made of plain HTML/CSS/JS · no trackers, no cookies<br>
-        <a href="https://github.com/AlPeFe/AlPeFe.github.io" target="_blank" rel="noopener">source</a> ·
-        best viewed in netscape 4.0
-      </p>
-    </footer>
   </main>
 
-  <script>
-    const card = document.getElementById('card');
-    const btn = document.getElementById('flipBtn');
-    function flip() { card.classList.toggle('flipped'); }
-    card.addEventListener('click', flip);
-    btn.addEventListener('click', function (e) { e.stopPropagation(); flip(); });
-    card.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
-    });
-  </script>
+  <footer>
+    <span>© 2026 alpefe</span>
+    <span class="prov">hecho a mano · html y css · cero javascript</span>
+    <span><a href="https://github.com/AlPeFe/AlPeFe.github.io">código fuente</a></span>
+    <span>best viewed in 800×600</span>
+  </footer>
+
+</div>
 </body>
 </html>
