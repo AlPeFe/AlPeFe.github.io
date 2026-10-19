@@ -8,110 +8,271 @@
         "role": "primary",
         "displayName": "Page Yellow",
         "canonical": "#e8d84a",
-        "tonalRamp": ["#2a2708", "#4a450d", "#6d6614", "#91881b", "#b5aa24", "#d9cc2f", "#e8dd6a", "#f4eead"]
+        "tonalRamp": [
+          "#2a2708",
+          "#4a450d",
+          "#6d6614",
+          "#91881b",
+          "#b5aa24",
+          "#d9cc2f",
+          "#e8dd6a",
+          "#f4eead"
+        ]
       },
       "cyan": {
         "role": "primary",
         "displayName": "Signal Cyan",
         "canonical": "#3ce8ff",
-        "tonalRamp": ["#05282e", "#084854", "#0d6b7c", "#138fa5", "#1ab3cd", "#24d6f2", "#64e5fa", "#adeffc"]
+        "tonalRamp": [
+          "#05282e",
+          "#084854",
+          "#0d6b7c",
+          "#138fa5",
+          "#1ab3cd",
+          "#24d6f2",
+          "#64e5fa",
+          "#adeffc"
+        ]
       },
       "green": {
         "role": "primary",
         "displayName": "Open Green",
         "canonical": "#3ce86a",
-        "tonalRamp": ["#052a10", "#084a1c", "#0d6d29", "#139339", "#1ab64a", "#24d95c", "#64e88d", "#adf4c3"]
+        "tonalRamp": [
+          "#052a10",
+          "#084a1c",
+          "#0d6d29",
+          "#139339",
+          "#1ab64a",
+          "#24d95c",
+          "#64e88d",
+          "#adf4c3"
+        ]
       },
       "red": {
         "role": "secondary",
         "displayName": "Closed Red",
         "canonical": "#ff5442",
-        "tonalRamp": ["#2e0b07", "#500e09", "#76200c", "#983012", "#bd4218", "#e05523", "#ec8560", "#f7c0ab"]
+        "tonalRamp": [
+          "#2e0b07",
+          "#500e09",
+          "#76200c",
+          "#983012",
+          "#bd4218",
+          "#e05523",
+          "#ec8560",
+          "#f7c0ab"
+        ]
       },
       "magenta": {
         "role": "secondary",
         "displayName": "Route Magenta",
         "canonical": "#ff58c8",
-        "tonalRamp": ["#2e0924", "#520a3a", "#77124f", "#9c1c66", "#c2287f", "#e83698", "#ee6fb6", "#f7b1d9"]
+        "tonalRamp": [
+          "#2e0924",
+          "#520a3a",
+          "#77124f",
+          "#9c1c66",
+          "#c2287f",
+          "#e83698",
+          "#ee6fb6",
+          "#f7b1d9"
+        ]
       },
       "blue": {
         "role": "neutral",
         "displayName": "Frame Blue",
         "canonical": "#3c6cff",
-        "tonalRamp": ["#070d2e", "#0b1850", "#112476", "#1a339c", "#2345c2", "#335ce0", "#6b8ae8", "#adc0f7"]
+        "tonalRamp": [
+          "#070d2e",
+          "#0b1850",
+          "#112476",
+          "#1a339c",
+          "#2345c2",
+          "#335ce0",
+          "#6b8ae8",
+          "#adc0f7"
+        ]
       },
       "room": {
         "role": "neutral",
         "displayName": "Room Black",
         "canonical": "#03050a",
-        "tonalRamp": ["#02040a", "#050810", "#090f1a", "#0f1826", "#182334", "#243147", "#394459", "#5e6a7d"]
+        "tonalRamp": [
+          "#02040a",
+          "#050810",
+          "#090f1a",
+          "#0f1826",
+          "#182334",
+          "#243147",
+          "#394459",
+          "#5e6a7d"
+        ]
       },
       "glass": {
         "role": "neutral",
         "displayName": "Phosphor Black",
         "canonical": "#04060b",
-        "tonalRamp": ["#03050b", "#060910", "#0b0f19", "#111725", "#1a2333", "#253044", "#3a4457", "#606a7a"]
+        "tonalRamp": [
+          "#03050b",
+          "#060910",
+          "#0b0f19",
+          "#111725",
+          "#1a2333",
+          "#253044",
+          "#3a4457",
+          "#606a7a"
+        ]
       },
       "ink": {
         "role": "neutral",
         "displayName": "Phosphor White",
         "canonical": "#eef0ff",
-        "tonalRamp": ["#1d1f2e", "#343653", "#4d4f7a", "#676aa0", "#8387c1", "#a4a7dd", "#c7c9f0", "#eef0ff"]
+        "tonalRamp": [
+          "#1d1f2e",
+          "#343653",
+          "#4d4f7a",
+          "#676aa0",
+          "#8387c1",
+          "#a4a7dd",
+          "#c7c9f0",
+          "#eef0ff"
+        ]
       },
       "ink-dim": {
         "role": "neutral",
         "displayName": "Dim Phosphor",
         "canonical": "rgba(238,240,255,.62)",
-        "tonalRamp": ["rgba(238,240,255,.28)", "rgba(238,240,255,.38)", "rgba(238,240,255,.46)", "rgba(238,240,255,.54)", "rgba(238,240,255,.62)", "rgba(238,240,255,.72)", "rgba(238,240,255,.84)", "rgba(238,240,255,1)"]
+        "tonalRamp": [
+          "rgba(238,240,255,.28)",
+          "rgba(238,240,255,.38)",
+          "rgba(238,240,255,.46)",
+          "rgba(238,240,255,.54)",
+          "rgba(238,240,255,.62)",
+          "rgba(238,240,255,.72)",
+          "rgba(238,240,255,.84)",
+          "rgba(238,240,255,1)"
+        ]
       },
       "bar-ink": {
         "role": "neutral",
         "displayName": "Frame Ink",
         "canonical": "rgba(4,6,11,.72)",
-        "tonalRamp": ["rgba(4,6,11,.35)", "rgba(4,6,11,.44)", "rgba(4,6,11,.52)", "rgba(4,6,11,.6)", "rgba(4,6,11,.72)", "rgba(4,6,11,.82)", "rgba(4,6,11,.9)", "rgba(4,6,11,1)"]
+        "tonalRamp": [
+          "rgba(4,6,11,.35)",
+          "rgba(4,6,11,.44)",
+          "rgba(4,6,11,.52)",
+          "rgba(4,6,11,.6)",
+          "rgba(4,6,11,.72)",
+          "rgba(4,6,11,.82)",
+          "rgba(4,6,11,.9)",
+          "rgba(4,6,11,1)"
+        ]
       },
       "rule": {
         "role": "neutral",
         "displayName": "Rule",
         "canonical": "rgba(60,232,255,.38)",
-        "tonalRamp": ["rgba(60,232,255,.06)", "rgba(60,232,255,.1)", "rgba(60,232,255,.16)", "rgba(60,232,255,.22)", "rgba(60,232,255,.3)", "rgba(60,232,255,.38)", "rgba(60,232,255,.52)", "rgba(60,232,255,.7)"]
+        "tonalRamp": [
+          "rgba(60,232,255,.06)",
+          "rgba(60,232,255,.1)",
+          "rgba(60,232,255,.16)",
+          "rgba(60,232,255,.22)",
+          "rgba(60,232,255,.3)",
+          "rgba(60,232,255,.38)",
+          "rgba(60,232,255,.52)",
+          "rgba(60,232,255,.7)"
+        ]
       },
       "hair": {
         "role": "neutral",
         "displayName": "Hair",
         "canonical": "rgba(60,232,255,.13)",
-        "tonalRamp": ["rgba(60,232,255,.03)", "rgba(60,232,255,.05)", "rgba(60,232,255,.08)", "rgba(60,232,255,.1)", "rgba(60,232,255,.13)", "rgba(60,232,255,.2)", "rgba(60,232,255,.3)", "rgba(60,232,255,.45)"]
+        "tonalRamp": [
+          "rgba(60,232,255,.03)",
+          "rgba(60,232,255,.05)",
+          "rgba(60,232,255,.08)",
+          "rgba(60,232,255,.1)",
+          "rgba(60,232,255,.13)",
+          "rgba(60,232,255,.2)",
+          "rgba(60,232,255,.3)",
+          "rgba(60,232,255,.45)"
+        ]
       }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "The page number in the yellow bar. Doto only." },
-      "headline": { "displayName": "Headline", "purpose": "A subpage's title, 1.45em in yellow: the one heading allowed to stand visibly larger than the character cell." },
-      "logo": { "displayName": "Logo", "purpose": "The wordmark, drawn out of solid blocks in the character cell. Text, not an image." },
-      "body": { "displayName": "Body", "purpose": "All reading, sized in container units so the character grid tracks the tube." },
-      "label": { "displayName": "Label", "purpose": "Captions, table headers, states, fastext keys." },
-      "numeral": { "displayName": "Numeral", "purpose": "Row indices, dates, counts — anything countable." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "The page number in the yellow bar. Doto only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "A subpage's title, 1.45em in yellow: the one heading allowed to stand visibly larger than the character cell."
+      },
+      "logo": {
+        "displayName": "Logo",
+        "purpose": "The wordmark, drawn out of solid blocks in the character cell. Text, not an image."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All reading, sized in container units so the character grid tracks the tube."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Captions, table headers, states, fastext keys."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Row indices, dates, counts — anything countable."
+      }
     },
     "shadows": [
-      { "name": "glass-ring", "value": "inset 0 0 0 1px rgba(255,255,255,.05)", "purpose": "The inner ring where the bezel meets the glass." },
-      { "name": "glass-vignette", "value": "inset 0 0 54px 14px rgba(0,0,0,.92)", "purpose": "The tube darkening toward its own edge. Not elevation: the inside of a funnel." },
-      { "name": "pilot-lens", "value": "inset 0 0 0 1px rgba(4,6,11,.55), 0 0 0 1px rgba(4,6,11,.9)", "purpose": "The dark ring that seats the green pilot lens into the plastic. A ring, not a halo: no glow appears anywhere on the case." },
-      { "name": "set-cast", "value": "0 46px 90px -34px rgba(0,0,0,.95)", "purpose": "The only outward shadow in the system, under the whole set on the desk." }
+      {
+        "name": "glass-ring",
+        "value": "inset 0 0 0 1px rgba(255,255,255,.05)",
+        "purpose": "The inner ring where the bezel meets the glass."
+      },
+      {
+        "name": "glass-vignette",
+        "value": "inset 0 0 54px 14px rgba(0,0,0,.92)",
+        "purpose": "The tube darkening toward its own edge. Not elevation: the inside of a funnel."
+      },
+      {
+        "name": "set-cast",
+        "value": "0 46px 90px -34px rgba(0,0,0,.95)",
+        "purpose": "The only outward shadow in the system, under the whole set on the desk."
+      }
     ],
     "motion": [
-      { "name": "power-on", "value": "0.95s cubic-bezier(.2,.85,.15,1)", "purpose": "Once, on load: the tube's line opens into a picture." },
-      { "name": "vhold", "value": "7s steps(1, end) infinite", "purpose": "An occasional 1px vertical jitter: the set is not perfectly locked." },
-      { "name": "roll", "value": "13s linear infinite", "purpose": "The slow vertical-retrace band travelling up the glass." }
+      {
+        "name": "power-on",
+        "value": "0.95s cubic-bezier(.2,.85,.15,1)",
+        "purpose": "Once, on load: the tube's line opens into a picture."
+      },
+      {
+        "name": "vhold",
+        "value": "7s steps(1, end) infinite",
+        "purpose": "An occasional 1px vertical jitter: the set is not perfectly locked."
+      },
+      {
+        "name": "roll",
+        "value": "13s linear infinite",
+        "purpose": "The slow vertical-retrace band travelling up the glass."
+      }
     ],
     "breakpoints": [
-      { "name": "phone", "value": "820px" }
+      {
+        "name": "phone",
+        "value": "820px"
+      }
     ]
   },
   "components": [
     {
-      "name": "The Tube",
+      "name": "The Window",
       "kind": "card",
       "refersTo": "tube",
-      "description": "The 4:3 set: an elliptical-cornered plastic bezel recessed around a glass, with a green pilot light. On a phone its height follows its content.",
+      "description": "The glass IS the window: edge to edge, no bezel, no radius, no room around it, with the vignette and the grille as fixed layers over the whole viewport.",
       "html": "<div class=\"ds-tube\"><div class=\"ds-glass\"><div class=\"ds-screen\">P100 alpefe.me</div></div><span class=\"ds-led\"></span></div>",
       "css": ".ds-tube{position:relative;width:min(100%,calc(76vh * 4 / 3),1240px);aspect-ratio:4 / 3;container-type:inline-size;padding:2.2cqi 2.93cqi;border-radius:5.6% / 7.4%;background:linear-gradient(176deg,#242833 0%,#12151c 42%,#0b0d12 72%,#1c2029 100%);box-shadow:0 46px 90px -34px rgba(0,0,0,.95),inset 0 2px 0 rgba(255,255,255,.05),inset 0 -2px 0 rgba(0,0,0,.7)}.ds-glass{position:relative;width:100%;height:100%;border-radius:5.2% / 8.6%;overflow:hidden;background:#04060b;box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),inset 0 0 54px 14px rgba(0,0,0,.92)}.ds-screen{padding:4.8% 4.6%;color:#eef0ff;font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:1.45cqi;line-height:1.4;text-shadow:0 0 1px currentColor,0 0 7px rgba(120,200,255,.16)}.ds-led{position:absolute;right:3.4%;bottom:1.5%;width:.5cqi;height:.5cqi;min-width:4px;min-height:4px;border-radius:50%;background:#3ce86a;box-shadow:0 2px 6px 1px rgba(60,232,106,.55),0 3px 16px 3px rgba(60,232,106,.22)}"
     },
@@ -119,7 +280,7 @@
       "name": "The Warp",
       "kind": "custom",
       "refersTo": "glass",
-      "description": "A generated radial displacement map bends the signal so straight rules bow. Zero JavaScript; one 3 KB asset; off in one media query on a phone.",
+      "description": "A generated radial displacement map bends the content column so straight rules bow. On the column and not the window, because displacement is a function of r squared from the centre. Zero JavaScript, 4 KB of asset, region clipped to its own box.",
       "html": "<svg width=\"0\" height=\"0\" style=\"position:absolute\" aria-hidden=\"true\"><filter id=\"ds-warp\" primitiveUnits=\"objectBoundingBox\" x=\"-8%\" y=\"-8%\" width=\"116%\" height=\"116%\" color-interpolation-filters=\"sRGB\"><feImage href=\"/assets/tube-map.png\" x=\"0\" y=\"0\" width=\"1\" height=\"1\" preserveAspectRatio=\"none\" result=\"map\"></feImage><feDisplacementMap in=\"SourceGraphic\" in2=\"map\" scale=\"0.05\" xChannelSelector=\"R\" yChannelSelector=\"G\"></feDisplacementMap></filter></svg>",
       "css": ".ds-warp{position:absolute;inset:0;filter:url(#ds-warp);animation:ds-on .95s cubic-bezier(.2,.85,.15,1) both}@keyframes ds-on{0%{transform:scaleY(.004);filter:brightness(7)}34%{transform:scaleY(.004);filter:brightness(7)}62%{transform:scaleY(1.03);filter:brightness(1.5)}100%{transform:scaleY(1);filter:brightness(1)}}"
     },
@@ -159,7 +320,7 @@
       "name": "Fastext Keys",
       "kind": "nav",
       "refersTo": "key-projects",
-      "description": "Four colour-coded destinations pinned to the bottom edge of the glass with a 1.5ch square in the key's own colour. They stay in view when the glass scrolls.",
+      "description": "Four colour-coded destinations on the bottom edge, plus the four social doors right-aligned in the same row as gh, x, ig and li. Contact is furniture, not a section.",
       "html": "<nav class=\"ds-keys\"><a class=\"k1\" href=\"#\"><i></i>índice</a><a class=\"k2\" href=\"#\"><i></i>proyectos</a><a class=\"k3\" href=\"#\"><i></i>certificados</a><a class=\"k4\" href=\"#\"><i></i>sobre mí</a></nav>",
       "css": ".ds-keys{display:flex;gap:1.6ch;flex-wrap:wrap;padding-top:.35em;border-top:1px solid rgba(60,232,255,.28);font-family:'DotGothic16',ui-monospace,'Courier New',monospace;font-size:.86em;text-transform:uppercase;letter-spacing:.08em}.ds-keys a{display:inline-flex;align-items:center;gap:.6ch;text-decoration:none;color:rgba(238,240,255,.62)}.ds-keys i{width:1.5ch;height:.9em;display:inline-block;background:currentColor}.ds-keys .k1{color:#ff5442}.ds-keys .k2{color:#3ce86a}.ds-keys .k3{color:#e8d84a}.ds-keys .k4{color:#3ce8ff}.ds-keys a[aria-current]{color:#eef0ff}.ds-keys a:hover{color:#eef0ff}"
     },
@@ -182,9 +343,9 @@
   ],
   "narrative": {
     "northStar": "The Teletext Tube",
-    "overview": "This is not a web page dressed as a monitor. It is what the monitor shows. A dark room, one 4:3 tube with a plastic bezel and a green pilot light, and behind curved glass a teletext service with exactly one subscriber: a numbered page index, a dated log, four keyed destinations, and a block-mosaic wordmark built out of solid cells. Every mark on the screen is made of the same stuff — the eight inks a broadcast teletext decoder had, none of them pure, laid on phosphor black.\n\nThe signal is bent, not painted. A generated radial displacement map warps the live page through an SVG filter, so straight rules bow downward at the centre, verticals splay, and the top edge of the page bar arcs. It is real geometry: a 3 KB map computed from u·r², applied with zero JavaScript, and switching off in one media query when the glass gets small. Nothing here is a photograph of a monitor, and nothing is a CSS bevel pretending to be one.\n\nThe density is deliberately low but the grid is strict: everything sits in a fixed-pitch character cell, set at 11-17px depending on how big the tube is. The window is the frame, not the page. Where a modern site would scroll a document, this one shows one screenful and, when a list is longer than the glass, scrolls inside it the way a terminal does.",
+    "overview": "This is not a web page dressed as a monitor. It is what the monitor shows. The whole window is the tube, a phosphor field whose edges darken and bow, and inside it a teletext service with exactly one subscriber: a numbered page index, a dated log, four keyed destinations, and a block-mosaic wordmark built out of solid cells. Every mark on the screen is made of the same stuff — the eight inks a broadcast teletext decoder had, none of them pure, laid on phosphor black.\n\nThe signal is bent, not painted. A generated radial displacement map warps the live page through an SVG filter, so straight rules bow downward at the centre, verticals splay, and the top edge of the page bar arcs. It is real geometry: a 3 KB map computed from u·r², applied with zero JavaScript, and switching off in one media query when the glass gets small. Nothing here is a photograph of a monitor, and nothing is a CSS bevel pretending to be one.\n\nThe density is deliberately low but the grid is strict: everything sits in a fixed-pitch character cell, set at 11-17px depending on how big the tube is. The window is the frame, not the page. Where a modern site would scroll a document, this one shows one screenful and, when a list is longer than the glass, scrolls inside it the way a terminal does.",
     "keyCharacteristics": [
-      "One 4:3 glass, centred in a dark room; the phone grows it taller so nothing is trapped.",
+      "The glass is the whole window; the content is a centred 118ch column with slack for the bowing.",
       "Eight teletext inks, none pure, plus a dimmed phosphor white for prose.",
       "Curvature from a computed displacement map, never from an image of a monitor.",
       "Aperture grille in vertical RGB stripes and horizontal scanlines, above the signal.",
@@ -192,22 +353,54 @@
       "Zero JavaScript, zero cookies, zero third-party requests."
     ],
     "rules": [
-      { "name": "The Eight Inks Rule", "body": "Only the eight teletext colours plus a dimmed phosphor white may appear. A colour outside that set is a decoder that never existed.", "section": "colors" },
-      { "name": "The No-Pure-Ink Rule", "body": "Nothing reaches purity. The black is blue-black, the white is phosphor-tinted, and every saturated ink stops short of the primaries. Pure #000, #fff, #00ff00, #ff0000 and #0000ff are forbidden.", "section": "colors" },
-      { "name": "The Blue Is Not Text Rule", "body": "Blue (#3c6cff) is a fill and a frame, never a body colour: on phosphor black it does not reach AA contrast, so it never carries reading.", "section": "colors" },
-      { "name": "The Once-Magenta Rule", "body": "Magenta appears in exactly one place in the whole site: the magenta route key. Anywhere else it is a bug.", "section": "colors" },
-      { "name": "The Character Cell Rule", "body": "Every word sits in a fixed-pitch cell and the layout is measured in characters — ch for columns, em for rhythm. A proportionally-set word anywhere in this site breaks the screen.", "section": "typography" },
-      { "name": "The Flush Mosaic Rule", "body": "The wordmark sets line-height: 1 on purpose: its rows of solid blocks must touch, because the leading is the artwork. This is the only place in the system where leading is allowed under 1.3, and it is text rather than an image so that it scales and selects.", "section": "typography" },
-      { "name": "The No-Lift Rule", "body": "Nothing casts a shadow to imply it sits above the page, and nothing on the case glows. The pilot lens is a flat dot in a dark ring; the only light in the site comes from the phosphor inside the glass.", "section": "elevation" },
-      { "name": "The Grille-Above Rule", "body": "Aperture stripes and scanlines always sit above the content, never behind it, at low alpha. Below the content they become a background pattern and the screen stops being glass.", "section": "elevation" }
+      {
+        "name": "The Eight Inks Rule",
+        "body": "Only the eight teletext colours plus a dimmed phosphor white may appear. A colour outside that set is a decoder that never existed.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Pure-Ink Rule",
+        "body": "Nothing reaches purity. The black is blue-black, the white is phosphor-tinted, and every saturated ink stops short of the primaries. Pure #000, #fff, #00ff00, #ff0000 and #0000ff are forbidden.",
+        "section": "colors"
+      },
+      {
+        "name": "The Blue Is Not Text Rule",
+        "body": "Blue (#3c6cff) is a fill and a frame, never a body colour: on phosphor black it does not reach AA contrast, so it never carries reading.",
+        "section": "colors"
+      },
+      {
+        "name": "The Once-Magenta Rule",
+        "body": "Magenta appears in exactly one place in the whole site: the magenta route key. Anywhere else it is a bug.",
+        "section": "colors"
+      },
+      {
+        "name": "The Character Cell Rule",
+        "body": "Every word sits in a fixed-pitch cell and the layout is measured in characters — ch for columns, em for rhythm. A proportionally-set word anywhere in this site breaks the screen.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flush Mosaic Rule",
+        "body": "The wordmark sets line-height: 1 on purpose: its rows of solid blocks must touch, because the leading is the artwork. This is the only place in the system where leading is allowed under 1.3, and it is text rather than an image so that it scales and selects.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Lift Rule",
+        "body": "Nothing casts a shadow to imply it sits above the page, nothing glows, and nothing wraps the glass: the tube is the window and the phosphor is the only light.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Grille-Above Rule",
+        "body": "Aperture stripes and scanlines always sit above the content, never behind it, at low alpha. Below the content they become a background pattern and the screen stops being glass.",
+        "section": "elevation"
+      }
     ],
     "dos": [
-      "Do keep the tube 4:3 on the desk and let only the phone grow it.",
       "Do keep the warp on the signal alone, and let the grille and vignette stay flat on the glass.",
       "Do size type in cqi so the character grid tracks the tube, not the window.",
       "Do give every quantity Doto and every word DotGothic16.",
       "Do spend yellow on structure, cyan on reading, green on open, red on closed, and magenta exactly once.",
-      "Do label a date with what it is — the repository's last change — rather than implying a release."
+      "Do label a date with what it is — the repository's last change — rather than implying a release.",
+      "Do keep contact in the bottom key row, right-aligned, rather than in a section of its own."
     ],
     "donts": [
       "Don't add a shadow that implies something floats, or a glow anywhere on the case. The pilot lens is flat; the phosphor is the only light.",
@@ -216,7 +409,8 @@
       "Don't replace the displacement map with a photo of a monitor, or a CSS bevel pretending to be plastic.",
       "Don't ship JavaScript, a cookie, an analytics tag or a third-party font request.",
       "Don't name a technology on the projects page. The list is about what things do.",
-      "Don't let a fixed glass height trap content on a phone."
+      "Don't let a fixed glass height trap content on a phone.",
+      "Do not add a case, a bezel, a radius or a background behind the glass: the tube is the window."
     ]
   }
 }

@@ -53,29 +53,24 @@ typography:
     lineHeight: 1
 rounded:
   none: "0px"
-  bezel: "5.6% / 7.4%"
-  glass: "5.2% / 8.6%"
-  bezel-phone: "16px"
-  glass-phone: "20px"
 spacing:
-  bezel-x: "2.93cqi"
-  bezel-y: "2.2cqi"
-  safe-x: "4.6%"
-  safe-y: "4.8%"
-  row-pad: ".16em .5ch"
+  edge: "clamp(18px, 3.2vmin, 54px)"
+  column: "118ch"
+  column-pad: "0 5ch"
+  row-pad: ".28em .5ch"
   row-gap: ".1em"
   bar-pad: ".3em .7em"
   block-gap: ".35em"
 components:
-  tube:
-    backgroundColor: "{colors.room}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.bezel}"
-    padding: "2.2cqi 2.93cqi"
-  glass:
+  window:
     backgroundColor: "{colors.glass}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.glass}"
+    rounded: "{rounded.none}"
+  column:
+    backgroundColor: "{colors.glass}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.none}"
+    padding: "0 5ch"
   page-bar:
     backgroundColor: "{colors.yellow}"
     textColor: "{colors.glass}"
@@ -119,7 +114,7 @@ components:
 
 **Creative North Star: "The Teletext Tube"**
 
-This is not a web page dressed as a monitor. It is what the monitor shows. A dark room, one 4:3 tube with a plastic bezel and a green pilot light, and behind curved glass a teletext service with exactly one subscriber: a numbered page index, a dated log, four keyed destinations, and a block-mosaic wordmark built out of solid cells. Every mark on the screen is made of the same stuff — the eight inks a broadcast teletext decoder had, none of them pure, laid on phosphor black.
+This is not a web page dressed as a monitor. It is what the monitor shows. The whole window is the tube: a phosphor field whose edges darken and bow, and inside it a teletext service with exactly one subscriber — a numbered page index, a dated log, four keyed destinations, and a block-mosaic wordmark built out of solid cells. Every mark on the screen is made of the same stuff: the eight inks a broadcast teletext decoder had, none of them pure, laid on phosphor black.
 
 The signal is bent, not painted. A generated radial displacement map warps the live page through an SVG filter, so straight rules bow downward at the centre, verticals splay, and the top edge of the page bar arcs. It is real geometry: a 3 KB map computed from `u·r²`, applied with zero JavaScript, and switching off in one media query when the glass gets small. Nothing here is a photograph of a monitor, and nothing is a CSS bevel pretending to be one.
 
@@ -140,7 +135,7 @@ The eight colours a teletext decoder could actually print, their purity removed,
 ### Primary
 - **Page Yellow** (#e8d84a): The page bar, every section caption, every quantity and every index numeral. It is the colour of a heading on a teletext page.
 - **Signal Cyan** (#3ce8ff): Structure and reading. Rules, table headers, the field labels of a record, and every link inside prose.
-- **Open Green** (#3ce86a): The state that means the code is public, and the pilot light on the bezel.
+- **Open Green** (#3ce86a): The state that means the code is public.
 
 ### Secondary
 - **Closed Red** (#ff5442): The state that means the code is not public, and the frame of an asset that is still missing.
@@ -185,9 +180,9 @@ The eight colours a teletext decoder could actually print, their purity removed,
 
 ## Layout
 
-One glass. It is 4:3, sized `min(100% of the room, 76vh × 4/3, 1240px)`, centred, with a proportional bezel inset (`2.2cqi` vertical, `2.93cqi` horizontal — the ratio that keeps the inner box 4:3). Inside, a safe-area inset of 4.6% horizontal and 4.8% vertical keeps text off the curved edge, where the warp is strongest.
+The glass is the window: it fills the viewport with no bezel, no radius and no room around it, and the page's own scroll is the only one. The content does not fill it — it sits in a centred column of `118ch` with `5ch` of slack on each side, and that slack is what keeps the bowing from being clipped at the column's corner.
 
-The type size is a container query unit, not a viewport unit: `1.45cqi` of the tube. Grow the window and the tube grows until 76vh caps it; the character grid stays the same number of cells and simply renders larger. On a phone the tube stops being 4:3 and becomes a taller panel whose height follows its content, so the only scroll is the page's own.
+Type is sized in a container query unit (`0.95cqi` of the tube, capped at 14px) and the column is measured in `ch`, so the character grid stays the same number of cells whatever the window does; only its rendering scales. On a phone the column takes the full width and the size floor rises to 12px, because a phone is read at arm's length, not from across a desk.
 
 Two-column records (`ficha`, certificates, project tables) keep their banded order: label in cyan at a fixed character width, value in dim phosphor beside it. Below 820px every banded row stacks, one fact per line.
 
@@ -195,7 +190,7 @@ Two-column records (`ficha`, certificates, project tables) keep their banded ord
 
 There is no elevation in this system. Nothing is layered, nothing floats, and no shadow anywhere represents a light source above a surface. Depth is a physical fact of the object: a recessed glass inside a raised plastic bezel, held by an inset ring highlight and a wide inset vignette that darkens toward the tube's edge.
 
-There is no glow anywhere on the case. The pilot light is a flat green lens seated in a dark ring, not a halo: the only light this site emits comes from the phosphor inside the glass. A glow on the plastic would be decoration pretending to be emission.
+The tube and the window are the same object: there is no case around the glass, only the glass, its vignette and its grille. There is no glow anywhere either — the only light in the site comes from the phosphor itself, and a halo on any element would be decoration pretending to be emission.
 
 The screen adds two depth cues that are not shadows: a fixed 3px aperture grille and 3px scanlines drawn above the signal, and a slow vertical-retrace band that travels up the glass every 13 seconds.
 
@@ -218,9 +213,10 @@ Everything inside is a rectangle with square corners: rows, bars, rules, table c
 - **Phone:** Height follows content, radii become fixed, and the page scrolls normally instead of the glass.
 
 ### The Warp
-- **What it is:** An SVG filter on the signal layer only: a 96×72 radial displacement map, `primitiveUnits="objectBoundingBox"` with the map stretched over the element, `scale="0.05"` on the desk and `0.045` on the phone.
-- **Why those units:** objectBoundingBox is what makes one map work at every tube size — the displacement stays a fixed fraction of the glass instead of a fixed pixel count.
-- **Boundary:** The grille, scanlines, vignette and reflection are *not* warped: they belong to the glass, not to the signal.
+- **What it is:** An SVG filter on the content column: a 96×72 radial displacement map, `primitiveUnits="objectBoundingBox"` with the map stretched over the column, `scale="0.042"` on the desk and `0.035` on the phone, region clipped to the column's own box.
+- **Why the column and not the window:** the displacement is a function of `r²` from the centre, so a signal sitting in the middle of a wide screen would not bend at all. The map has to stretch over the thing that must curve.
+- **Why objectBoundingBox:** one map then works at every width — the displacement stays a fixed fraction of the column instead of a fixed pixel count.
+- **Boundary:** The grille, scanlines, vignette and reflection are never warped: they belong to the glass, not to the signal. The `5ch` of slack is what the corners need so the bowing is not cut off.
 
 ### Page Bar
 - **Shape:** A full-width bar with no radius, yellow field, phosphor-black text.
@@ -235,7 +231,8 @@ Everything inside is a rectangle with square corners: rows, bars, rules, table c
 ### Fastext Keys
 - **Shape:** Four inline labels with a 1.5ch square in the key's own colour, on the page's bottom edge above a cyan hair.
 - **Order:** Red index, green projects, yellow certificates, cyan about. The current page's key goes phosphor white.
-- **Why:** The keys are the navigation, and they stay pinned when the glass scrolls — the same promise a real remote made.
+- **Socials:** The right end of the same row carries the four doors as two-letter labels — `gh`, `x`, `ig`, `li` — pushed right with `margin-left:auto`. Contact is part of the furniture, not a section with its own heading.
+- **Why:** The keys are the navigation, on the bottom edge where a remote expected them, and the doors live beside them instead of occupying a block of their own.
 
 ### Tables
 - **Banded records:** A Doto yellow index, a phosphor-white name (a link where there is a repository), the plain description in dim phosphor, an uppercase state in green or red, and the repository's own last-change date in Doto cyan.
@@ -248,17 +245,19 @@ Everything inside is a rectangle with square corners: rows, bars, rules, table c
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep the tube 4:3 on the desk and let only the phone grow it.
-- **Do** keep the warp on the signal alone, and let the grille and vignette stay flat on the glass.
+- **Do** keep the glass edge-to-edge with the content in a centred `118ch` column and `5ch` of slack for the bowing.
+- **Do** keep the warp on the content column alone, and let the grille and vignette stay flat on the glass.
 - **Do** size type in `cqi` so the character grid tracks the tube, not the window.
 - **Do** give every quantity Doto and every word DotGothic16.
-- **Do** draw the bezel with a pseudo-element behind the glass: the set is one enclosure, not a card inside a card.
+- **Do** keep contact in the bottom key row, right-aligned, rather than in a section of its own.
 - **Do** keep a hairline's row padded — .26em above and below is the floor, never .12em.
 - **Do** spend yellow on structure, cyan on reading, green on open, red on closed, and magenta exactly once.
 - **Do** label a date with what it is — the repository's last change — rather than implying a release.
 
 ### Don't:
-- **Don't** add a shadow that implies something floats, or a glow anywhere on the case. The pilot lens is flat; the phosphor is the only light.
+- **Don't** add a case, a bezel, a radius or a background behind the glass: the tube is the window.
+- **Don't** add a shadow that implies something floats, or a glow anywhere. The phosphor is the only light.
+- **Don't** move the warp back onto the whole window, or give it a filter region wider than its own box.
 - **Don't** use blue for text, magenta for anything but the route key, or any pure primary.
 - **Don't** put a border radius inside the glass.
 - **Don't** replace the displacement map with a photo of a monitor, or a CSS bevel pretending to be plastic.

@@ -20,11 +20,11 @@
 
 <!-- El cristal se comba de verdad: mapa de desplazamiento radial sobre la señal -->
 <svg class="defs" aria-hidden="true" focusable="false">
-  <filter id="tube-warp" primitiveUnits="objectBoundingBox" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+  <filter id="tube-warp" primitiveUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
     <feImage href="assets/tube-map.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"></feImage>
-    <feDisplacementMap in="SourceGraphic" in2="map" scale="0.05" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+    <feDisplacementMap in="SourceGraphic" in2="map" scale="0.042" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
   </filter>
-  <filter id="tube-warp-sm" primitiveUnits="objectBoundingBox" x="-8%" y="-8%" width="116%" height="116%" color-interpolation-filters="sRGB">
+  <filter id="tube-warp-sm" primitiveUnits="objectBoundingBox" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
     <feImage href="assets/tube-map.png" x="0" y="0" width="1" height="1" preserveAspectRatio="none" result="map"></feImage>
     <feDisplacementMap in="SourceGraphic" in2="map" scale="0.035" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
   </filter>
@@ -69,9 +69,9 @@
                 <span class="k">103</span><span class="n">sobre mí</span>
                 <span class="d">cuatro líneas y un colofón</span><span class="go">&gt;</span>
               </a>
-              <a class="row" href="#contacto">
-                <span class="k">104</span><span class="n">contacto</span>
-                <span class="d">github · x · instagram · linkedin</span><span class="go">&gt;</span>
+              <a class="row" href="mailto:alexpf.me@gmail.com">
+                <span class="k">104</span><span class="n">escribir</span>
+                <span class="d">alexpf.me@gmail.com</span><span class="go">&gt;</span>
               </a>
             </nav>
 
@@ -85,11 +85,6 @@
               <li><span class="d">2026-08</span><span class="t">kivotos</span><span class="w">biblioteca de ROMs y descargas en la red de casa</span><span class="st">abierto</span></li>
             </ul>
 
-            <p class="tag" id="contacto">contacto — cuatro puertas</p>
-            <ul class="log">
-              <li><span class="d">github</span><span class="t"><a href="https://github.com/AlPeFe" rel="me">github.com/AlPeFe</a></span><span class="w">código, issues, todo</span><span class="st">abierto</span></li>
-              <li><span class="d">correo</span><span class="t"><a href="mailto:alexpf.me@gmail.com">alexpf.me@gmail.com</a></span><span class="w">escríbeme y te contesto</span><span class="st">abierto</span></li>
-            </ul>
 
           </div>
 
@@ -98,6 +93,12 @@
             <a class="k2" href="projects/index.html"><i aria-hidden="true"></i>proyectos</a>
             <a class="k3" href="certs/index.html"><i aria-hidden="true"></i>certificados</a>
             <a class="k4" href="about/index.html"><i aria-hidden="true"></i>sobre mí</a>
+            <span class="socials">
+              <a href="https://github.com/AlPeFe" rel="me" aria-label="github">gh</a>
+              <a href="https://x.com/alpefe" rel="me" aria-label="x">x</a>
+              <a href="https://www.instagram.com/alpefe.exe" rel="me" aria-label="instagram">ig</a>
+              <a href="https://www.linkedin.com/in/alpefe" rel="me" aria-label="linkedin">li</a>
+            </span>
           </nav>
 
         </main>
@@ -105,7 +106,6 @@
     </div>
     <div class="crt" aria-hidden="true"></div>
     <div class="bloom" aria-hidden="true"></div>
-    <div class="led" aria-hidden="true"></div>
   </div>
 </div>
 </body>
