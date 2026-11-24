@@ -2,19 +2,18 @@
 
 Plain HTML, like a personal homepage from the 90s, in its own style.
 
+## Pages
+- `/` landing: block wordmark, one line, links `stack // gear // about // blog`, contact.
+- `/stack/`, `/gear/`, `/about/`: one page each, `dl` lists.
+- `/blog/`: list of posts. New post: copy `blog/_template.html` to `blog/YYYY-MM-DD-title.html` and add a `<li>` to `blog/index.html` (instructions in a comment there). Files starting with `_` are not published by GitHub Pages.
+
 ## Rules
-- **No classes, no ids for styling, no JavaScript.** `assets/site.css` only targets elements (`h1`, `a`, `table`, `dl`…). If something needs a class to look right, change the markup instead.
-- One narrow column (`max-width: 46em`), left-aligned, nothing positioned.
-- Navigation is a line of links separated by ` // `, at the top of the landing and at the bottom of every subpage. Subpages start with a breadcrumb `alpefe / <page>`.
+- **No classes, no ids for styling, no JavaScript.** `assets/site.css` only targets elements. If something needs a class to look right, change the markup instead.
+- One narrow column (`max-width: 42em`), left-aligned, nothing positioned.
+- Links separated by ` // `. Subpages start with a breadcrumb `alpefe / <page>` and end with the same link row, the current page in bold.
 
 ## Look
-- Background: black (`#000`) with a tiled dark pattern, `assets/bg.gif` (32×32, dotted diamond lattice + a few stars). Regenerate with `python scripts/make-bg.py`.
+- Background: black with the tiled 90s confetti GIF, `assets/confetti.gif`.
 - Font: DotGothic16 (self-hosted, `assets/fonts/`), monospace fallback.
-- Colours, none pure white: text `#d6d6e4`, headings `#e8d84a`, links `#3ce8ff`, visited `#ff58c8`, muted `#8a8aa0`.
+- Colours: text `#d6d6e4`, headings `#e8d84a`, links `#3ce8ff`, visited `#ff58c8`, muted `#8a8aa0`.
 - `h2` is uppercase with a `»` prefix. Rules (`hr`) are dashed.
-- The landing wordmark is the block-letter `<pre>`.
-
-## Generated content
-- `scripts/update-live.mjs` rewrites the contribution graph between `<!-- contribs:start/end -->` in `index.html` and the `data-repo` cells in `projects/index.html`.
-- `scripts/update-tokens.mjs` rewrites the `<!-- tok:*:start/end -->` rows in `index.html`.
-- Both emit classless markup; keep it that way.

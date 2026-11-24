@@ -1,6 +1,6 @@
 /* alpefe.me — html plano.
-   Sin clases: sólo elementos. Fondo negro con baldosa de los 90
-   (assets/bg.gif, generada por scripts/make-bg.py). Sin JavaScript. */
+   Sin clases: sólo elementos. Fondo negro con confeti de los 90
+   (assets/confetti.gif). Sin JavaScript. */
 
 @font-face{
   font-family:'DotGothic16';
@@ -8,9 +8,9 @@
   font-weight:400;font-style:normal;font-display:swap;
 }
 
-html{background:#000 url('bg.gif') repeat;color-scheme:dark}
+html{background:#000 url('confetti.gif') repeat;color-scheme:dark}
 body{
-  max-width:46em;margin:0;padding:2.5em 1.5em 4em;
+  max-width:42em;margin:0;padding:2.5em 1.5em 4em;
   color:#d6d6e4;
   font:16px/1.5 'DotGothic16',ui-monospace,'Courier New',monospace;
 }
@@ -26,26 +26,14 @@ h1{font-size:1.6em;margin-top:0}
 h2{font-size:1em;text-transform:uppercase;letter-spacing:.15em}
 h2::before{content:'» '}
 hr{border:0;border-top:1px dashed #44445a;margin:2em 0}
-small{color:#8a8aa0}
+small,time{color:#8a8aa0}
+small{font-size:.9em}
 
 pre{color:#e8d84a;font:inherit;font-size:.55em;line-height:1;overflow-x:auto;margin:0 0 1.2em}
 
 ul{padding-left:1.4em}
 li{margin:.2em 0}
-li span + span::before{content:' · ';color:#8a8aa0}
 
 dl{display:grid;grid-template-columns:max-content 1fr;gap:.3em 1.5em}
 dt{color:#3ce8ff}
 dd{margin:0}
-
-table{border-collapse:collapse;width:100%}
-caption{text-align:left;color:#8a8aa0;padding:.4em 0}
-th,td{text-align:left;vertical-align:top;padding:.4em .8em .4em 0;border-bottom:1px dotted #33334a}
-th{font-weight:400;color:#3ce8ff}
-td:last-child{white-space:nowrap;color:#8a8aa0}
-
-/* el grafo de contribuciones lo genera scripts/update-live.mjs */
-svg{display:block;width:100%;max-width:738px;height:auto}
-svg text{fill:#8a8aa0;font-family:inherit;font-size:9px}
-p i[style]{display:inline-block;width:10px;height:10px;border-radius:2px;margin:0 1px;vertical-align:middle}
-p span{margin-left:1.5em;color:#8a8aa0}
