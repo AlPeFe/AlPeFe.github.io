@@ -164,7 +164,7 @@ async function copilotRow() {
       `?year=${now.getUTCFullYear()}&month=${now.getUTCMonth() + 1}&day=${now.getUTCDate()}`,
     ))} / 24 h`;
   } catch { /* sin desglose diario */ }
-  return `<li><span class="p">copilot</span><span class="n">${compact(total)} req</span><span class="d">${day}</span></li>`;
+  return `<li><span>copilot</span><span>${compact(total)} req</span><span>${day}</span></li>`;
 }
 
 // ————— aplicar al HTML —————
@@ -186,7 +186,7 @@ const oc = await aggregateOpencodeGo();
 next = replaceRow(
   next,
   'oc-go',
-  `<li><span class="p">opencode-go</span><span class="n">${compact(oc.total)}</span><span class="d">+${compact(oc.day)} / 24 h</span></li>`,
+  `<li><span>opencode-go</span><span>${compact(oc.total)}</span><span>+${compact(oc.day)} / 24 h</span></li>`,
 );
 console.log(`opencode-go  total=${oc.total.toLocaleString('es-ES')}  24h=${oc.day.toLocaleString('es-ES')}`);
 
@@ -199,7 +199,7 @@ try {
     next = replaceRow(
       next,
       'hermes',
-      `<li><span class="p">hermes</span><span class="n">${compact(nous.total)}</span><span class="d">${detail}</span></li>`,
+      `<li><span>hermes</span><span>${compact(nous.total)}</span><span>${detail}</span></li>`,
     );
     console.log(`hermes       total=${nous.total.toLocaleString('es-ES')} (portal de Nous)`);
   }

@@ -3,185 +3,155 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>projects — P101</title>
-<meta name="description" content="Sixteen projects, nine open source and seven closed. What each one does, without naming a single technology.">
-<meta name="theme-color" content="#03050a">
+<title>projects — alpefe</title>
+<meta name="description" content="Fifteen open projects and seven closed ones, explained by what they do.">
+<meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://alpefe.me/projects/">
 <link rel="icon" type="image/gif" href="../favicon.gif">
-<link rel="stylesheet" href="../assets/site.css?v=8">
+<link rel="stylesheet" href="../assets/site.css?v=9">
 </head>
 <body>
-<a class="skip" href="#contenido">skip to content</a>
 
-<div class="tube">
-  <div class="glass">
-    <div class="warp">
-      <div class="screen">
-        <main class="tt" id="contenido">
+<p><a href="../">alpefe</a> / projects</p>
+<h1>projects</h1>
 
-          <div class="tt-bar">
-            <span class="pg">P101</span>
-            <span class="nm">alpefe.me / projects</span>
-          </div>
+<p>Everything here is made by me. The closed ones are real product or my own tools: the code isn't public, but what they do is explained.</p>
 
-          <div class="sig">
+<h2>open</h2>
+<table>
+<caption>fifteen, code on github</caption>
+<thead><tr><th>project</th><th>what it does</th><th>last</th></tr></thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/AlPeFe/HanniPI">HanniPI</a></td>
+<td>My own coding-agent harness: one LLM API on top, the agent loop, a TUI and a CLI, plus the skills and tools I actually use. It's what builds and maintains this site.</td>
+<td data-repo="HanniPI">2026-11</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/xiaomi-tv-debloat">xiaomi-tv-debloat</a></td>
+<td>Turn a Xiaomi Mi TV into what it should have been out of the box: 31 packages disabled, a clean launcher instead of the stock one, and 602 MB of RAM plus 503 MB of storage reclaimed. No root, with the rollback documented step by step.</td>
+<td data-repo="xiaomi-tv-debloat">2026-10</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/HanniGram">HanniGram</a></td>
+<td>Persistent memory for coding agents: an engine with full-text search and a native extension that gives the agent tools to save and recall what was decided. The practical difference is that a new session doesn't start from scratch or ask the same things twice.</td>
+<td data-repo="HanniGram">2026-10</td>
+</tr>
+<tr>
+<td>konbini-psx</td>
+<td>A PSX-style konbini you can walk around: Godot, a PS1 rendering pipeline and a Japanese convenience-store interior, with tank controls and a modern camera when you want it.</td>
+<td data-repo="konbini-psx">2026-10</td>
+</tr>
+<tr>
+<td>monitor-agent</td>
+<td>A lightweight monitor for services and resources: reports from a terminal, a web panel or a central monitor. Written in Rust.</td>
+<td data-repo="monitor-agent">2026-10</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/monitor-agent-remote">monitor-agent-remote</a></td>
+<td>The central side of the monitor: collects what the agents report, keeps the history and shows what's down.</td>
+<td data-repo="monitor-agent-remote">2026-10</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/fuji-ptp-android">fuji-ptp-android</a></td>
+<td>The custom recipes of a Fujifilm X100VI, from your phone: read the ones on the camera, edit them and put them right back. The camera communication engine lives apart, ready to be reused from anything else later.</td>
+<td data-repo="fuji-ptp-android">2026-08</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/fuji-ptp-core">fuji-ptp-core</a></td>
+<td>The PTP engine that talks to the Fujifilm camera, split out of the Android app so anything else can reuse it.</td>
+<td data-repo="fuji-ptp-core">2026-08</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/gesipan">gesipan</a></td>
+<td>An infinite canvas of notes and bookmarks in the spirit of Raindrop: everything piles onto a borderless board instead of lists and folders. The interface ships embedded in the executable itself, so it just opens and works.</td>
+<td data-repo="gesipan">2026-08</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/kivotos">kivotos</a></td>
+<td>A ROM library that lives on your computer and serves downloads to the rest of the home network. A single executable: start it, point it at a folder, and the rest of the house plays from the browser with nothing installed.</td>
+<td data-repo="kivotos">2026-08</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/music-grabber">music-grabber</a></td>
+<td>Self-hosted web interface to download audio from Spotify, YouTube, SoundCloud and Bandcamp to your own server, with downloads managed from the browser instead of a terminal.</td>
+<td data-repo="music-grabber">2026-06</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/WindowsServerAgent">WindowsServerAgent</a></td>
+<td>Agent to administer Windows servers from the outside: run and supervise tasks over SSH, WMI and remote PowerShell without sitting in front of the machine or opening a full remote session.</td>
+<td data-repo="WindowsServerAgent">2026-05</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/tui-server-setup">tui-server-setup</a></td>
+<td>Terminal assistant that gets a freshly installed Windows server ready for work —packages, database, services— with menus instead of a documentation checklist to copy by hand.</td>
+<td data-repo="tui-server-setup">2026-04</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/PolaperBotV2">PolaperBotV2</a></td>
+<td>Second take on Polaper: a local-LLM personal assistant with a multi-agent core and a Telegram front.</td>
+<td data-repo="PolaperBotV2">2026-03</td>
+</tr>
+<tr>
+<td><a href="https://github.com/AlPeFe/SqlServerMcp">SqlServerMcp</a></td>
+<td>Teaches a model the schema of a SQL Server database and its business rules as context, so it stops making up queries and asks about what's really there. Built to work with Copilot and any other client.</td>
+<td data-repo="SqlServerMcp">2026-01</td>
+</tr>
+</tbody>
+</table>
 
-            <h1 class="tt-h">projects</h1>
-            <p class="claim">Everything here is made by me. Status only says whether the code is public.</p>
+<h2>closed</h2>
+<table>
+<caption>seven, code not public</caption>
+<thead><tr><th>project</th><th>what it does</th><th>last</th></tr></thead>
+<tbody>
+<tr>
+<td>tsnu-plataforma</td>
+<td>Fleet and staff management for medical transport: a record for every vehicle, expiry tracking and regulatory checklists. It lives on the company's servers, not on the internet, and the people organizing the services use it daily.</td>
+<td data-repo="tsnu-plataforma">2026-10</td>
+</tr>
+<tr>
+<td>gam-mcp</td>
+<td>Not just querying. A full harness over the product: it queries, pulls statistics and operates on the servers in natural language, keeps memory of what's already been done, and doesn't tie itself to any single client —Hermes, GamCoordinator or whatever comes next.</td>
+<td data-repo="gam-mcp">2026-10</td>
+</tr>
+<tr>
+<td>Nagomi</td>
+<td>Medical transport coordination for places where deploying a big system makes no sense: small regional hospitals, clinics, nursing homes and day centers, with their own way of assigning vehicles and staff.</td>
+<td data-repo="Nagomi">2026-09</td>
+</tr>
+<tr>
+<td>GamFleet</td>
+<td>The fleet management application, rewritten from scratch on the new platform: same services and same screens, but on a foundation that can be maintained for ten more years.</td>
+<td data-repo="GamFleet">2026-09</td>
+</tr>
+<tr>
+<td>charla-ia-equipo</td>
+<td>A four-hour talk for my team on what AI is, how it works inside, and how to use it with harnesses, skills and agents. 148 slides, all inside a single HTML file that opens with a double-click and needs no internet.</td>
+<td data-repo="charla-ia-equipo">2026-10</td>
+</tr>
+<tr>
+<td>Rac0</td>
+<td>Keeping track of restaurants: the ones you've visited, with your score, and the ones you want to visit. Data stays on the phone, no accounts, no servers in between.</td>
+<td data-repo="Rac0">2026-01</td>
+</tr>
+<tr>
+<td>PolaperPOS</td>
+<td>A simple point of sale for a single event: charge, balance the till at the end, and close. No extra features and no configuration nobody will ever read.</td>
+<td data-repo="PolaperPOS">2026-03</td>
+</tr>
+</tbody>
+</table>
 
-            <table class="tbl">
-              <caption>open — fifteen</caption>
-              <thead>
-                <tr><th>project</th><th>what it does</th><th>status</th><th>last</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/HanniPI">HanniPI</a></td>
-                  <td>My own coding-agent harness: one LLM API on top, the agent loop, a TUI and a CLI, plus the skills and tools I actually use. It's what builds and maintains this site.</td>
-                  <td class="st">open</td><td class="up" data-repo="HanniPI">2026-11</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/xiaomi-tv-debloat">xiaomi-tv-debloat</a></td>
-                  <td>Turn a Xiaomi Mi TV into what it should have been out of the box: 31 packages disabled, a clean launcher instead of the stock one, and 602 MB of RAM plus 503 MB of storage reclaimed. No root, with the rollback documented step by step.</td>
-                  <td class="st">open</td><td class="up" data-repo="xiaomi-tv-debloat">2026-10</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/HanniGram">HanniGram</a></td>
-                  <td>Persistent memory for coding agents: an engine with full-text search and a native extension that gives the agent tools to save and recall what was decided. The practical difference is that a new session doesn't start from scratch or ask the same things twice.</td>
-                  <td class="st">open</td><td class="up" data-repo="HanniGram">2026-10</td>
-                </tr>
-                <tr>
-                  <td class="nm">konbini-psx</td>
-                  <td>A PSX-style konbini you can walk around: Godot, a PS1 rendering pipeline and a Japanese convenience-store interior, with tank controls and a modern camera when you want it.</td>
-                  <td class="st">open</td><td class="up" data-repo="konbini-psx">2026-10</td>
-                </tr>
-                <tr>
-                  <td class="nm">monitor-agent</td>
-                  <td>A lightweight monitor for services and resources: reports from a terminal, a web panel or a central monitor. Written in Rust.</td>
-                  <td class="st">open</td><td class="up" data-repo="monitor-agent">2026-10</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/monitor-agent-remote">monitor-agent-remote</a></td>
-                  <td>The central side of the monitor: collects what the agents report, keeps the history and shows what's down.</td>
-                  <td class="st">open</td><td class="up" data-repo="monitor-agent-remote">2026-10</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/fuji-ptp-android">fuji-ptp-android</a></td>
-                  <td>The custom recipes of a Fujifilm X100VI, from your phone: read the ones on the camera, edit them and put them right back. The camera communication engine lives apart, ready to be reused from anything else later.</td>
-                  <td class="st">open</td><td class="up" data-repo="fuji-ptp-android">2026-08</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/fuji-ptp-core">fuji-ptp-core</a></td>
-                  <td>The PTP engine that talks to the Fujifilm camera, split out of the Android app so anything else can reuse it.</td>
-                  <td class="st">open</td><td class="up" data-repo="fuji-ptp-core">2026-08</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/gesipan">gesipan</a></td>
-                  <td>An infinite canvas of notes and bookmarks in the spirit of Raindrop: everything piles onto a borderless board instead of lists and folders. The interface ships embedded in the executable itself, so it just opens and works.</td>
-                  <td class="st">open</td><td class="up" data-repo="gesipan">2026-08</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/kivotos">kivotos</a></td>
-                  <td>A ROM library that lives on your computer and serves downloads to the rest of the home network. A single executable: start it, point it at a folder, and the rest of the house plays from the browser with nothing installed.</td>
-                  <td class="st">open</td><td class="up" data-repo="kivotos">2026-08</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/music-grabber">music-grabber</a></td>
-                  <td>Self-hosted web interface to download audio from Spotify, YouTube, SoundCloud and Bandcamp to your own server, with downloads managed from the browser instead of a terminal.</td>
-                  <td class="st">open</td><td class="up" data-repo="music-grabber">2026-06</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/WindowsServerAgent">WindowsServerAgent</a></td>
-                  <td>Agent to administer Windows servers from the outside: run and supervise tasks over SSH, WMI and remote PowerShell without sitting in front of the machine or opening a full remote session.</td>
-                  <td class="st">open</td><td class="up" data-repo="WindowsServerAgent">2026-05</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/tui-server-setup">tui-server-setup</a></td>
-                  <td>Terminal assistant that gets a freshly installed Windows server ready for work —packages, database, services— with menus instead of a documentation checklist to copy by hand.</td>
-                  <td class="st">open</td><td class="up" data-repo="tui-server-setup">2026-04</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/PolaperBotV2">PolaperBotV2</a></td>
-                  <td>Second take on Polaper: a local-LLM personal assistant with a multi-agent core and a Telegram front.</td>
-                  <td class="st">open</td><td class="up" data-repo="PolaperBotV2">2026-03</td>
-                </tr>
-                <tr>
-                  <td class="nm"><a href="https://github.com/AlPeFe/SqlServerMcp">SqlServerMcp</a></td>
-                  <td>Teaches a model the schema of a SQL Server database and its business rules as context, so it stops making up queries and asks about what's really there. Built to work with Copilot and any other client.</td>
-                  <td class="st">open</td><td class="up" data-repo="SqlServerMcp">2026-01</td>
-                </tr>
-              </tbody>
-            </table>
+<hr>
 
-            <table class="tbl">
-              <caption>closed — seven</caption>
-              <thead>
-                <tr><th>project</th><th>what it does</th><th>status</th><th>last</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="nm">tsnu-plataforma</td>
-                  <td>Fleet and staff management for medical transport: a record for every vehicle, expiry tracking and regulatory checklists. It lives on the company's servers, not on the internet, and the people organizing the services use it daily.</td>
-                  <td class="st closed">closed</td><td class="up" data-repo="tsnu-plataforma">2026-10</td>
-                </tr>
-                <tr>
-                  <td class="nm">gam-mcp</td>
-                  <td>Not just querying. A full harness over the product: it queries, pulls statistics and operates on the servers in natural language, keeps memory of what's already been done, and doesn't tie itself to any single client —Hermes, GamCoordinator or whatever comes next.</td>
-                  <td class="st closed">closed</td><td class="up" data-repo="gam-mcp">2026-10</td>
-                </tr>
-                <tr>
-                  <td class="nm">Nagomi</td>
-                  <td>Medical transport coordination for places where deploying a big system makes no sense: small regional hospitals, clinics, nursing homes and day centers, with their own way of assigning vehicles and staff.</td>
-                  <td class="st closed">closed</td><td class="up" data-repo="Nagomi">2026-09</td>
-                </tr>
-                <tr>
-                  <td class="nm">GamFleet</td>
-                  <td>The fleet management application, rewritten from scratch on the new platform: same services and same screens, but on a foundation that can be maintained for ten more years.</td>
-                  <td class="st closed">closed</td><td class="up" data-repo="GamFleet">2026-09</td>
-                </tr>
-                <tr>
-                  <td class="nm">charla-ia-equipo</td>
-                  <td>A four-hour talk for my team on what AI is, how it works inside, and how to use it with harnesses, skills and agents. 148 slides, all inside a single HTML file that opens with a double-click and needs no internet.</td>
-                  <td class="st closed">closed</td><td class="up" data-repo="charla-ia-equipo">2026-10</td>
-                </tr>
-                <tr>
-                  <td class="nm">Rac0</td>
-                  <td>Keeping track of restaurants: the ones you've visited, with your score, and the ones you want to visit. Data stays on the phone, no accounts, no servers in between.</td>
-                  <td class="st closed">closed</td><td class="up" data-repo="Rac0">2026-01</td>
-                </tr>
-                <tr>
-                  <td class="nm">PolaperPOS</td>
-                  <td>A simple point of sale for a single event: charge, balance the till at the end, and close. No extra features and no configuration nobody will ever read.</td>
-                  <td class="st closed">closed</td><td class="up" data-repo="PolaperPOS">2026-03</td>
-                </tr>
-              </tbody>
-            </table>
+<p>
+<a href="../">index</a> //
+<b>projects</b> //
+<a href="../certs/">certificates</a> //
+<a href="../stack/">stack</a> //
+<a href="../about/">about</a>
+</p>
 
-            <p class="claim">The closed ones are real product or my own tools: the code isn't public, but what they do is explained.</p>
-
-          </div>
-
-          <nav class="tt-keys" aria-label="Site map">
-            <a class="k1" href="../index.html"><i aria-hidden="true"></i>index</a>
-            <a class="k2" href="index.html" aria-current="page"><i aria-hidden="true"></i>projects</a>
-            <a class="k3" href="../certs/index.html"><i aria-hidden="true"></i>certificates</a>
-            <a class="k4" href="../about/index.html"><i aria-hidden="true"></i>about</a>
-            <a class="k5" href="../stack/index.html"><i aria-hidden="true"></i>stack</a>
-            <span class="socials">
-              <a href="https://github.com/AlPeFe" rel="me" aria-label="github">gh</a>
-              <a href="https://x.com/alpefe_me" rel="me" aria-label="x">x</a>
-              <a href="https://www.instagram.com/alpefe.exe" rel="me" aria-label="instagram">ig</a>
-              <a href="https://www.linkedin.com/in/alex-p%C3%A9rez-ferreira-a790b0236/" rel="me" aria-label="linkedin">li</a>
-            </span>
-          </nav>
-
-        </main>
-      </div>
-    </div>
-    <div class="crt" aria-hidden="true"></div>
-    <div class="bloom" aria-hidden="true"></div>
-    <div class="channel" aria-hidden="true"></div>
-  </div>
-</div>
 </body>
 </html>

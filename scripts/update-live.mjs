@@ -98,11 +98,11 @@ function contributionSvg(cells) {
     const month = Number(first.date.slice(5, 7));
     if (month === lastMonth) continue;
     lastMonth = month;
-    out.push(`<text class="m" x="${X0 + col * STEP}" y="10">${MONTHS[month - 1]}</text>`);
+    out.push(`<text x="${X0 + col * STEP}" y="10">${MONTHS[month - 1]}</text>`);
   }
   // etiquetas de día: mon / wed / fri, como en el perfil
   [['mon', 1], ['wed', 3], ['fri', 5]].forEach(([label, row]) => {
-    out.push(`<text class="d" x="0" y="${Y0 + row * STEP + 9}">${label}</text>`);
+    out.push(`<text x="0" y="${Y0 + row * STEP + 9}">${label}</text>`);
   });
 
   let total = 0;
@@ -120,7 +120,7 @@ function contributionSvg(cells) {
   return {
     total,
     block: `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${enNum(total)} contributions on GitHub in the last year">\n${out.join('\n')}\n</svg>
-<p class="total"><b>${enNum(total)}</b> contributions in the last year<span class="legend">less ${legend} more</span></p>`,
+<p><b>${enNum(total)}</b> contributions in the last year<span>less ${legend} more</span></p>`,
   };
 }
 
