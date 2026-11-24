@@ -1,10 +1,13 @@
 /* alpefe.me — homepage 1998.
-   Sin clases: sólo elementos. header y footer centrados, main en columna.
-   Fondo negro con confeti (assets/confetti.gif). Sin JavaScript. */
+   Sin clases: sólo elementos. Todo el contenido va en una caja negra con
+   marco en relieve (body), ajustada al contenido y centrada sobre la
+   baldosa azul (assets/gryd005.jpg). Sin JavaScript. */
 
-html{background:#000 url('confetti.gif') repeat;color-scheme:dark}
+html{background:#0b1430 url('gryd005.jpg') repeat;color-scheme:dark;padding:3em 1em}
 body{
-  margin:0;padding:3em 1.2em 4em;
+  width:fit-content;max-width:36em;margin:0 auto;
+  padding:1.5em 2.5em 2em;
+  background:#000;border:5px ridge grey;
   color:#fff;
   font:18px/1.5 'Times New Roman',Times,serif;
 }
@@ -24,3 +27,8 @@ a:hover{color:#000;background:#ff0}
 small,time{color:#aaa}
 dt{font-weight:bold;margin-top:.5em}
 dd{margin-left:2em}
+
+@media (max-width:500px){
+  html{padding:1em .6em}
+  body{padding:1em 1.2em 1.5em}
+}
