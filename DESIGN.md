@@ -3,7 +3,7 @@
 Plain HTML, like a personal homepage from the 90s, in its own style.
 
 ## Pages
-- `/` landing: block wordmark, one line, links `stack // gear // about // blog`, contact.
+- `/` landing: name, one line, links `[ stack ] · [ gear ] · [ about ] · [ blog ]`, contact.
 - `/stack/`, `/gear/`, `/about/`: one page each, `dl` lists.
 - `/blog/`: list of posts. New post: copy `blog/_template.html` to `blog/YYYY-MM-DD-title.html` and add a `<li>` to `blog/index.html` (instructions in a comment there). Files starting with `_` are not published by GitHub Pages.
 
